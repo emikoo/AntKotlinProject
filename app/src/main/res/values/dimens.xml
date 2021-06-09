@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="auth_title_size">36sp</dimen>
-    <dimen name="auth_subtitle_size">14sp</dimen>
-    <dimen name="btn_image_size">24dp</dimen>
-    <dimen name="btn_image_margin">16dp</dimen>
-    <dimen name="auth_white_title_size">18sp</dimen>
-    <dimen name="auth_title_margin_top">34dp</dimen>
-    <dimen name="auth_btn_enter_width">232dp</dimen>
-    <dimen name="auth_btn_enter_height">54dp</dimen>
-    <dimen name="auth_btn_enter_margin_top">170dp</dimen>
+    <dimen name="sp_32">36sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="dp_34">34dp</dimen>
+    <dimen name="dp_232">232dp</dimen>
+    <dimen name="dp_54">54dp</dimen>
+    <dimen name="dp_170">170dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_368">368dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="dp_42">42dp</dimen>
+    <dimen name="sp_12">12sp</dimen>
 </resources>
