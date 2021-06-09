@@ -16,4 +16,11 @@
     <string name="who_are_you">Кем вы являетесь?</string>
     <string name="pupil">Ученик</string>
     <string name="teacher">Учитель</string>
+    <string name="registration">Регистрация</string>
+    <string name="write_name">Введите имя</string>
+    <string name="write_surname">Введите фамилию</string>
+    <string name="write_email">Введите email</string>
+    <string name="come_up_login">Придумайте логин</string>
+    <string name="come_up_password">Придумайте пароль</string>
+    <string name="check_password">Подтвердите пароль</string>
 </resources>

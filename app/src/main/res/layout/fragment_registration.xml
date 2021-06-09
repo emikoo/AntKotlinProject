@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_500"
+    android:layout_marginTop="@dimen/dp_24"
+    app:cardCornerRadius="@dimen/dp_16">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_milk">
+
+        <TextView
+            android:id="@+id/tv_registration"
+            style="@style/auth_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_34"
+            android:text="@string/registration"
+            android:textColor="@color/color_light_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_reg_name"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_32"
+            android:hint="@string/write_name"
+            android:textColorHint="@color/color_light_grey"
+            app:layout_constraintTop_toBottomOf="@id/tv_registration" />
+
+        <EditText
+            android:id="@+id/et_reg_surname"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_8"
+            android:hint="@string/write_surname"
+            android:textColorHint="@color/color_light_grey"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_name" />
+
+        <EditText
+            android:id="@+id/et_reg_email"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_8"
+            android:hint="@string/write_email"
+            android:textColorHint="@color/color_light_grey"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_surname" />
+
+        <EditText
+            android:id="@+id/et_reg_login"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_8"
+            android:hint="@string/come_up_login"
+            android:textColorHint="@color/color_light_grey"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_email" />
+
+        <EditText
+            android:id="@+id/et_reg_password"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_8"
+            android:hint="@string/come_up_password"
+            android:textColorHint="@color/color_light_grey"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_login" />
+
+        <EditText
+            android:id="@+id/et_reg_check_password"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_8"
+            android:hint="@string/check_password"
+            android:textColorHint="@color/color_light_grey"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_password" />
+
+        <Button
+            android:id="@+id/btn_negative"
+            style="@style/auth_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:text="@string/back"
+            android:textAllCaps="false"
+            android:textColor="@color/color_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/et_reg_check_password"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_check_password" />
+
+        <Button
+            android:id="@+id/btn_positive"
+            style="@style/auth_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:text="@string/done"
+            android:textAllCaps="false"
+            android:textColor="@color/color_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/et_reg_check_password"
+            app:layout_constraintTop_toBottomOf="@id/et_reg_check_password" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
