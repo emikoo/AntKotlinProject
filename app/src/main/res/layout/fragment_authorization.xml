@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.auth.AuthorizationFragment">
+
+    <Button
+        android:id="@+id/btn_enter"
+        style="@style/auth_white_title"
+        android:layout_width="@dimen/auth_btn_enter_width"
+        android:layout_height="@dimen/auth_btn_enter_height"
+        android:layout_marginTop="@dimen/auth_btn_enter_margin_top"
+        android:background="@drawable/btn_enter"
+        android:text="@string/enter"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/first_time_here"
+        android:textColor="@color/color_mint"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@id/btn_enter"
+        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginTop="42dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/color_light_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

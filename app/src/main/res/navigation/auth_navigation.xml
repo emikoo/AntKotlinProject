@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/authorizationFragment">
+
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.example.antkotlinproject.ui.auth.AuthorizationFragment"
+        android:label="fragment_authorization"
+        tools:layout="@layout/fragment_authorization" >
+        <action
+            android:id="@+id/action_authorizationFragment_to_loginFragment3"
+            app:destination="@id/loginFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment3"
+        android:name="com.example.antkotlinproject.ui.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+</navigation>

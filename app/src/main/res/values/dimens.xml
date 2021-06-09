@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="splash_title_size">36sp</dimen>
+    <dimen name="auth_title_size">36sp</dimen>
+    <dimen name="auth_subtitle_size">14sp</dimen>
+    <dimen name="btn_image_size">24dp</dimen>
+    <dimen name="btn_image_margin">16dp</dimen>
+    <dimen name="auth_white_title_size">18sp</dimen>
+    <dimen name="auth_title_margin_top">34dp</dimen>
+    <dimen name="auth_btn_enter_width">232dp</dimen>
+    <dimen name="auth_btn_enter_height">54dp</dimen>
+    <dimen name="auth_btn_enter_margin_top">170dp</dimen>
 </resources>

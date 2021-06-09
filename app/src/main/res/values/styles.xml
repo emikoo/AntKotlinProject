@@ -7,10 +7,23 @@
         <item name="colorAccent">@color/color_light_green</item>
     </style>
 
-    <style name="splash_title">
+    <style name="auth_title">
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">@dimen/splash_title_size</item>
+        <item name="android:textSize">@dimen/auth_title_size</item>
         <item name="android:textColor">@color/color_green</item>
+    </style>
+
+    <style name="auth_subtitle">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/auth_subtitle_size</item>
+        <item name="android:textColor">@color/color_green</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="auth_white_title">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">@dimen/auth_white_title_size</item>
     </style>
 
 </resources>
