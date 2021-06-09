@@ -9,13 +9,13 @@
 
     <style name="auth_title">
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">@dimen/auth_title_size</item>
+        <item name="android:textSize">@dimen/sp_32</item>
         <item name="android:textColor">@color/color_green</item>
     </style>
 
     <style name="auth_subtitle">
         <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textSize">@dimen/auth_subtitle_size</item>
+        <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:textColor">@color/color_green</item>
         <item name="android:textAlignment">center</item>
     </style>
@@ -23,7 +23,16 @@
     <style name="auth_white_title">
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">@color/color_white</item>
-        <item name="android:textSize">@dimen/auth_white_title_size</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+    
+    <style name="login_edit_text">
+        <item name="android:background">@drawable/bg_auth_edit_text</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:paddingStart">@dimen/dp_16</item>
+        <item name="android:textColorHint">@color/color_light_green</item>
+        <item name="android:layout_marginStart">@dimen/dp_24</item>
+        <item name="android:layout_marginEnd">@dimen/dp_24</item>
     </style>
 
 </resources>
