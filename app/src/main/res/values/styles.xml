@@ -1,0 +1,16 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_light_green</item>
+        <item name="colorPrimaryDark">@color/color_light_green</item>
+        <item name="colorAccent">@color/color_light_green</item>
+    </style>
+
+    <style name="splash_title">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/splash_title_size</item>
+        <item name="android:textColor">@color/color_green</item>
+    </style>
+
+</resources>
