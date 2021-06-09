@@ -10,4 +10,7 @@
     <string name="back">Назад</string>
     <string name="then">Далее</string>
     <string name="done">Готово</string>
+    <string name="entrance">Вход</string>
+    <string name="write_login">Введите логин</string>
+    <string name="write_password">Введите пароль</string>
 </resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_368"
+    android:layout_marginTop="@dimen/dp_32"
+    app:cardCornerRadius="@dimen/dp_16"
+    tools:context=".ui.auth.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_light_green">
+
+        <TextView
+            android:id="@+id/tv_entrance"
+            style="@style/auth_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_34"
+            android:text="@string/entrance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_login"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_54"
+            android:hint="@string/write_login"
+            app:layout_constraintTop_toBottomOf="@id/tv_entrance" />
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/login_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginTop="@dimen/dp_16"
+            android:hint="@string/write_password"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/et_login" />
+
+        <Button
+            android:id="@+id/btn_negative"
+            style="@style/auth_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:text="@string/back"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/et_password"
+            app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+        <Button
+            android:id="@+id/btn_positive"
+            style="@style/auth_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:text="@string/done"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/et_password"
+            app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

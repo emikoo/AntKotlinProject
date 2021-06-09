@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment : Fragment() {
-    abstract fun resID(): Int
-
+abstract class BaseFragment(private val resID: Int) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(resID(), container, false)
+        return inflater.inflate(resID, container, false)
     }
 }

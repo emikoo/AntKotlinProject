@@ -8,8 +8,7 @@ import com.example.antkotlinproject.R
 import com.example.antkotlinproject.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_authorization.*
 
-class AuthorizationFragment : BaseFragment() {
-    override fun resID() = R.layout.fragment_authorization
+class AuthorizationFragment : BaseFragment(R.layout.fragment_authorization) {
     private var listener: AuthorizationListener? = null
 
     override fun onAttach(context: Context) {
