@@ -26,5 +26,8 @@ class AuthorizationFragment : BaseFragment(R.layout.fragment_authorization) {
         btn_enter.setOnClickListener {
             listener?.openLoginFragment()
         }
+        btn_sign_up.setOnClickListener {
+            listener?.openCheckUserRegistrationFragment()
+        }
     }
 }

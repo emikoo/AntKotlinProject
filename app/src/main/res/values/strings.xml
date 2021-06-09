@@ -13,4 +13,7 @@
     <string name="entrance">Вход</string>
     <string name="write_login">Введите логин</string>
     <string name="write_password">Введите пароль</string>
+    <string name="who_are_you">Кем вы являетесь?</string>
+    <string name="pupil">Ученик</string>
+    <string name="teacher">Учитель</string>
 </resources>

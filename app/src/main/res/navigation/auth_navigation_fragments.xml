@@ -13,10 +13,19 @@
         <action
             android:id="@+id/action_authorizationFragment_to_loginFragment3"
             app:destination="@id/loginFragment3" />
+        <action
+            android:id="@+id/action_authorizationFragment_to_checkUserRegistrationFragment"
+            app:destination="@id/checkUserRegistrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment3"
         android:name="com.example.antkotlinproject.ui.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/checkUserRegistrationFragment"
+        android:name="com.example.antkotlinproject.ui.auth.CheckUserRegistrationFragment"
+        android:label="CheckUserRegistrationFragment"
+        tools:layout="@layout/fragment_check_user_registration"/>
 </navigation>
