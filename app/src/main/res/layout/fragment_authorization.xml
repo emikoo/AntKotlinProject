@@ -9,9 +9,9 @@
     <Button
         android:id="@+id/btn_enter"
         style="@style/auth_white_title"
-        android:layout_width="@dimen/auth_btn_enter_width"
-        android:layout_height="@dimen/auth_btn_enter_height"
-        android:layout_marginTop="@dimen/auth_btn_enter_margin_top"
+        android:layout_width="@dimen/dp_232"
+        android:layout_height="@dimen/dp_54"
+        android:layout_marginTop="@dimen/dp_170"
         android:background="@drawable/btn_enter"
         android:text="@string/enter"
         android:textAllCaps="false"
@@ -22,19 +22,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/dp_24"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/first_time_here"
         android:textColor="@color/color_mint"
-        android:textSize="13sp"
+        android:textSize="@dimen/sp_12"
         app:layout_constraintStart_toStartOf="@id/btn_enter"
         app:layout_constraintTop_toBottomOf="@id/btn_enter" />
 
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_marginTop="42dp"
+        android:layout_height="@dimen/dp_18"
+        android:layout_marginTop="@dimen/dp_42"
         android:background="@android:color/transparent"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/sign_up"
