@@ -42,14 +42,12 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"
-        android:layout_marginStart="@dimen/dp_34"
         android:layout_marginTop="@dimen/dp_32"
-        android:layout_marginEnd="@dimen/dp_34"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/subtitle"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/auth_navigation_fragments"/>
+        app:navGraph="@navigation/auth_navigation_fragments" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

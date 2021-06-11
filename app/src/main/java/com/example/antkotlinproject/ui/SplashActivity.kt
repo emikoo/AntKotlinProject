@@ -1,16 +1,19 @@
 package com.example.antkotlinproject.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import com.example.antkotlinproject.R
+import com.example.antkotlinproject.databinding.ActivitySplashBinding
 import com.example.antkotlinproject.ui.auth.AuthorizationActivity
-import kotlinx.android.synthetic.main.activity_splash.*
+import com.example.antkotlinproject.utils.viewBinding
 
 class SplashActivity : AppCompatActivity() {
+    private val binding by viewBinding(ActivitySplashBinding::inflate)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -21,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun setupAnimationText() {
         val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        splash_title.startAnimation(animation)
+        binding.splashTitle.startAnimation(animation)
     }
 
     private fun setDelay() {

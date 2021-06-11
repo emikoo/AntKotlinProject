@@ -1,33 +1,29 @@
 package com.example.antkotlinproject.ui.auth
 
-import android.content.Context
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.R
+import com.example.antkotlinproject.databinding.FragmentAuthorizationBinding
 import com.example.antkotlinproject.ui.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_authorization.*
+import com.example.antkotlinproject.utils.viewBinding
 
 class AuthorizationFragment : BaseFragment(R.layout.fragment_authorization) {
-    private var listener: AuthorizationListener? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listener = context as AuthorizationListener
-    }
+    private val binding by viewBinding(FragmentAuthorizationBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_sign_up.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        binding.btnSignUp.paintFlags = Paint.UNDERLINE_TEXT_FLAG
         setupListeners()
     }
 
     private fun setupListeners() {
-        btn_enter.setOnClickListener {
-            listener?.openLoginFragment()
+        binding.btnEnter.setOnClickListener {
+            findNavController().navigate(R.id.action_authorizationFragment_to_loginFragment33)
         }
-        btn_sign_up.setOnClickListener {
-            listener?.openCheckUserRegistrationFragment()
+        binding.btnSignUp.setOnClickListener {
+            findNavController().navigate(R.id.action_authorizationFragment_to_checkUserRegistrationFragment2)
         }
     }
 }

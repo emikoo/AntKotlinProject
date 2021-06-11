@@ -38,6 +38,7 @@
     <style name="reg_user_btn">
         <item name="android:background">@drawable/bg_auth_edit_text</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_18</item>
         <item name="android:textColor">@color/color_light_green</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:layout_marginStart">@dimen/dp_24</item>
