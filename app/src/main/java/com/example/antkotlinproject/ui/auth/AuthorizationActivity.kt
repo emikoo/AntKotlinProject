@@ -1,18 +1,23 @@
 package com.example.antkotlinproject.ui.auth
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.antkotlinproject.R
+import com.example.antkotlinproject.databinding.ActivityAuthorizationBinding
+import com.example.antkotlinproject.ui.base.BaseActivity
+import com.example.antkotlinproject.ui.base.BaseViewModel
 
-class AuthorizationActivity : AppCompatActivity() {
+class AuthorizationViewModel : BaseViewModel()
+
+class AuthorizationActivity : BaseActivity<AuthorizationViewModel, ActivityAuthorizationBinding>(
+    AuthorizationViewModel::class
+) {
+    override fun getViewBinding() = ActivityAuthorizationBinding.inflate(layoutInflater)
     private var host: NavController? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_authorization)
-
+    override fun setupViews() {
         host = Navigation.findNavController(this, R.id.nav_host_fragment)
     }
+
+    override fun subscribeToLiveData() {}
 }
