@@ -1,18 +1,25 @@
 package com.example.antkotlinproject.ui.auth
 
-import android.os.Bundle
-import android.view.View
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.databinding.FragmentCheckUserRegistrationBinding
 import com.example.antkotlinproject.ui.base.BaseFragment
-import com.example.antkotlinproject.utils.viewBinding
 
-class CheckUserRegistrationFragment : BaseFragment(R.layout.fragment_check_user_registration) {
-    private val binding by viewBinding(FragmentCheckUserRegistrationBinding::bind)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+class CheckUserRegistrationFragment :
+    BaseFragment<AuthorizationViewModel, FragmentCheckUserRegistrationBinding>(
+        AuthorizationViewModel::class) {
 
+    override fun attachBinding(
+        list: MutableList<FragmentCheckUserRegistrationBinding>,
+        layoutInflater: LayoutInflater,
+        container: ViewGroup?,
+        attachToRoot: Boolean) {
+        list.add(FragmentCheckUserRegistrationBinding.inflate( layoutInflater, container, attachToRoot))
+    }
+
+    override fun setupViews() {
         setupListeners()
     }
 
@@ -22,4 +29,6 @@ class CheckUserRegistrationFragment : BaseFragment(R.layout.fragment_check_user_
         }
         binding.btnNegative.setOnClickListener { findNavController().popBackStack() }
     }
+
+    override fun subscribeToLiveData() {}
 }
