@@ -23,4 +23,7 @@
     <string name="come_up_login">Придумайте логин</string>
     <string name="come_up_password">Придумайте пароль</string>
     <string name="check_password">Подтвердите пароль</string>
+    <string name="search">Поиск</string>
+    <string name="my_courses">Мои курсы</string>
+    <string name="profile">Профиль</string>
 </resources>
