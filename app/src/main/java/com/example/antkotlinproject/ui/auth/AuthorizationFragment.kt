@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.databinding.FragmentAuthorizationBinding
-import com.example.antkotlinproject.ui.base.BaseFragment
+import com.example.antkotlinproject.base.BaseFragment
 
 class AuthorizationFragment :
     BaseFragment<AuthorizationViewModel, FragmentAuthorizationBinding>(

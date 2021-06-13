@@ -1,11 +1,12 @@
-package com.example.antkotlinproject.ui.auth
+package com.example.antkotlinproject.ui.auth.registration
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.databinding.FragmentCheckUserRegistrationBinding
-import com.example.antkotlinproject.ui.base.BaseFragment
+import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
+import com.example.antkotlinproject.base.BaseFragment
 
 class CheckUserRegistrationFragment :
     BaseFragment<AuthorizationViewModel, FragmentCheckUserRegistrationBinding>(

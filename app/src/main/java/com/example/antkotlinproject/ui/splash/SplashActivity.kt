@@ -7,10 +7,11 @@ import android.view.animation.AnimationUtils
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.databinding.ActivitySplashBinding
 import com.example.antkotlinproject.ui.auth.AuthorizationActivity
-import com.example.antkotlinproject.ui.base.BaseActivity
-import com.example.antkotlinproject.ui.base.BaseViewModel
+import com.example.antkotlinproject.base.BaseActivity
+import com.example.antkotlinproject.base.BaseEvent
+import com.example.antkotlinproject.base.BaseViewModel
 
-class SplashViewModel : BaseViewModel()
+class SplashViewModel : BaseViewModel<BaseEvent>()
 
 class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>
     (SplashViewModel::class) {

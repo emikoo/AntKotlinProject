@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.base
+package com.example.antkotlinproject.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.viewbinding.ViewBinding
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import kotlin.reflect.KClass
 
-abstract class BaseFragment<ViewModel : BaseViewModel, VB_CHILD : ViewBinding>(
+abstract class BaseFragment<ViewModel : BaseViewModel<BaseEvent>, VB_CHILD : ViewBinding>(
     private val clazz: KClass<ViewModel>
 ) : Fragment() {
 

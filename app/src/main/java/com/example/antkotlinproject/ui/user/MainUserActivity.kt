@@ -2,7 +2,7 @@ package com.example.antkotlinproject.ui.user
 
 import com.example.antkotlinproject.databinding.ActivityMainBinding
 import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
-import com.example.antkotlinproject.ui.base.BaseActivity
+import com.example.antkotlinproject.base.BaseActivity
 
 class MainUserActivity : BaseActivity<AuthorizationViewModel, ActivityMainBinding>(
     AuthorizationViewModel::class

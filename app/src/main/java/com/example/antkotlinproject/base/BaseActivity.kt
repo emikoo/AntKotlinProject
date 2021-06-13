@@ -1,17 +1,17 @@
-package com.example.antkotlinproject.ui.base
+package com.example.antkotlinproject.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import kotlin.reflect.KClass
 
-abstract class BaseActivity<ViewModel : BaseViewModel, ViewBinding : androidx.viewbinding.ViewBinding>(
-    private val clazz: KClass<ViewModel>
+abstract class BaseActivity<VM : BaseViewModel<BaseEvent>, VB : androidx.viewbinding.ViewBinding>(
+    private val clazz: KClass<VM>
 ) : AppCompatActivity() {
 
-    lateinit var binding: ViewBinding
-    abstract fun getViewBinding(): ViewBinding
-    lateinit var viewModel: ViewModel
+    lateinit var binding: VB
+    abstract fun getViewBinding(): VB
+    lateinit var viewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

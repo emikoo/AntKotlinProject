@@ -4,10 +4,11 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.databinding.ActivityAuthorizationBinding
-import com.example.antkotlinproject.ui.base.BaseActivity
-import com.example.antkotlinproject.ui.base.BaseViewModel
+import com.example.antkotlinproject.base.BaseActivity
+import com.example.antkotlinproject.base.BaseEvent
+import com.example.antkotlinproject.base.BaseViewModel
 
-class AuthorizationViewModel : BaseViewModel()
+class AuthorizationViewModel : BaseViewModel<BaseEvent>()
 
 class AuthorizationActivity : BaseActivity<AuthorizationViewModel, ActivityAuthorizationBinding>(
     AuthorizationViewModel::class

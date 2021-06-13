@@ -27,13 +27,13 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment3"
-        android:name="com.example.antkotlinproject.ui.auth.LoginFragment"
+        android:name="com.example.antkotlinproject.ui.auth.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 
     <fragment
         android:id="@+id/checkUserRegistrationFragment"
-        android:name="com.example.antkotlinproject.ui.auth.CheckUserRegistrationFragment"
+        android:name="com.example.antkotlinproject.ui.auth.registration.CheckUserRegistrationFragment"
         android:label="CheckUserRegistrationFragment"
         tools:layout="@layout/fragment_check_user_registration">
         <action
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.antkotlinproject.ui.auth.RegistrationFragment"
+        android:name="com.example.antkotlinproject.ui.auth.registration.RegistrationFragment"
         android:label="RegistrationFragment"
         tools:layout="@layout/fragment_registration" />
 
