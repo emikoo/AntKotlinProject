@@ -8,17 +8,17 @@
 
     <fragment
         android:id="@+id/searchFragment2"
-        android:name="com.example.antkotlinproject.ui.user.SearchFragment"
+        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/myCoursesFragment2"
-        android:name="com.example.antkotlinproject.ui.user.MyCoursesFragment"
+        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.my_courses.MyCoursesFragment"
         android:label="fragment_my_courses"
         tools:layout="@layout/fragment_my_courses" />
     <fragment
         android:id="@+id/profileFragment2"
-        android:name="com.example.antkotlinproject.ui.user.ProfileFragment"
+        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

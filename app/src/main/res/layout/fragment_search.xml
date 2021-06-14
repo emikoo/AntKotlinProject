@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.SearchFragment">
+    tools:context=".ui.user.bottomnavigation.search.SearchFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
@@ -22,12 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_5f"
         android:layout_marginTop="@dimen/dp_16"
-        android:background="@color/color_light_grey"
+        android:background="@color/color_grey"
         app:layout_constraintTop_toBottomOf="@id/search_view" />
 
     <TextView
         android:id="@+id/tv_categories"
-        style="@style/categories"
+        style="@style/title_categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_16"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/tv_categories"
         app:spanCount="2" />
 
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_16"
         android:text="@string/all_courses"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/categories_list" />

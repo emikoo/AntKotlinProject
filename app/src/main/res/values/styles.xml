@@ -34,7 +34,7 @@
     <style name="title_grey">
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/sp_18</item>
-        <item name="android:textColor">@color/color_grey</item>
+        <item name="android:textColor">@color/color_dark_grey</item>
     </style>
     
     <style name="auth_subtitle">
@@ -44,10 +44,28 @@
         <item name="android:textAlignment">center</item>
     </style>
     
-    <style name="categories">
+    <style name="title_categories">
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/color_dark_grey</item>
+    </style>
+
+    <style name="subtitle_categories">
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/sp_12</item>
         <item name="android:textColor">@color/color_grey</item>
+    </style>
+
+    <style name="subtitle_grey">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/color_dark_grey</item>
+    </style>
+
+    <style name="subtitle_black">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="login_edit_text">
