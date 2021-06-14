@@ -1,5 +1,6 @@
 package com.example.antkotlinproject.utils
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.widget.Toast
@@ -24,6 +25,13 @@ fun showToast(context: Context, message: String) {
     if (toast != null) toast?.cancel()
     toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
     toast?.show()
+}
+
+fun Activity.showLightStatusBar() {
+    window.apply {
+        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+    }
 }
 
 
