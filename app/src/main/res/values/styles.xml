@@ -13,17 +13,41 @@
         <item name="android:textColor">@color/color_green</item>
     </style>
 
+    <style name="auth_white_title">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="title_black">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="title_green">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textColor">@color/color_green</item>
+    </style>
+
+    <style name="title_grey">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textColor">@color/color_grey</item>
+    </style>
+    
     <style name="auth_subtitle">
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:textColor">@color/color_green</item>
         <item name="android:textAlignment">center</item>
     </style>
-
-    <style name="auth_white_title">
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textColor">@color/color_white</item>
-        <item name="android:textSize">@dimen/sp_18</item>
+    
+    <style name="categories">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/color_grey</item>
     </style>
 
     <style name="login_edit_text">

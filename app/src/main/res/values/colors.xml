@@ -4,11 +4,13 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
-    <color name="color_light_green">#509793</color>
-    <color name="color_green">#236F6B</color>
-    <color name="color_mint">#99319994</color>
     <color name="color_dark_green">#1E6764</color>
+    <color name="color_green">#236F6B</color>
+    <color name="color_light_green">#509793</color>
+    <color name="color_mint">#99319994</color>
     <color name="color_white">#FFFFFF</color>
     <color name="color_milk">#E5E5E5</color>
     <color name="color_light_grey">#7B7B7B</color>
+    <color name="color_grey">#636060</color>
+    <color name="color_pink">#4D9195B6</color>
 </resources>

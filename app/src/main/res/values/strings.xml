@@ -26,4 +26,7 @@
     <string name="search">Поиск</string>
     <string name="my_courses">Мои курсы</string>
     <string name="profile">Профиль</string>
+    <string name="search_by_categories">Искать по категориям</string>
+    <string name="all_courses">Все курсы</string>
+    <string name="empty_courses">У вас пока нет курсов</string>
 </resources>
