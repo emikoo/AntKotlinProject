@@ -43,7 +43,13 @@
         <item name="android:textColor">@color/color_green</item>
         <item name="android:textAlignment">center</item>
     </style>
-    
+
+    <style name="title_black_10sp">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="title_categories">
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/sp_14</item>
@@ -86,5 +92,4 @@
         <item name="android:layout_marginStart">@dimen/dp_24</item>
         <item name="android:layout_marginEnd">@dimen/dp_24</item>
     </style>
-
 </resources>
