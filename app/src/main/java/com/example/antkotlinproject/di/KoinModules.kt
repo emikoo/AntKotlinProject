@@ -1,5 +1,7 @@
-package com.example.salesappkotlinproject.di
+package com.example.antkotlinproject.di
 
+import com.example.antkotlinproject.repository.AuthorizationRepository
+import com.example.antkotlinproject.repository.AuthorizationRepositoryImpl
 import com.example.antkotlinproject.ui.splash.SplashViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
@@ -9,7 +11,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-
 
 val fragmentModule = module {
     fragment { AuthorizationFragment() }
@@ -21,6 +22,7 @@ val viewModelModule = module {
 }
 
 val repositoryModule = module {
+    factory<AuthorizationRepository> { AuthorizationRepositoryImpl(get(), get()) }
 }
 
 val networkRepository = module {
