@@ -27,18 +27,18 @@ class SearchFragment : BaseFragment<AuthorizationViewModel, FragmentSearchBindin
         setupRecyclerView()
     }
 
-    fun setupRecyclerView() {
+    private fun setupRecyclerView() {
         setupCategories()
         setupCourses()
     }
 
-    fun setupCategories() {
+    private fun setupCategories() {
         categoryAdapter = CategoryAdapter()
         binding.categoriesList.adapter = categoryAdapter
         categoryAdapter.addItems(getCategories())
     }
 
-    fun setupCourses() {
+    private fun setupCourses() {
         courseAdapter = CourseAdapter()
         binding.coursesList.adapter = courseAdapter
         courseAdapter.addItems(getCourses())
