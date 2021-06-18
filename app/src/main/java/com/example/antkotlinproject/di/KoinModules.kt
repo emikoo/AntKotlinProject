@@ -2,6 +2,7 @@ package com.example.antkotlinproject.di
 
 import com.example.antkotlinproject.repository.AuthorizationRepository
 import com.example.antkotlinproject.repository.AuthorizationRepositoryImpl
+import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.splash.SplashViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
@@ -19,6 +20,7 @@ val fragmentModule = module {
 val viewModelModule = module {
     viewModel { SplashViewModel() }
     viewModel { AuthorizationViewModel() }
+    viewModel { AuthViewModel(get(), get()) }
 }
 
 val repositoryModule = module {
