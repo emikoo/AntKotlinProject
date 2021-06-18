@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 
 open class BaseViewModel<EVENT: BaseEvent>() : ViewModel() {
-    val message = MutableLiveData<String>()
+    var message = MutableLiveData<String>()
 
     val toast: String = "Hello"
 
