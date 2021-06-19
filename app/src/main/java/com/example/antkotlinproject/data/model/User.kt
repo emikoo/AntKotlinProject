@@ -1,16 +1,17 @@
 package com.example.antkotlinproject.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class User(
-    var username: String,
+    var username: String? = null,
     @SerializedName("first_name")
-    var firstName: String,
+    var firstName: String? = null,
     @SerializedName("last_name")
-    var lastName: String,
-    var email: String,
-    var password1: String,
-    var password2: String,
+    var lastName: String? = null,
+    var email: String? = null,
+    var password1: String? = null,
+    var password2: String? = null,
     @SerializedName("is_stuff")
-    var isStuff: Boolean = false
-)
+    var isStuff: Boolean
+) : Serializable

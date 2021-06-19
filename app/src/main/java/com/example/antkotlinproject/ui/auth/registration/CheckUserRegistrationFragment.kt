@@ -65,6 +65,13 @@ class CheckUserRegistrationFragment :
             button.setTextColor(resources.getColor(R.color.color_green))
         }
     }
+
+    private fun argAction(flag: Boolean) {
+        val directions
+                = CheckUserRegistrationFragmentDirections.actionCheckUserRegistrationFragmentToRegistrationFragment2(
+            flag
+        )
+        findNavController().navigate(directions)
     }
 
     override fun subscribeToLiveData() {}
