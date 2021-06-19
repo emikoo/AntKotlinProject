@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_500"
-    android:layout_margin="@dimen/dp_16"
+    android:layout_marginStart="@dimen/dp_16"
+    android:layout_marginEnd="@dimen/dp_16"
     app:cardCornerRadius="@dimen/dp_16">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_34"
             android:text="@string/registration"
-            android:textColor="@color/color_light_grey"
+            android:textColor="@color/color_grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +32,7 @@
             android:layout_marginTop="@dimen/dp_32"
             android:hint="@string/write_name"
             android:inputType="textPersonName"
-            android:textColorHint="@color/color_light_grey"
+            android:textColorHint="@color/color_grey"
             app:layout_constraintTop_toBottomOf="@id/tv_registration" />
 
         <EditText
@@ -42,7 +43,7 @@
             android:layout_marginTop="@dimen/dp_8"
             android:hint="@string/write_surname"
             android:inputType="textPersonName"
-            android:textColorHint="@color/color_light_grey"
+            android:textColorHint="@color/color_grey"
             app:layout_constraintTop_toBottomOf="@id/et_reg_name" />
 
         <EditText
@@ -53,7 +54,7 @@
             android:layout_marginTop="@dimen/dp_8"
             android:hint="@string/write_email"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/color_light_grey"
+            android:textColorHint="@color/color_grey"
             app:layout_constraintTop_toBottomOf="@id/et_reg_surname" />
 
         <EditText
@@ -63,7 +64,7 @@
             android:layout_height="@dimen/dp_42"
             android:layout_marginTop="@dimen/dp_8"
             android:hint="@string/come_up_login"
-            android:textColorHint="@color/color_light_grey"
+            android:textColorHint="@color/color_grey"
             app:layout_constraintTop_toBottomOf="@id/et_reg_email" />
 
         <EditText
@@ -74,7 +75,7 @@
             android:layout_marginTop="@dimen/dp_8"
             android:hint="@string/come_up_password"
             android:inputType="textPassword"
-            android:textColorHint="@color/color_light_grey"
+            android:textColorHint="@color/color_grey"
             app:layout_constraintTop_toBottomOf="@id/et_reg_login" />
 
         <EditText
@@ -85,7 +86,7 @@
             android:layout_marginTop="@dimen/dp_8"
             android:hint="@string/check_password"
             android:inputType="textPassword"
-            android:textColorHint="@color/color_light_grey"
+            android:textColorHint="@color/color_grey"
             app:layout_constraintTop_toBottomOf="@id/et_reg_password" />
 
         <Button
@@ -108,10 +109,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_32"
-            android:background="@drawable/bg_btn_reg_positive"
+            android:background="@drawable/bg_btn_auth_positive"
             android:text="@string/done"
             android:textAllCaps="false"
-            android:textColor="@color/color_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/et_reg_check_password"
             app:layout_constraintTop_toBottomOf="@id/et_reg_check_password" />
