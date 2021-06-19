@@ -21,7 +21,20 @@ class AuthViewModel(private val repository: AuthorizationRepository, private val
     }
 
     fun regUser(user: User) {
-        repository.regUser(user)
+        viewModelScope.launch {
+            repository.regUser(user)
+                .observeForever {
+                    when (it.status) {
+                        ResponseResultStatus.SUCCESS -> {
+                            actionNewScreen.value = true
+                        }
+                        ResponseResultStatus.ERROR ->{
+                            it.message.let { error.value = it }
+                            actionNewScreen.value = false
+                        }
+                    }
+                }
+        }
     }
 
     fun login(username: String, password: String) {
