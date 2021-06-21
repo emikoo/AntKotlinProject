@@ -4,8 +4,7 @@ data class CategoryModel(
     val title: String
 )
 
-fun getCategories(): MutableList<CategoryModel> {
-    return mutableListOf<CategoryModel>().apply {
+var getCategories = mutableListOf<CategoryModel>().apply {
         add(CategoryModel(title = "Школьные предметы"))
         add(CategoryModel(title = "Программирование"))
         add(CategoryModel(title = "Иностранные языки"))
@@ -16,5 +15,4 @@ fun getCategories(): MutableList<CategoryModel> {
         add(CategoryModel(title = "Личностный рост"))
         add(CategoryModel(title = "Фотография и видео"))
         add(CategoryModel(title = "Финансы и бухгалтерский учет"))
-    }
 }

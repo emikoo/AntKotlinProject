@@ -2,6 +2,7 @@ package com.example.notesapp.data.network.client
 
 import com.example.antkotlinproject.data.model.TokenModel
 import com.example.antkotlinproject.data.network.api.AuthApi
+import com.example.antkotlinproject.data.network.api.CourseApi
 import com.example.antkotlinproject.utils.ApiConstants.BASE_URL
 import com.example.antkotlinproject.utils.PrefsHelper
 import okhttp3.*
@@ -9,11 +10,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 fun provideRetrofit(okHttpClient: OkHttpClient) = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .client(okHttpClient)
+    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     .addConverterFactory(GsonConverterFactory.create())
     .build()
 
@@ -35,6 +38,7 @@ fun provideHttpLoginingInterceptor(): HttpLoggingInterceptor {
 }
 
 fun provideAuthApi(retrofit: Retrofit) = retrofit.create(AuthApi::class.java)
+fun provideCourseApi(retrofit: Retrofit) = retrofit.create(CourseApi::class.java)
 
 fun provideTokenAuthenticator(preferences: PrefsHelper)
         = TokenAuthenticator(preferences)
