@@ -68,6 +68,12 @@
         <item name="android:textColor">@color/color_dark_grey</item>
     </style>
 
+    <style name="subtitle_green_10sp">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textColor">@color/color_dark_green</item>
+    </style>
+
     <style name="subtitle_black">
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">@dimen/sp_14</item>

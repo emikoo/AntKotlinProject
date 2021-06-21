@@ -1,8 +1,11 @@
 package com.example.antkotlinproject.ui.user.bottomnavigation.search
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.data.model.CategoryModel
@@ -14,9 +17,9 @@ import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>(
+class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     SearchViewModel::class
-) {
+), ClickListener {
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var courseAdapter: CourseAdapter
 
@@ -46,9 +49,9 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     }
 
     private fun setupCourses() {
-        courseAdapter = CourseAdapter()
+        courseAdapter = CourseAdapter(this)
         binding.coursesList.adapter = courseAdapter
-        courseAdapter.addItems(getCourses())
+        courseAdapter.addItems(getCourses)
     }
 
     override fun subscribeToLiveData() {
@@ -58,4 +61,9 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>(
             }
         })
     }
+
+    override fun onItemClick(item: CourseModel) {
+        findNavController().navigate(R.id.action_searchFragment2_to_detailCourseActivity)
+    }
 }
+

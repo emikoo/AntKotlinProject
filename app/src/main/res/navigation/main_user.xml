@@ -10,7 +10,11 @@
         android:id="@+id/searchFragment2"
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment2_to_detailCourseActivity"
+            app:destination="@id/detailCourseActivity" />
+    </fragment>
     <fragment
         android:id="@+id/myCoursesFragment2"
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.my_courses.MyCoursesFragment"
@@ -21,4 +25,9 @@
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/detailCourseActivity"
+        android:name="com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity"
+        android:label="activity_detail_course"
+        tools:layout="@layout/activity_detail_course" />
 </navigation>

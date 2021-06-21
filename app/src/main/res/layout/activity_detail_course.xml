@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user.detail_course.DetailCourseActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_left"
+        tools:title="Course Name" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/player_container"
+        android:layout_width="@dimen/dp_170"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/dp_16"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@mipmap/ic_launcher" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_grey_transparent" />
+
+        <ImageButton
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_play"
+            android:padding="@dimen/dp_24" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/text_rang"
+        style="@style/auth_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toEndOf="@id/player_container"
+        app:layout_constraintTop_toTopOf="@id/player_container"
+        android:text="@string/min_rang" />
+
+    <ImageView
+        android:id="@+id/iv_book"
+        android:layout_width="@dimen/dp_12"
+        android:layout_height="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_8"
+        android:src="@drawable/ic_book_dark"
+        app:layout_constraintStart_toStartOf="@id/text_rang"
+        app:layout_constraintTop_toBottomOf="@id/text_rang" />
+
+    <TextView
+        style="@style/subtitle_grey_8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_2"
+        app:layout_constraintBottom_toBottomOf="@id/iv_book"
+        app:layout_constraintStart_toEndOf="@id/iv_book"
+        app:layout_constraintTop_toTopOf="@id/iv_book"
+        tools:text="17 уроков" />
+
+    <ImageView
+        android:id="@+id/iv_time"
+        android:layout_width="@dimen/dp_12"
+        android:layout_height="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_2"
+        android:src="@drawable/ic_time_dark"
+        app:layout_constraintStart_toStartOf="@id/iv_book"
+        app:layout_constraintTop_toBottomOf="@id/iv_book" />
+
+    <TextView
+        style="@style/subtitle_grey_8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_2"
+        app:layout_constraintBottom_toBottomOf="@id/iv_time"
+        app:layout_constraintStart_toEndOf="@id/iv_time"
+        app:layout_constraintTop_toTopOf="@id/iv_time"
+        tools:text="4 часа 25 минут" />
+
+    <TextView
+        android:id="@+id/about_course"
+        style="@style/subtitle_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="@string/about_course"
+        app:layout_constraintStart_toStartOf="@id/player_container"
+        app:layout_constraintTop_toBottomOf="@id/player_container" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        style="@style/subtitle_grey_8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textSize="@dimen/sp_10"
+        app:layout_constraintStart_toStartOf="@id/player_container"
+        app:layout_constraintTop_toBottomOf="@id/about_course"
+        tools:text="description" />
+
+    <TextView
+        android:id="@+id/teacher"
+        style="@style/subtitle_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="@string/professor"
+        app:layout_constraintStart_toStartOf="@id/player_container"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/iv_teacher_container"
+        android:layout_width="@dimen/dp_54"
+        android:layout_height="@dimen/dp_54"
+        android:layout_marginTop="@dimen/dp_8"
+        app:cardCornerRadius="@dimen/dp_54"
+        app:layout_constraintStart_toStartOf="@id/player_container"
+        app:layout_constraintTop_toBottomOf="@id/teacher">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@mipmap/ic_launcher" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/teacher_name"
+        style="@style/title_black_10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        app:layout_constraintBottom_toBottomOf="@id/iv_teacher_container"
+        app:layout_constraintStart_toEndOf="@id/iv_teacher_container"
+        app:layout_constraintTop_toTopOf="@id/iv_teacher_container"
+        tools:text="Шахлоо Хакимовна" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="@dimen/dp_16"
+        android:layout_marginStart="@dimen/dp_54"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="@id/iv_teacher_container"
+        app:layout_constraintStart_toEndOf="@id/teacher_name"
+        app:layout_constraintTop_toTopOf="@id/iv_teacher_container" />
+
+    <TextView
+        android:id="@+id/feedback"
+        style="@style/subtitle_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="@string/feedback"
+        app:layout_constraintStart_toStartOf="@id/player_container"
+        app:layout_constraintTop_toBottomOf="@id/iv_teacher_container" />
+
+    <TextView
+        android:id="@+id/tv_rang"
+        style="@style/auth_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/player_container"
+        app:layout_constraintTop_toBottomOf="@id/feedback"
+        android:text="@string/min_rang" />
+
+    <TextView
+        style="@style/title_black_10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:text="@string/max_rang"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tv_rang"
+        app:layout_constraintStart_toEndOf="@id/tv_rang" />
+
+    <Button
+        android:id="@+id/btn_show_feedbacks"
+        style="@style/subtitle_green_10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:background="@android:color/transparent"
+        android:text="@string/show_all"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@id/feedback_list"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/feedback_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_rang" />
+</androidx.constraintlayout.widget.ConstraintLayout>

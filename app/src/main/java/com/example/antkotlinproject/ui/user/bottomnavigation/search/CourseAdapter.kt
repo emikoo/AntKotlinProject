@@ -8,7 +8,7 @@ import com.example.antkotlinproject.base.BaseViewHolder
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.ItemCourseVerticalBinding
 
-class CourseAdapter: BaseAdapter() {
+class CourseAdapter(private val listener: ClickListener): BaseAdapter() {
     private var coursesArray = mutableListOf<CourseModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -25,6 +25,9 @@ class CourseAdapter: BaseAdapter() {
         val item = coursesArray[position]
         val holder = holder as CourseViewHolder
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(item)
+        }
     }
 
     fun addItems(item: MutableList<CourseModel>) {
@@ -42,4 +45,8 @@ class CourseViewHolder(var binding: ItemCourseVerticalBinding) : BaseViewHolder(
         binding.lessons.text = item.lesson
         binding.teacher.text = item.teacher
     }
+}
+
+interface ClickListener{
+    fun onItemClick(item: CourseModel)
 }
