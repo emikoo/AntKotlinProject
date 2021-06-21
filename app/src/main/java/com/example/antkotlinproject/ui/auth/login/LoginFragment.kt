@@ -10,11 +10,15 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.databinding.FragmentLoginBinding
 import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.user.main.MainUserActivity
+import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
     AuthViewModel::class
 ) {
+
+    private lateinit var preferences: PrefsHelper
+
     override fun attachBinding(
         list: MutableList<FragmentLoginBinding>,
         layoutInflater: LayoutInflater,
@@ -26,6 +30,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
 
     override fun setupViews() {
         viewModel = getViewModel(clazz = AuthViewModel::class)
+        preferences = PrefsHelper(requireContext())
         setupListener()
         setupViewModel()
     }
@@ -44,8 +49,11 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
 
     private fun setupViewModel() {
         viewModel.actionNewScreen.observe(requireActivity(), Observer{
-            if (it == true) startActivity(Intent(requireContext(), MainUserActivity::class.java))
-            activity?.finish()
+            if (it == true) {
+                preferences.saveUsernameAndPassword(binding.etLogin.text.toString(), binding.etPassword.text.toString())
+                startActivity(Intent(requireContext(), MainUserActivity::class.java))
+                activity?.finish()
+            }
         })
         viewModel.error.observe(requireActivity(), Observer{
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()

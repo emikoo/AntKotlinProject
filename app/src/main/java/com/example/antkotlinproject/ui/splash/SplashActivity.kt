@@ -5,22 +5,24 @@ import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
 import com.example.antkotlinproject.R
-import com.example.antkotlinproject.databinding.ActivitySplashBinding
-import com.example.antkotlinproject.ui.auth.AuthorizationActivity
 import com.example.antkotlinproject.base.BaseActivity
-import com.example.antkotlinproject.base.BaseEvent
-import com.example.antkotlinproject.base.BaseViewModel
+import com.example.antkotlinproject.databinding.ActivitySplashBinding
+import com.example.antkotlinproject.ui.auth.AuthViewModel
+import com.example.antkotlinproject.ui.auth.AuthorizationActivity
+import com.example.antkotlinproject.ui.user.main.MainUserActivity
+import com.example.antkotlinproject.utils.PrefsHelper
 
-class SplashViewModel : BaseViewModel<BaseEvent>()
-
-class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>
-    (SplashViewModel::class) {
+class SplashActivity : BaseActivity<AuthViewModel, ActivitySplashBinding>
+    (AuthViewModel::class) {
 
     override fun getViewBinding() = ActivitySplashBinding.inflate(layoutInflater)
+    private lateinit var preferences: PrefsHelper
 
     override fun setupViews() {
+        preferences = PrefsHelper(this)
         setupAnimationText()
-        Handler(Looper.getMainLooper()).postDelayed({ openActivity() }, 1500)
+        if (preferences.getToken().isEmpty()) setupDelay(openAuthorization())
+        else setupDelay(openMainUserActivity())
     }
 
     private fun setupAnimationText() {
@@ -28,7 +30,18 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>
         binding.splashTitle.startAnimation(animation)
     }
 
-    private fun openActivity() {
+    private fun setupDelay(action: Unit) {
+        Handler(Looper.getMainLooper()).postDelayed({ action }, 1500)
+    }
+
+    private fun openMainUserActivity() {
+        viewModel.login(preferences.getUsername(), preferences.getPassword())
+        val intent = Intent(this, MainUserActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun openAuthorization() {
         val intent = Intent(this, AuthorizationActivity::class.java)
         startActivity(intent)
         finish()
