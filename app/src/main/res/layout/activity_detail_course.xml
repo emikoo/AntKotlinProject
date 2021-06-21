@@ -124,21 +124,15 @@
         app:layout_constraintStart_toStartOf="@id/player_container"
         app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/iv_teacher_container"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/teacher_photo"
         android:layout_width="@dimen/dp_54"
         android:layout_height="@dimen/dp_54"
         android:layout_marginTop="@dimen/dp_8"
-        app:cardCornerRadius="@dimen/dp_54"
+        android:src="@color/color_grey_transparent"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@id/player_container"
-        app:layout_constraintTop_toBottomOf="@id/teacher">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:src="@mipmap/ic_launcher" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@id/teacher" />
 
     <TextView
         android:id="@+id/teacher_name"
@@ -146,9 +140,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
-        app:layout_constraintBottom_toBottomOf="@id/iv_teacher_container"
-        app:layout_constraintStart_toEndOf="@id/iv_teacher_container"
-        app:layout_constraintTop_toTopOf="@id/iv_teacher_container"
+        app:layout_constraintBottom_toBottomOf="@id/teacher_photo"
+        app:layout_constraintStart_toEndOf="@id/teacher_photo"
+        app:layout_constraintTop_toTopOf="@id/teacher_photo"
         tools:text="Шахлоо Хакимовна" />
 
     <ImageView
@@ -156,9 +150,9 @@
         android:layout_height="@dimen/dp_16"
         android:layout_marginStart="@dimen/dp_54"
         android:src="@drawable/ic_next"
-        app:layout_constraintBottom_toBottomOf="@id/iv_teacher_container"
+        app:layout_constraintBottom_toBottomOf="@id/teacher_photo"
         app:layout_constraintStart_toEndOf="@id/teacher_name"
-        app:layout_constraintTop_toTopOf="@id/iv_teacher_container" />
+        app:layout_constraintTop_toTopOf="@id/teacher_photo" />
 
     <TextView
         android:id="@+id/feedback"
@@ -168,7 +162,7 @@
         android:layout_marginTop="@dimen/dp_24"
         android:text="@string/feedback"
         app:layout_constraintStart_toStartOf="@id/player_container"
-        app:layout_constraintTop_toBottomOf="@id/iv_teacher_container" />
+        app:layout_constraintTop_toBottomOf="@id/teacher_photo" />
 
     <TextView
         android:id="@+id/tv_rang"

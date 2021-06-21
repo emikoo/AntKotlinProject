@@ -35,119 +35,126 @@
         android:background="@color/color_green"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/photo_container"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photo"
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_200"
-        app:layout_constraintTop_toBottomOf="@id/line_top"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/dp_24"
-        app:cardCornerRadius="@dimen/dp_200">
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_top" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/color_grey_transparent" />
-        
-        <ImageButton
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_100"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_photo"/>
-    </androidx.cardview.widget.CardView>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"
+        android:layout_marginTop="@dimen/dp_24"
+        android:scaleType="centerCrop"
+        android:src="@color/color_grey_transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_top" />
+
+    <ImageButton
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:background="@drawable/ic_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/photo"
+        app:layout_constraintBottom_toBottomOf="@id/photo"/>
 
     <TextView
         android:id="@+id/name"
+        style="@style/title_black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/photo_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/dp_16"
-        tools:text="Your Name"
-        style="@style/title_black"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photo"
+        tools:text="Your Name" />
 
     <TextView
         android:id="@+id/username"
+        style="@style/subtitle_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="username"
-        style="@style/subtitle_grey"/>
-    
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        tools:text="username" />
+
     <LinearLayout
         android:id="@+id/btn_edit"
         android:layout_width="@dimen/dp_131"
         android:layout_height="@dimen/dp_32"
-        app:layout_constraintTop_toBottomOf="@id/username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/dp_24"
+        android:background="@drawable/bg_btn_edit"
         android:orientation="horizontal"
-        android:background="@drawable/bg_btn_edit">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/username">
 
         <Button
+            style="@style/text_btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
             android:background="@android:color/transparent"
             android:text="@string/edit"
-            android:textAllCaps="false"
-            style="@style/text_btn_edit"
-            android:layout_marginStart="@dimen/dp_8"/>
-        
+            android:textAllCaps="false" />
+
         <ImageButton
             android:layout_width="@dimen/dp_16"
             android:layout_height="16dp"
             android:layout_gravity="center"
-            android:background="@drawable/ic_edit"
-            android:layout_marginStart="@dimen/dp_8"/>
+            android:layout_marginStart="@dimen/dp_8"
+            android:background="@drawable/ic_edit" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_phone_number"
+        style="@style/text_btn_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_edit"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_54"
         android:text="@string/phone_number"
-        style="@style/text_btn_edit"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_edit" />
 
     <TextView
         android:id="@+id/phone_number"
+        style="@style/subtitle_green_10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_phone_number"
+        android:layout_marginStart="@dimen/dp_24"
         app:layout_constraintBottom_toBottomOf="@id/tv_phone_number"
         app:layout_constraintStart_toEndOf="@id/tv_phone_number"
-        android:layout_marginStart="@dimen/dp_24"
-        tools:text="@string/phone_number"
-        style="@style/subtitle_green_10sp"/>
+        app:layout_constraintTop_toTopOf="@id/tv_phone_number"
+        tools:text="@string/phone_number" />
 
     <TextView
         android:id="@+id/tv_email"
+        style="@style/text_btn_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_phone_number"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_8"
         android:text="@string/email"
-        style="@style/text_btn_edit"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_phone_number" />
 
     <TextView
         android:id="@+id/email"
+        style="@style/subtitle_green_10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tv_email"
+        android:layout_marginStart="@dimen/dp_24"
         app:layout_constraintBottom_toBottomOf="@id/tv_email"
         app:layout_constraintStart_toEndOf="@id/tv_email"
-        android:layout_marginStart="@dimen/dp_24"
-        tools:text="@string/email"
-        style="@style/subtitle_green_10sp"/>
+        app:layout_constraintTop_toTopOf="@id/tv_email"
+        tools:text="@string/email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
