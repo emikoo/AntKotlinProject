@@ -62,6 +62,12 @@
         <item name="android:textColor">@color/color_grey</item>
     </style>
 
+    <style name="text_btn_edit">
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="subtitle_grey">
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">@dimen/sp_14</item>

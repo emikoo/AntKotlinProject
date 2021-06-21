@@ -50,10 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/min_rang"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@id/player_container"
-        app:layout_constraintTop_toTopOf="@id/player_container"
-        android:text="@string/min_rang" />
+        app:layout_constraintTop_toTopOf="@id/player_container" />
 
     <ImageView
         android:id="@+id/iv_book"
@@ -176,10 +176,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/min_rang"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="@id/player_container"
-        app:layout_constraintTop_toBottomOf="@id/feedback"
-        android:text="@string/min_rang" />
+        app:layout_constraintTop_toBottomOf="@id/feedback" />
 
     <TextView
         style="@style/title_black_10sp"
@@ -217,14 +217,14 @@
 
     <Button
         android:id="@+id/btn_start"
+        style="@style/auth_white_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_54"
-        android:background="@color/color_green"
-        android:text="@string/add_course"
-        style="@style/auth_white_title"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="@dimen/dp_8"
         android:layout_marginEnd="@dimen/dp_8"
-        android:layout_marginBottom="@dimen/dp_2"/>
+        android:layout_marginBottom="@dimen/dp_2"
+        android:background="@color/color_green"
+        android:text="@string/add_course"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
