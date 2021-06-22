@@ -1,22 +1,14 @@
 package com.example.antkotlinproject.ui.user.bottomnavigation.search
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
-import com.example.antkotlinproject.data.model.CategoryModel
 import com.example.antkotlinproject.data.model.CourseModel
-import com.example.antkotlinproject.data.model.getCategories
-import com.example.antkotlinproject.data.model.getCourses
 import com.example.antkotlinproject.databinding.FragmentSearchBinding
-import com.example.antkotlinproject.ui.auth.AuthViewModel
-import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
-import com.example.antkotlinproject.ui.auth.registration.CheckUserRegistrationFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
@@ -47,19 +39,21 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     private fun setupCategories() {
         categoryAdapter = CategoryAdapter()
         binding.categoriesList.adapter = categoryAdapter
-        viewModel.fetchCategory()
     }
 
     private fun setupCourses() {
         courseAdapter = CourseAdapter(this)
         binding.coursesList.adapter = courseAdapter
-        viewModel.fetchCourses()
     }
 
     override fun subscribeToLiveData() {
         viewModel.event.observe(this, Observer {
             when (it) {
-                is CategoryEvent.CategoryFetched -> it.array?.let { it -> categoryAdapter.addItems(it) }
+                is CategoryEvent.CategoryFetched -> it.array?.let { it ->
+                    categoryAdapter.addItems(
+                        it
+                    )
+                }
             }
         })
 

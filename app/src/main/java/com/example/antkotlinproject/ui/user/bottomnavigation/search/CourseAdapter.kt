@@ -8,6 +8,7 @@ import com.example.antkotlinproject.base.BaseAdapter
 import com.example.antkotlinproject.base.BaseViewHolder
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.ItemCourseVerticalBinding
+import com.example.antkotlinproject.utils.toLesson
 
 class CourseAdapter(private val listener: ClickListener): BaseAdapter() {
     private var coursesArray = mutableListOf<CourseModel>()
@@ -44,7 +45,7 @@ class CourseViewHolder(var binding: ItemCourseVerticalBinding) : BaseViewHolder(
             .placeholder(R.color.color_grey_transparent)
             .into(binding.image)
         binding.name.text = item.name
-        binding.lessons.text = item.lessonsCount.toString()
+        binding.lessons.text = item.lessonsCount.toString().toLesson()
         binding.teacher.text = item.owner?.username
     }
 }

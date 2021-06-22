@@ -8,8 +8,8 @@ import com.example.antkotlinproject.R
 import com.example.antkotlinproject.VideoPlayerActivity
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.base.CourseEvent
-import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.ActivityDetailCourseBinding
+import com.example.antkotlinproject.utils.toLesson
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailCourseBinding>(
@@ -17,17 +17,14 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
 ) {
     override fun getViewBinding() = ActivityDetailCourseBinding.inflate(layoutInflater)
 
-    var item: CourseModel? = null
-
     override fun setupViews() {
         viewModel = getViewModel(clazz = DetailCourseViewModel::class)
-
-        setupListener()
         fetchCourse()
+        setupListener()
     }
 
     private fun fetchCourse() {
-        val arguments : DetailCourseActivityArgs by navArgs<DetailCourseActivityArgs>()
+        val arguments: DetailCourseActivityArgs by navArgs<DetailCourseActivityArgs>()
         viewModel.fetchCourse(arguments.courseId)
     }
 
@@ -48,7 +45,7 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
                         .load(it.coursePreviewImage)
                         .placeholder(R.color.color_grey_transparent)
                         .into(binding.previewImage)
-                    binding.lessons.text = it.lessonsCount.toString()
+                    binding.lessons.text = it.lessonsCount.toString().toLesson()
                     binding.tvDescription.text = it.description
                     binding.teacherName.text = it.owner?.username
                     Glide.with(binding.teacherPhoto)

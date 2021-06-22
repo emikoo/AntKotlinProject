@@ -12,11 +12,11 @@ import retrofit2.http.Path
 
 interface CourseApi {
     @GET(GET_CATEGORY)
-    fun fetchCategory(): Call<MutableList<CategoryModel>>
+    fun fetchCategory(): Observable<MutableList<CategoryModel>>
 
     @GET(GET_COURSES)
-    fun fetchCourses(): Call<MutableList<CourseModel>>
+    fun fetchCourses(): Observable<MutableList<CourseModel>>
 
     @GET(GET_COURSE)
-    fun fetchCourse(@Path("id") id: Int): Call<CourseModel>
+    fun fetchCourse(@Path("id") id: Int): Observable<CourseModel>
 }
