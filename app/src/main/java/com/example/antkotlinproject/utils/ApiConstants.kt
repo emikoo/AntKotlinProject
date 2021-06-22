@@ -7,4 +7,5 @@ object ApiConstants {
     const val REFRESH_TOKEN_URL = "/user/api/token/refresh/"
     const val GET_CATEGORY = "/course/category/"
     const val GET_COURSES = "/course/course/"
+    const val GET_COURSE = "/course/course/{id}"
 }

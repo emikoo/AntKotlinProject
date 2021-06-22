@@ -9,6 +9,7 @@ import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.SearchFragment
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.SearchViewModel
+import com.example.antkotlinproject.ui.user.detail_course.DetailCourseViewModel
 import com.example.antkotlinproject.utils.PrefsHelper
 import com.example.notesapp.data.network.client.*
 import org.koin.android.ext.koin.androidContext
@@ -25,6 +26,7 @@ val viewModelModule = module {
     viewModel { AuthorizationViewModel() }
     viewModel { AuthViewModel(get(), get()) }
     viewModel { SearchViewModel(get()) }
+    viewModel { DetailCourseViewModel(get()) }
 }
 
 val repositoryModule = module {

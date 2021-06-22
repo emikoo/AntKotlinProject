@@ -20,14 +20,20 @@
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.my_courses.MyCoursesFragment"
         android:label="fragment_my_courses"
         tools:layout="@layout/fragment_my_courses" />
+
     <fragment
         android:id="@+id/profileFragment2"
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
     <activity
         android:id="@+id/detailCourseActivity"
         android:name="com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity"
         android:label="activity_detail_course"
-        tools:layout="@layout/activity_detail_course" />
+        tools:layout="@layout/activity_detail_course" >
+        <argument
+            android:name="courseId"
+            app:argType="integer" />
+    </activity>
 </navigation>
