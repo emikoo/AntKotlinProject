@@ -34,6 +34,6 @@ class CategoryAdapter : BaseAdapter() {
 
 class CategoryViewHolder(var binding: ItemCategoryBinding) : BaseViewHolder(binding.root) {
     fun bind(item: CategoryModel) {
-        binding.title.text = item.title
+        binding.title.text = item.name
     }
 }

@@ -1,6 +1,7 @@
 package com.example.antkotlinproject.base
 
 import com.example.antkotlinproject.data.model.CategoryModel
+import com.example.antkotlinproject.data.model.CourseModel
 
 sealed class BaseEvent {
     class Error(message: String) : BaseEvent()
@@ -10,5 +11,9 @@ sealed class BaseEvent {
 
 sealed class CategoryEvent : BaseEvent() {
     class  CategoryFetched(val array: MutableList<CategoryModel>?) : CategoryEvent()
+}
+
+sealed class CourseEvent : BaseEvent() {
+    class  CoursesFetched(val array: MutableList<CourseModel>?) : CourseEvent()
 }
 

@@ -50,12 +50,12 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
 
     private fun setupViewModel() {
         viewModel = getViewModel(clazz = AuthViewModel::class)
-        viewModel.actionNewScreen.observe(requireActivity(), Observer{
-            if (it == true) startActivity(Intent(requireContext(), MainUserActivity::class.java))
-        })
-        viewModel.error.observe(requireActivity(), Observer{
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-        })
+//        viewModel.actionNewScreen.observe(requireActivity(), Observer{
+//            if (it == true) startActivity(Intent(requireContext(), MainUserActivity::class.java))
+//        })
+//        viewModel.error.observe(requireActivity(), Observer{
+//            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+//        })
     }
 
     override fun subscribeToLiveData() {}

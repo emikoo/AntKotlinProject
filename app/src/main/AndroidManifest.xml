@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.auth.AuthorizationActivity"></activity>
         <activity android:name=".ui.user.detail_course.DetailCourseActivity"></activity>
+        <activity android:name=".VideoPlayerActivity"></activity>
+        <activity android:name=".ui.user.detail_course.DetailCourseActivity" />
         <activity android:name=".ui.user.main.MainUserActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>

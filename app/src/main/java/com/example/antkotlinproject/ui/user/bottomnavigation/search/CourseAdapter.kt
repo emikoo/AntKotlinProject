@@ -3,6 +3,7 @@ package com.example.antkotlinproject.ui.user.bottomnavigation.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseAdapter
 import com.example.antkotlinproject.base.BaseViewHolder
 import com.example.antkotlinproject.data.model.CourseModel
@@ -39,11 +40,12 @@ class CourseAdapter(private val listener: ClickListener): BaseAdapter() {
 class CourseViewHolder(var binding: ItemCourseVerticalBinding) : BaseViewHolder(binding.root) {
     fun bind(item: CourseModel) {
         Glide.with(binding.image.context)
-            .load(item.image)
+            .load(item.coursePreviewImage)
+            .placeholder(R.color.color_grey_transparent)
             .into(binding.image)
         binding.name.text = item.name
-        binding.lessons.text = item.lesson
-        binding.teacher.text = item.teacher
+        binding.lessons.text = item.lessonsCount.toString()
+        binding.teacher.text = item.owner?.username
     }
 }
 
