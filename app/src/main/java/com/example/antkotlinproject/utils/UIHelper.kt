@@ -1,5 +1,6 @@
 package com.example.antkotlinproject.utils
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.View
 import android.widget.Toast
@@ -26,11 +27,19 @@ fun showToast(context: Context, message: String) {
     toast?.show()
 }
 
-fun Activity.showLightStatusBar() {
-    window.apply {
-        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-    }
+fun showAlertDialog(context: Context, action: () -> Unit) {
+    AlertDialog.Builder(context)
+        .setTitle("Звонок")
+        .setMessage("Вы действительно хотите позвонить ?")
+        .setPositiveButton(
+            "Да"
+        ) { dialog, _ ->
+            action()
+            dialog.dismiss()
+        }
+        .setNegativeButton("Нет", null)
+        .setIcon(android.R.drawable.ic_dialog_alert)
+        .show()
 }
 
 fun String.toLesson() = "$this уроков"

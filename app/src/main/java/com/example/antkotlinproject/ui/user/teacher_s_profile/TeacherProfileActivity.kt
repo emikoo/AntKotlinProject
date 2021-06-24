@@ -24,10 +24,29 @@ class TeacherProfileActivity : BaseActivity<ProfileViewModel, ActivityTeacherPro
         val teacherId = intent.getIntExtra(OWNER, 0)
         viewModel.fetchTeacherProfile(teacherId)
         setupListener()
+        setupSwipeRefresh(teacherId)
     }
 
     private fun setupListener() {
         binding.btnClose.setOnClickListener { this.onBackPressed() }
+        binding.btnPhoneCall.setOnClickListener { showAlertDialog(this, this::makeCall) }
+    }
+
+    private fun makeCall() {
+        val phoneNumber = binding.phone.text
+        if (!TextUtils.isEmpty(phoneNumber)) {
+            val dial = "tel:0$phoneNumber"
+            startActivity(Intent(Intent.ACTION_DIAL, Uri.parse(dial)))
+        }
+    }
+
+    private fun setupSwipeRefresh(teacherId: Int) {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.fetchTeacherProfile(teacherId)
+        }
+        binding.swipeRefreshLayout.setColorSchemeResources(
+            android.R.color.holo_green_light
+        )
     }
 
     override fun subscribeToLiveData() {
@@ -43,6 +62,7 @@ class TeacherProfileActivity : BaseActivity<ProfileViewModel, ActivityTeacherPro
                     binding.phone.text = it.item?.phone.toString()
                     binding.courses.text =
                         "Еще курсы от ${it.item?.firstName} ${it.item?.lastName}:"
+                    binding.swipeRefreshLayout.isRefreshing = false
                 }
             }
         })
