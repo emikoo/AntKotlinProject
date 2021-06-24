@@ -10,10 +10,14 @@ import com.example.antkotlinproject.repository.AuthorizationRepository
 import com.example.antkotlinproject.utils.PrefsHelper
 import kotlinx.coroutines.launch
 
-class AuthViewModel(private val repository: AuthorizationRepository, private val preferences: PrefsHelper) :
+class AuthViewModel(
+    private val repository: AuthorizationRepository,
+    private val preferences: PrefsHelper
+) :
     BaseViewModel<BaseEvent>() {
 
-    val actionNewScreen = MutableLiveData<Boolean>()
+    val actionLoginNewScreen = MutableLiveData<Boolean>()
+    val actionRegistrationNewScreen = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
 
     init {
@@ -26,11 +30,10 @@ class AuthViewModel(private val repository: AuthorizationRepository, private val
                 .observeForever {
                     when (it.status) {
                         ResponseResultStatus.SUCCESS -> {
-                            actionNewScreen.value = true
+                            actionRegistrationNewScreen.value = true
                         }
-                        ResponseResultStatus.ERROR ->{
-                            it.message.let { error.value = it }
-                            actionNewScreen.value = false
+                        ResponseResultStatus.ERROR -> {
+                            actionRegistrationNewScreen.value = false
                         }
                     }
                 }
@@ -44,11 +47,11 @@ class AuthViewModel(private val repository: AuthorizationRepository, private val
                     when (it.status) {
                         ResponseResultStatus.SUCCESS -> {
                             preferences.saveToken(it?.result?.accessToken, it?.result?.refreshToken)
-                            actionNewScreen.value = true
+                            actionLoginNewScreen.value = true
                         }
-                        ResponseResultStatus.ERROR ->{
+                        ResponseResultStatus.ERROR -> {
                             it.message.let { error.value = it }
-                            actionNewScreen.value = false
+                            actionLoginNewScreen.value = false
                         }
                     }
                 }

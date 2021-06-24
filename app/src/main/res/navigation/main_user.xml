@@ -40,4 +40,9 @@
             android:name="courseId"
             app:argType="integer" />
     </activity>
+    <activity
+        android:id="@+id/authorizationActivity"
+        android:name="com.example.antkotlinproject.ui.auth.AuthorizationActivity"
+        android:label="activity_authorization"
+        tools:layout="@layout/activity_authorization" />
 </navigation>

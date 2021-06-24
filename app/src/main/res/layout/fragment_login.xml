@@ -30,6 +30,7 @@
         <EditText
             android:id="@+id/et_login"
             style="@style/login_edit_text"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_42"
             android:layout_marginTop="@dimen/dp_54"

@@ -48,9 +48,8 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
     }
 
     private fun setupViewModel() {
-        viewModel.actionNewScreen.observe(requireActivity(), Observer{
+        viewModel.actionLoginNewScreen.observe(requireActivity(), Observer{
             if (it == true) {
-                preferences.saveUsernameAndPassword(binding.etLogin.text.toString(), binding.etPassword.text.toString())
                 startActivity(Intent(requireContext(), MainUserActivity::class.java))
                 activity?.finish()
             }

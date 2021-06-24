@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.databinding.FragmentRegistrationBinding
@@ -50,12 +51,12 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
 
     private fun setupViewModel() {
         viewModel = getViewModel(clazz = AuthViewModel::class)
-//        viewModel.actionNewScreen.observe(requireActivity(), Observer{
-//            if (it == true) startActivity(Intent(requireContext(), MainUserActivity::class.java))
-//        })
-//        viewModel.error.observe(requireActivity(), Observer{
-//            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-//        })
+        viewModel.actionRegistrationNewScreen.observe(requireActivity(), Observer{
+            if (it == true) findNavController().navigate(R.id.action_registrationFragment_to_loginFragment32)
+        })
+        viewModel.error.observe(requireActivity(), Observer{
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        })
     }
 
     override fun subscribeToLiveData() {}

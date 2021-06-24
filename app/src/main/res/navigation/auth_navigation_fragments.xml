@@ -53,6 +53,9 @@
         <argument
             android:name="IsStuff"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment32"
+            app:destination="@id/loginFragment3" />
     </fragment>
 
 </navigation>
