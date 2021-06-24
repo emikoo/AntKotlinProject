@@ -1,16 +1,16 @@
-package com.example.antkotlinproject.ui.user
+package com.example.antkotlinproject.ui.user.main
 
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.databinding.ActivityMainUserBinding
-import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
+import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class MainUserActivity : BaseActivity<AuthorizationViewModel, ActivityMainUserBinding>(
-    AuthorizationViewModel::class
+class MainUserActivity : BaseActivity<DefaultViewModel, ActivityMainUserBinding>(
+    DefaultViewModel::class
 ) {
     override fun getViewBinding() = ActivityMainUserBinding.inflate(layoutInflater)
 
@@ -24,6 +24,7 @@ class MainUserActivity : BaseActivity<AuthorizationViewModel, ActivityMainUserBi
         val bottomNavigationView =
             findViewById<BottomNavigationView>(R.id.bottom_navigation)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+        navController.saveState()
     }
 
     override fun subscribeToLiveData() {}
