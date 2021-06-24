@@ -4,9 +4,12 @@ import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
+import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.repository.SearchRepository
 
 class SearchViewModel(private val repository: SearchRepository) : BaseViewModel<BaseEvent>() {
+
+    var course: MutableList<CourseModel>? = mutableListOf()
 
     init {
         fetchCategory()
@@ -24,14 +27,14 @@ class SearchViewModel(private val repository: SearchRepository) : BaseViewModel<
         )
     }
 
-    private fun fetchCourses() {
+    fun fetchCourses() {
         loading.value = true
         disposable.add(
             repository.fetchCourses()
                 .doOnTerminate { loading.value = false }
                 .subscribe(
                     { event.value = CourseEvent.CoursesFetched(it) },
-                    { message.value = it.message })
+                    { message.value = it.message } )
         )
     }
 }
