@@ -21,5 +21,6 @@ sealed class CourseEvent : BaseEvent() {
 
 sealed class ProfileEvent : BaseEvent() {
     class  UserProfileFetched(val item: User?) : ProfileEvent()
+    class  TeacherProfileFetched(val item: User?) : ProfileEvent()
 }
 

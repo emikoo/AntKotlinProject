@@ -1,9 +1,7 @@
 package com.example.antkotlinproject.utils
 
-import android.app.Activity
 import android.content.Context
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.antkotlinproject.R
@@ -36,6 +34,5 @@ fun Activity.showLightStatusBar() {
 }
 
 fun String.toLesson() = "$this уроков"
-
 fun String.toAt() = "@$this"
 

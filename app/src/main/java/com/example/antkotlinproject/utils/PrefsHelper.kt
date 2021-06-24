@@ -10,6 +10,7 @@ class PrefsHelper(private val context: Context) {
     private val REFRESH_TOKEN = "REFRESH_TOKEN"
     private val USERNAME = "USERNAME"
     private val PASSWORD = "PASSWORD"
+    private val USER_ID = "USER_ID"
     private var prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     init {
@@ -29,17 +30,12 @@ class PrefsHelper(private val context: Context) {
         return  prefs.getString(REFRESH_TOKEN, "") ?: ""
     }
 
-    fun saveUsernameAndPassword(username: String, password: String) {
-        prefs.edit().putString(USERNAME, username).apply()
-        prefs.edit().putString(PASSWORD, password).apply()
+    fun saveUserId(id: Int){
+        prefs.edit().putInt(USER_ID, id).apply()
     }
 
-    fun getUsername(): String {
-        return prefs.getString(USERNAME, "") ?: ""
-    }
-
-    fun getPassword(): String {
-        return prefs.getString(PASSWORD, "") ?: ""
+    fun getUserId(): Int {
+        return prefs.getInt(USER_ID, 0) ?: 0
     }
 
     companion object {

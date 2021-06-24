@@ -17,4 +17,14 @@ class ProfileViewModel(private val repository: ProfileRepository) : BaseViewMode
         )
     }
 
+    fun fetchTeacherProfile(id: Int) {
+        loading.value = true
+        disposable.add(
+            repository.fetchUserProfile(id)
+                .doOnTerminate { loading.value = false }
+                .subscribe(
+                    { event.value = ProfileEvent.TeacherProfileFetched(it) },
+                    { message.value = it.message })
+        )
+    }
 }
