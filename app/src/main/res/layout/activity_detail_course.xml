@@ -50,8 +50,6 @@
 
                 <ImageButton
                     android:id="@+id/video_player"
-                    android:layout_width="@dimen/dp_24"
-                    android:layout_height="@dimen/dp_24"
                     android:layout_width="@dimen/dp_100"
                     android:layout_height="@dimen/dp_100"
                     android:layout_gravity="center"
@@ -79,7 +77,6 @@
 
                 <TextView
                     android:id="@+id/lessons"
-                    style="@style/subtitle_grey_8dp"
                     style="@style/subtitle_grey_8sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,12 +98,10 @@
 
             <TextView
                 android:id="@+id/tv_description"
-                style="@style/subtitle_grey_8dp"
                 style="@style/subtitle_grey_8sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_8"
-                android:textSize="@dimen/sp_10"
                 android:textSize="@dimen/sp_12"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginEnd="@dimen/dp_16"
@@ -138,7 +133,6 @@
 
             <TextView
                 android:id="@+id/teacher_name"
-                style="@style/title_black_10sp"
                 style="@style/title_black_12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,6 +152,15 @@
                 app:layout_constraintStart_toEndOf="@id/teacher_name"
                 app:layout_constraintTop_toTopOf="@id/teacher_photo" />
 
+            <Button
+                android:id="@+id/btn_teacher"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_54"
+                android:background="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="@id/teacher_photo"
+                app:layout_constraintStart_toStartOf="@id/teacher_photo"
+                app:layout_constraintEnd_toEndOf="@id/iv_teacher"/>
+
             <TextView
                 android:id="@+id/feedback"
                 style="@style/subtitle_black"
@@ -171,7 +174,6 @@
 
             <Button
                 android:id="@+id/btn_show_feedbacks"
-                style="@style/subtitle_green_10sp"
                 style="@style/subtitle_green_12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_12"

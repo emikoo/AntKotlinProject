@@ -6,13 +6,13 @@ import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.databinding.FragmentCheckUserRegistrationBinding
-import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
+import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.utils.showToast
 
 class CheckUserRegistrationFragment :
-    BaseFragment<AuthorizationViewModel, FragmentCheckUserRegistrationBinding>(
-        AuthorizationViewModel::class) {
+    BaseFragment<DefaultViewModel, FragmentCheckUserRegistrationBinding>(
+        DefaultViewModel::class) {
 
     private var isPupilClicked: Boolean = false
     private var isTeacherClicked: Boolean = false

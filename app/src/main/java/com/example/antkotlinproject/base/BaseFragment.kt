@@ -49,6 +49,33 @@ abstract class BaseFragment<ViewModel : BaseViewModel<BaseEvent>, VB_CHILD : Vie
         getViewModel(clazz = clazz)
     }
 
+    fun selectPicture() {
+        val i = Intent()
+        i.type = "image/*"
+        i.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(
+            Intent.createChooser(i, "Select Picture"),
+            SELECT_PICTURE
+        )
+    }
+
+    fun getSelectedPicture(resultCode: Int, requestCode: Int, data: Intent?, imageView: ImageView) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == SELECT_PICTURE) {
+                val selectedImageUri: Uri? = data?.data
+                if (null != selectedImageUri) {
+                    Glide.with(imageView)
+                        .load(selectedImageUri)
+                        .into(imageView)
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val SELECT_PICTURE = 200
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         this._binding = null

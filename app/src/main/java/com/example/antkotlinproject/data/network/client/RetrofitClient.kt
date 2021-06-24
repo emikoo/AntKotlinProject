@@ -3,6 +3,7 @@ package com.example.notesapp.data.network.client
 import com.example.antkotlinproject.data.model.TokenModel
 import com.example.antkotlinproject.data.network.api.AuthApi
 import com.example.antkotlinproject.data.network.api.CourseApi
+import com.example.antkotlinproject.data.network.api.ProfileApi
 import com.example.antkotlinproject.utils.ApiConstants.BASE_URL
 import com.example.antkotlinproject.utils.PrefsHelper
 import okhttp3.*
@@ -39,6 +40,7 @@ fun provideHttpLoginingInterceptor(): HttpLoggingInterceptor {
 
 fun provideAuthApi(retrofit: Retrofit) = retrofit.create(AuthApi::class.java)
 fun provideCourseApi(retrofit: Retrofit) = retrofit.create(CourseApi::class.java)
+fun provideProfileApi(retrofit: Retrofit) = retrofit.create(ProfileApi::class.java)
 
 fun provideTokenAuthenticator(preferences: PrefsHelper)
         = TokenAuthenticator(preferences)

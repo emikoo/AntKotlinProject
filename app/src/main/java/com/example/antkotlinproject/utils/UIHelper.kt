@@ -37,4 +37,5 @@ fun Activity.showLightStatusBar() {
 
 fun String.toLesson() = "$this уроков"
 
+fun String.toAt() = "@$this"
 

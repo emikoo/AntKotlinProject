@@ -1,12 +1,10 @@
 package com.example.antkotlinproject.di
 
-import com.example.antkotlinproject.repository.AuthorizationRepository
-import com.example.antkotlinproject.repository.AuthorizationRepositoryImpl
-import com.example.antkotlinproject.repository.SearchRepository
-import com.example.antkotlinproject.repository.SearchRepositoryImpl
+import com.example.antkotlinproject.repository.*
 import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationFragment
-import com.example.antkotlinproject.ui.auth.AuthorizationViewModel
+import com.example.antkotlinproject.ui.auth.DefaultViewModel
+import com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileViewModel
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.SearchFragment
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.SearchViewModel
 import com.example.antkotlinproject.ui.user.detail_course.DetailCourseViewModel
@@ -23,15 +21,17 @@ val fragmentModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { AuthorizationViewModel() }
+    viewModel { DefaultViewModel() }
     viewModel { AuthViewModel(get(), get()) }
     viewModel { SearchViewModel(get()) }
     viewModel { DetailCourseViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
 }
 
 val repositoryModule = module {
     factory<AuthorizationRepository> { AuthorizationRepositoryImpl(get(), get()) }
     factory<SearchRepository> { SearchRepositoryImpl(get()) }
+    factory<ProfileRepository> { ProfileRepositoryImpl(get()) }
 }
 
 val networkRepository = module {
@@ -42,5 +42,6 @@ val networkRepository = module {
     single { provideHeadersInterceptor(get()) }
     single { provideAuthApi(get()) }
     single { provideCourseApi(get()) }
+    single { provideProfileApi(get()) }
     single { PrefsHelper(androidContext()) }
 }

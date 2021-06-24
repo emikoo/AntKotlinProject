@@ -6,6 +6,7 @@ import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.VideoPlayerActivity
+import com.example.antkotlinproject.ui.user.exo_player.VideoPlayerActivity
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.databinding.ActivityDetailCourseBinding

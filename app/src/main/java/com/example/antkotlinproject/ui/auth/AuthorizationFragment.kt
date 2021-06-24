@@ -8,18 +8,15 @@ import com.example.antkotlinproject.R
 import com.example.antkotlinproject.databinding.FragmentAuthorizationBinding
 import com.example.antkotlinproject.base.BaseFragment
 
-class AuthorizationFragment :
-    BaseFragment<AuthorizationViewModel, FragmentAuthorizationBinding>(
-        AuthorizationViewModel::class
-    ) {
+class AuthorizationFragment : BaseFragment<DefaultViewModel, FragmentAuthorizationBinding>
+    (DefaultViewModel::class) {
+
     override fun attachBinding(
         list: MutableList<FragmentAuthorizationBinding>,
         layoutInflater: LayoutInflater,
         container: ViewGroup?,
         attachToRoot: Boolean
-    ) {
-        list.add(FragmentAuthorizationBinding.inflate(layoutInflater, container, attachToRoot))
-    }
+    ) { list.add(FragmentAuthorizationBinding.inflate(layoutInflater, container, attachToRoot)) }
 
     override fun setupViews() {
         binding.btnSignUp.paintFlags = Paint.UNDERLINE_TEXT_FLAG
