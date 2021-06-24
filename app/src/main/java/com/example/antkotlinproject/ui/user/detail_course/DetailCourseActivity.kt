@@ -52,8 +52,23 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
                         .load(it.owner?.avatar)
                         .placeholder(R.color.color_grey_transparent)
                         .into(binding.teacherPhoto)
+                    val video = it.coursePreviewVideo
+                    showVideo(video)
+
                 }
             }
         })
+    }
+
+    private fun showVideo(video: String?) {
+        binding.videoPlayer.setOnClickListener {
+            val intent = Intent(this, VideoPlayerActivity::class.java)
+            intent.putExtra(VIDEO, video)
+            startActivity(intent)
+        }
+    }
+
+    companion object {
+        const val VIDEO = "VIDEO"
     }
 }

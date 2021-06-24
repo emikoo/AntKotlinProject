@@ -12,6 +12,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_start"
         android:layout_marginBottom="@dimen/dp_8">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -51,6 +52,8 @@
                     android:id="@+id/video_player"
                     android:layout_width="@dimen/dp_24"
                     android:layout_height="@dimen/dp_24"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="@dimen/dp_100"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_play"
                     android:padding="@dimen/dp_24" />
@@ -77,6 +80,7 @@
                 <TextView
                     android:id="@+id/lessons"
                     style="@style/subtitle_grey_8dp"
+                    style="@style/subtitle_grey_8sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_2"
@@ -98,10 +102,12 @@
             <TextView
                 android:id="@+id/tv_description"
                 style="@style/subtitle_grey_8dp"
+                style="@style/subtitle_grey_8sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_8"
                 android:textSize="@dimen/sp_10"
+                android:textSize="@dimen/sp_12"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginEnd="@dimen/dp_16"
                 app:layout_constraintStart_toStartOf="@id/player_container"
@@ -133,6 +139,7 @@
             <TextView
                 android:id="@+id/teacher_name"
                 style="@style/title_black_10sp"
+                style="@style/title_black_12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_16"
@@ -142,6 +149,7 @@
                 tools:text="Шахлоо Хакимовна" />
 
             <ImageView
+                android:id="@+id/iv_teacher"
                 android:layout_width="@dimen/dp_16"
                 android:layout_height="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_54"
@@ -164,6 +172,7 @@
             <Button
                 android:id="@+id/btn_show_feedbacks"
                 style="@style/subtitle_green_10sp"
+                style="@style/subtitle_green_12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_16"
