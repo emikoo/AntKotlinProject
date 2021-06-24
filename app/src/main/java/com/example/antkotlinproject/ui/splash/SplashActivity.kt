@@ -20,29 +20,31 @@ class SplashActivity : BaseActivity<AuthViewModel, ActivitySplashBinding>
 
     override fun setupViews() {
         preferences = PrefsHelper(this)
-        setupAnimationText()
-        if (preferences.getToken().isEmpty()) setupDelay(openAuthorization())
-        else setupDelay(openMainUserActivity())
+        setupAnimationViews()
+        setupDelay()
     }
 
-    private fun setupAnimationText() {
+    private fun setupAnimationViews() {
         val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         binding.splashTitle.startAnimation(animation)
+        binding.splashLogo.startAnimation(animation)
     }
 
-    private fun setupDelay(action: Unit) {
-        Handler(Looper.getMainLooper()).postDelayed({ action }, 1500)
-    }
-
-    private fun openMainUserActivity() {
-        viewModel.login(preferences.getUsername(), preferences.getPassword())
-        val intent = Intent(this, MainUserActivity::class.java)
-        startActivity(intent)
-        finish()
+    private fun setupDelay() {
+        if (preferences.getToken()
+                .isEmpty()
+        ) Handler(Looper.getMainLooper()).postDelayed({ openAuthorization() }, 1500)
+        else Handler(Looper.getMainLooper()).postDelayed({ openMainUserActivity() }, 1500)
     }
 
     private fun openAuthorization() {
         val intent = Intent(this, AuthorizationActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun openMainUserActivity() {
+        val intent = Intent(this, MainUserActivity::class.java)
         startActivity(intent)
         finish()
     }
