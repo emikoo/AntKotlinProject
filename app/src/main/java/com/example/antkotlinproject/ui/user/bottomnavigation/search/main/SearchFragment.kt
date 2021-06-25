@@ -55,7 +55,6 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
                 this
             )
         binding.categoriesList.adapter = categoryAdapter
-        viewModel.fetchCategory()
     }
 
     private fun setupCourses() {

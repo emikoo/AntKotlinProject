@@ -1,10 +1,7 @@
 package com.example.antkotlinproject
 
 import android.app.Application
-import com.example.antkotlinproject.di.fragmentModule
-import com.example.antkotlinproject.di.networkRepository
-import com.example.antkotlinproject.di.repositoryModule
-import com.example.antkotlinproject.di.viewModelModule
+import com.example.antkotlinproject.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext

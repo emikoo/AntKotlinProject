@@ -2,7 +2,6 @@ package com.example.antkotlinproject.repository
 
 import com.example.antkotlinproject.data.model.CategoryModel
 import com.example.antkotlinproject.data.model.CourseModel
-import com.example.antkotlinproject.data.model.SubcategoryModel
 import com.example.antkotlinproject.data.network.api.CourseApi
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
