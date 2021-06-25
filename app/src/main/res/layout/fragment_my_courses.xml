@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.user.MyCoursesFragment">
+    tools:context=".ui.user.bottomnavigation.my_courses.MyCoursesFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_42"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingStart="@dimen/dp_42"
-        android:layout_marginTop="@dimen/dp_8"
+        android:paddingStart="@dimen/dp_8"
         app:searchIcon="@drawable/ic_search_green" />
 
     <TextView

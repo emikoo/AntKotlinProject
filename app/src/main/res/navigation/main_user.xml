@@ -8,12 +8,15 @@
 
     <fragment
         android:id="@+id/searchFragment2"
-        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.SearchFragment"
+        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_searchFragment2_to_detailCourseActivity"
             app:destination="@id/detailCourseActivity" />
+        <action
+            android:id="@+id/action_searchFragment2_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/myCoursesFragment2"
@@ -45,4 +48,13 @@
         android:name="com.example.antkotlinproject.ui.auth.AuthorizationActivity"
         android:label="activity_authorization"
         tools:layout="@layout/activity_authorization" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" >
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

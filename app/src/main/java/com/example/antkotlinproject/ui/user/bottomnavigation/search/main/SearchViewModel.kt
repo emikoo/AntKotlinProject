@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search
+package com.example.antkotlinproject.ui.user.bottomnavigation.search.main
 
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
@@ -16,7 +16,7 @@ class SearchViewModel(private val repository: SearchRepository) : BaseViewModel<
         fetchCourses()
     }
 
-    private fun fetchCategory() {
+    fun fetchCategory() {
         loading.value = true
         disposable.add(
             repository.fetchCategory()

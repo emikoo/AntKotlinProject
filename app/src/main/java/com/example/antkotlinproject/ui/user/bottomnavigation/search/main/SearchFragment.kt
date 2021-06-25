@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search
+package com.example.antkotlinproject.ui.user.bottomnavigation.search.main
 
 import android.os.Handler
 import android.view.LayoutInflater
@@ -9,14 +9,17 @@ import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
+import com.example.antkotlinproject.data.model.CategoryModel
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentSearchBinding
+import com.example.antkotlinproject.ui.user.bottomnavigation.search.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import java.util.*
 
 class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     SearchViewModel::class
-), ClickListener {
+),
+    CourseClickListener,
+    CategoryClickListener {
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var courseAdapter: CourseAdapter
 
@@ -47,12 +50,19 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     }
 
     private fun setupCategories() {
-        categoryAdapter = CategoryAdapter()
+        categoryAdapter =
+            CategoryAdapter(
+                this
+            )
         binding.categoriesList.adapter = categoryAdapter
+        viewModel.fetchCategory()
     }
 
     private fun setupCourses() {
-        courseAdapter = CourseAdapter(this)
+        courseAdapter =
+            CourseAdapter(
+                this
+            )
         binding.coursesList.adapter = courseAdapter
     }
 
@@ -92,9 +102,21 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         })
     }
 
-    override fun onItemClick(item: CourseModel) {
+    override fun onCourseClick(item: CourseModel) {
         val directions =
-            SearchFragmentDirections.actionSearchFragment2ToDetailCourseActivity(item.id!!)
+            SearchFragmentDirections.actionSearchFragment2ToDetailCourseActivity(
+                item.id!!
+            )
+        findNavController().navigate(directions)
+    }
+
+    override fun onCategoryClick(item: CategoryModel) {
+        val categoryId = item.id
+        val directions
+                =
+            SearchFragmentDirections.actionSearchFragment2ToCategoriesFragment(
+                categoryId
+            )
         findNavController().navigate(directions)
     }
 }

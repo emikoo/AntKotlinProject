@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search
+package com.example.antkotlinproject.ui.user.bottomnavigation.search.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,13 +7,15 @@ import com.example.antkotlinproject.base.BaseViewHolder
 import com.example.antkotlinproject.data.model.CategoryModel
 import com.example.antkotlinproject.databinding.ItemCategoryBinding
 
-class CategoryAdapter : BaseAdapter() {
+class CategoryAdapter(private val listener: CategoryClickListener) : BaseAdapter() {
     private var categoriesArray = mutableListOf<CategoryModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val binding =
             ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CategoryViewHolder(binding)
+        return CategoryViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount(): Int {
@@ -24,12 +26,17 @@ class CategoryAdapter : BaseAdapter() {
         val item = categoriesArray[position]
         val holder = holder as CategoryViewHolder
         holder.bind(item)
+        holder.itemView.setOnClickListener { listener.onCategoryClick(item) }
     }
 
     fun addItems(item: MutableList<CategoryModel>) {
         categoriesArray = item
         notifyDataSetChanged()
     }
+}
+
+interface CategoryClickListener{
+    fun onCategoryClick(item: CategoryModel)
 }
 
 class CategoryViewHolder(var binding: ItemCategoryBinding) : BaseViewHolder(binding.root) {

@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search
+package com.example.antkotlinproject.ui.user.bottomnavigation.search.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,13 +10,15 @@ import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.ItemCourseVerticalBinding
 import com.example.antkotlinproject.utils.toLesson
 
-class CourseAdapter(private val listener: ClickListener): BaseAdapter() {
+class CourseAdapter(private val listenerCourse: CourseClickListener): BaseAdapter() {
     private var coursesArray = mutableListOf<CourseModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val binding =
             ItemCourseVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CourseViewHolder(binding)
+        return CourseViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +30,7 @@ class CourseAdapter(private val listener: ClickListener): BaseAdapter() {
         val holder = holder as CourseViewHolder
         holder.bind(item)
         holder.itemView.setOnClickListener {
-            listener.onItemClick(item)
+            listenerCourse.onCourseClick(item)
         }
     }
 
@@ -50,6 +52,6 @@ class CourseViewHolder(var binding: ItemCourseVerticalBinding) : BaseViewHolder(
     }
 }
 
-interface ClickListener{
-    fun onItemClick(item: CourseModel)
+interface CourseClickListener{
+    fun onCourseClick(item: CourseModel)
 }
