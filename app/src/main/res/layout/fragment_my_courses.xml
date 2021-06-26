@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.user.bottomnavigation.my_courses.MyCoursesFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_42"
+        android:layout_height="@dimen/dp_50"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingStart="@dimen/dp_8"
         app:searchIcon="@drawable/ic_search_green" />
 
     <TextView
+        android:id="@+id/title"
+        style="@style/title_green"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/search_view"
-        app:layout_constraintBottom_toBottomOf="@id/search_view"
         android:text="@string/my_courses"
-        style="@style/title_green"/>
+        app:layout_constraintBottom_toBottomOf="@id/search_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/search_view" />
 
     <View
         android:id="@+id/line_top"
@@ -34,9 +34,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"
-        app:layout_constraintTop_toBottomOf="@id/line_top"
+        android:layout_marginTop="@dimen/dp_16"
         app:layout_constraintBottom_toTopOf="@id/line_bottom"
-        android:layout_marginTop="@dimen/dp_16"/>
+        app:layout_constraintTop_toBottomOf="@id/line_top" />
 
     <View
         android:id="@+id/line_bottom"

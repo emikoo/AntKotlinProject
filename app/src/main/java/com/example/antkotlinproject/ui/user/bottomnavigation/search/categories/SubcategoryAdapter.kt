@@ -35,7 +35,7 @@ class SubcategoryAdapter(private val listener: SubcategoryClickListener) : BaseA
     }
 }
 
-interface SubcategoryClickListener{
+interface SubcategoryClickListener {
     fun onSubcategoryClick(item: SubcategoryModel)
 }
 

@@ -1,17 +1,17 @@
 package com.example.antkotlinproject.di
 
+import com.example.antkotlinproject.data.network.client.*
 import com.example.antkotlinproject.repository.*
 import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileViewModel
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragment
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchViewModel
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesFragment
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesViewModel
+import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragment
+import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchViewModel
 import com.example.antkotlinproject.ui.user.detail_course.DetailCourseViewModel
 import com.example.antkotlinproject.utils.PrefsHelper
-import com.example.notesapp.data.network.client.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -32,7 +32,7 @@ val viewModelModule = module {
         )
     }
     viewModel { DetailCourseViewModel(get()) }
-    viewModel { ProfileViewModel(get()) }
+    viewModel { ProfileViewModel(get(), get()) }
     viewModel { CategoriesViewModel(get()) }
 }
 
@@ -47,7 +47,6 @@ val networkRepository = module {
     single { provideOkHttpClient(get(), get()) }
     single { provideHttpLoginingInterceptor() }
     single { provideTokenAuthenticator(get()) }
-    single { provideHeadersInterceptor(get()) }
     single { provideAuthApi(get()) }
     single { provideCourseApi(get()) }
     single { provideProfileApi(get()) }

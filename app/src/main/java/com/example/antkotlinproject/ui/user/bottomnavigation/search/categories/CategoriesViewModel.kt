@@ -5,7 +5,7 @@ import com.example.antkotlinproject.base.BaseViewModel
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.repository.SearchRepository
 
-class CategoriesViewModel(private val repository: SearchRepository): BaseViewModel<BaseEvent>() {
+class CategoriesViewModel(private val repository: SearchRepository) : BaseViewModel<BaseEvent>() {
     fun fetchSubcategory(categoryId: Int) {
         loading.value = true
         disposable.add(

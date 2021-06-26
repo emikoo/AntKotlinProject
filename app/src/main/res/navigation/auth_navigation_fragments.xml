@@ -49,13 +49,13 @@
         android:id="@+id/registrationFragment"
         android:name="com.example.antkotlinproject.ui.auth.registration.RegistrationFragment"
         android:label="RegistrationFragment"
-        tools:layout="@layout/fragment_registration" >
+        tools:layout="@layout/fragment_registration">
         <argument
             android:name="IsStuff"
             app:argType="boolean" />
         <action
-            android:id="@+id/action_registrationFragment_to_loginFragment32"
-            app:destination="@id/loginFragment3" />
+            android:id="@+id/action_registrationFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
     </fragment>
 
 </navigation>

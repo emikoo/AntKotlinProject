@@ -5,7 +5,7 @@ import com.example.antkotlinproject.base.BaseAdapter
 import com.example.antkotlinproject.base.BaseViewHolder
 
 
-class ContainerSubCourseAdapter: BaseAdapter() {
+class ContainerSubCourseAdapter : BaseAdapter() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         TODO("Not yet implemented")
     }

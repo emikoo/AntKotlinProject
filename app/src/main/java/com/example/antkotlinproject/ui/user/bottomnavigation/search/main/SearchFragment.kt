@@ -12,7 +12,6 @@ import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CategoryModel
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentSearchBinding
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
@@ -41,7 +40,8 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         }
 
         binding.swipeRefreshLayout.setColorSchemeResources(
-            android.R.color.holo_green_light)
+            android.R.color.holo_green_light
+        )
     }
 
     private fun setupRecyclerView() {
@@ -80,7 +80,8 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
                         val filteredName = mutableListOf<CourseModel>()
                         viewModel.course?.forEach {
                             if (searchText?.let { it1 -> it.name?.toLowerCase()?.contains(it1) }!!)
-                                filteredName.add(it) }
+                                filteredName.add(it)
+                        }
                         courseAdapter.addItems(filteredName)
                     }
                 }, 800)
@@ -93,10 +94,13 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         viewModel.event.observe(this, Observer {
             when (it) {
                 is CategoryEvent.CategoryFetched -> it.array?.let { it ->
-                    categoryAdapter.addItems(it) }
-                is CourseEvent.CoursesFetched -> it.array?.let { it -> courseAdapter.addItems(it)
+                    categoryAdapter.addItems(it)
+                }
+                is CourseEvent.CoursesFetched -> it.array?.let { it ->
+                    courseAdapter.addItems(it)
                     viewModel.course = it
-                    binding.swipeRefreshLayout.isRefreshing = false}
+                    binding.swipeRefreshLayout.isRefreshing = false
+                }
             }
         })
     }
@@ -111,8 +115,7 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
 
     override fun onCategoryClick(item: CategoryModel) {
         val categoryId = item.id
-        val directions
-                =
+        val directions =
             SearchFragmentDirections.actionSearchFragment2ToCategoriesFragment(
                 categoryId
             )

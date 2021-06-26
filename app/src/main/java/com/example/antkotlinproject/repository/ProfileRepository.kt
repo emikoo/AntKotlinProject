@@ -10,7 +10,7 @@ interface ProfileRepository {
     fun fetchUserProfile(id: Int): Observable<User>
 }
 
-class ProfileRepositoryImpl(private val api: ProfileApi): ProfileRepository {
+class ProfileRepositoryImpl(private val api: ProfileApi) : ProfileRepository {
     override fun fetchUserProfile(id: Int): Observable<User> {
         return api.fetchUserProfile(id)
             .subscribeOn(Schedulers.io())

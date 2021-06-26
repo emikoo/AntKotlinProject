@@ -35,7 +35,7 @@ class CategoryAdapter(private val listener: CategoryClickListener) : BaseAdapter
     }
 }
 
-interface CategoryClickListener{
+interface CategoryClickListener {
     fun onCategoryClick(item: CategoryModel)
 }
 

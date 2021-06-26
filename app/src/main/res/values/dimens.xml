@@ -23,7 +23,7 @@
     <dimen name="dp_0">0dp</dimen>
     <dimen name="dp_2">2dp</dimen>
     <dimen name="dp_1">1dp</dimen>
-    <dimen name="dp_5f" type="dimen" format="float">0.5dp</dimen>
+    <dimen name="dp_5f" format="float" type="dimen">0.5dp</dimen>
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_12">12dp</dimen>
@@ -32,4 +32,5 @@
     <dimen name="dp_145">145dp</dimen>
     <dimen name="dp_100">100dp</dimen>
     <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
 </resources>

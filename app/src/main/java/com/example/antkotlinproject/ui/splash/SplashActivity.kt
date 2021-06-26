@@ -9,11 +9,14 @@ import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.databinding.ActivitySplashBinding
 import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationActivity
+import com.example.antkotlinproject.ui.teacher.MainTeacherActivity
 import com.example.antkotlinproject.ui.user.main.MainUserActivity
 import com.example.antkotlinproject.utils.PrefsHelper
 
 class SplashActivity : BaseActivity<AuthViewModel, ActivitySplashBinding>
     (AuthViewModel::class) {
+
+    private var isStuff: Boolean = false
 
     override fun getViewBinding() = ActivitySplashBinding.inflate(layoutInflater)
     private lateinit var preferences: PrefsHelper
@@ -34,7 +37,7 @@ class SplashActivity : BaseActivity<AuthViewModel, ActivitySplashBinding>
         if (preferences.getToken()
                 .isEmpty()
         ) Handler(Looper.getMainLooper()).postDelayed({ openAuthorization() }, 1500)
-        else Handler(Looper.getMainLooper()).postDelayed({ openMainUserActivity() }, 1500)
+        else Handler(Looper.getMainLooper()).postDelayed({ openMainActivity() }, 1500)
     }
 
     private fun openAuthorization() {
@@ -43,9 +46,14 @@ class SplashActivity : BaseActivity<AuthViewModel, ActivitySplashBinding>
         finish()
     }
 
-    private fun openMainUserActivity() {
-        val intent = Intent(this, MainUserActivity::class.java)
-        startActivity(intent)
+    private fun openMainActivity() {
+        if (isStuff) {
+            val intent = Intent(this, MainTeacherActivity::class.java)
+            startActivity(intent)
+        } else {
+            val intent = Intent(this, MainUserActivity::class.java)
+            startActivity(intent)
+        }
         finish()
     }
 

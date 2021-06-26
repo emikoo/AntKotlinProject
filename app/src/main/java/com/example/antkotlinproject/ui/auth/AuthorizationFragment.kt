@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.R
-import com.example.antkotlinproject.databinding.FragmentAuthorizationBinding
 import com.example.antkotlinproject.base.BaseFragment
+import com.example.antkotlinproject.databinding.FragmentAuthorizationBinding
 
 class AuthorizationFragment : BaseFragment<DefaultViewModel, FragmentAuthorizationBinding>
     (DefaultViewModel::class) {
@@ -16,7 +16,9 @@ class AuthorizationFragment : BaseFragment<DefaultViewModel, FragmentAuthorizati
         layoutInflater: LayoutInflater,
         container: ViewGroup?,
         attachToRoot: Boolean
-    ) { list.add(FragmentAuthorizationBinding.inflate(layoutInflater, container, attachToRoot)) }
+    ) {
+        list.add(FragmentAuthorizationBinding.inflate(layoutInflater, container, attachToRoot))
+    }
 
     override fun setupViews() {
         binding.btnSignUp.paintFlags = Paint.UNDERLINE_TEXT_FLAG

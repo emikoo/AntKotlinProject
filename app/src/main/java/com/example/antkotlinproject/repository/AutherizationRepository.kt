@@ -16,7 +16,8 @@ interface AuthorizationRepository {
     fun refreshToken(): MutableLiveData<ResponseResult<String>>
 }
 
-class AuthorizationRepositoryImpl(private val api: AuthApi, private val preferences: PrefsHelper) : AuthorizationRepository {
+class AuthorizationRepositoryImpl(private val api: AuthApi, private val preferences: PrefsHelper) :
+    AuthorizationRepository {
 
     override fun refreshToken(): MutableLiveData<ResponseResult<String>> {
         val result = MutableLiveData<ResponseResult<String>>(ResponseResult.loading())
@@ -31,7 +32,7 @@ class AuthorizationRepositoryImpl(private val api: AuthApi, private val preferen
                     if (response.isSuccessful && response.body() != null) {
 
                         val token = response.body()?.accessToken ?: ""
-                        token.let { preferences.saveToken(it, preferences.getRefreshToken()) }
+                        token.let { preferences.saveAccessToken(it) }
                         result.value = ResponseResult.success(preferences.getRefreshToken())
                     } else {
                         result.value = ResponseResult.error(response.message())
@@ -74,7 +75,8 @@ class AuthorizationRepositoryImpl(private val api: AuthApi, private val preferen
             override fun onResponse(call: Call<TokenModel>, response: Response<TokenModel>) {
                 when (response.code()) {
                     200 -> data.value = ResponseResult.success(response.body())
-                    401 -> data.value = ResponseResult.error("No active account found with the given credentials")
+                    401 -> data.value =
+                        ResponseResult.error("No active account found with the given credentials")
                 }
             }
 

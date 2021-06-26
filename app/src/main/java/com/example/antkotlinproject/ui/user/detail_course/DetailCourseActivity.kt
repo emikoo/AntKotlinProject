@@ -5,15 +5,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
 import com.example.antkotlinproject.R
-import com.example.antkotlinproject.ui.user.exo_player.VideoPlayerActivity
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.base.CourseEvent
-import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.ActivityDetailCourseBinding
+import com.example.antkotlinproject.ui.user.exo_player.VideoPlayerActivity
 import com.example.antkotlinproject.ui.user.teacher_s_profile.TeacherProfileActivity
 import com.example.antkotlinproject.utils.toLesson
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import java.io.Serializable
 
 class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailCourseBinding>(
     DetailCourseViewModel::class

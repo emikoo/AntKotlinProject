@@ -33,8 +33,8 @@ class SearchViewModel(private val repository: SearchRepository) : BaseViewModel<
             repository.fetchCourses()
                 .doOnTerminate { loading.value = false }
                 .subscribe(
-                    { event.value = CourseEvent.CoursesFetched(it)},
-                    { message.value = it.message } )
+                    { event.value = CourseEvent.CoursesFetched(it) },
+                    { message.value = it.message })
         )
     }
 }

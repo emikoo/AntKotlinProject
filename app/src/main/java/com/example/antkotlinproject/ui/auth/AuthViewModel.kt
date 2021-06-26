@@ -46,7 +46,8 @@ class AuthViewModel(
                 .observeForever {
                     when (it.status) {
                         ResponseResultStatus.SUCCESS -> {
-                            preferences.saveToken(it?.result?.accessToken, it?.result?.refreshToken)
+                            preferences.saveAccessToken(it?.result?.accessToken)
+                            preferences.saveRefreshToken(it?.result?.refreshToken)
                             actionLoginNewScreen.value = true
                         }
                         ResponseResultStatus.ERROR -> {

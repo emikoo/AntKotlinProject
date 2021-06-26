@@ -10,8 +10,8 @@
         android:id="@+id/title"
         style="@style/title_green"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/dp_8"
+        android:layout_height="@dimen/dp_50"
+        android:gravity="center"
         android:text="@string/profile"
         app:layout_constraintBottom_toBottomOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,10 +60,10 @@
         android:layout_width="@dimen/dp_100"
         android:layout_height="@dimen/dp_100"
         android:background="@drawable/ic_photo"
+        app:layout_constraintBottom_toBottomOf="@id/photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/photo"
-        app:layout_constraintBottom_toBottomOf="@id/photo"/>
+        app:layout_constraintTop_toTopOf="@id/photo" />
 
     <TextView
         android:id="@+id/name"

@@ -10,7 +10,7 @@
         android:id="@+id/searchFragment2"
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment2_to_detailCourseActivity"
             app:destination="@id/detailCourseActivity" />
@@ -28,7 +28,7 @@
         android:id="@+id/profileFragment2"
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment2_to_authorizationActivity"
             app:destination="@id/authorizationActivity" />
@@ -38,7 +38,7 @@
         android:id="@+id/detailCourseActivity"
         android:name="com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity"
         android:label="activity_detail_course"
-        tools:layout="@layout/activity_detail_course" >
+        tools:layout="@layout/activity_detail_course">
         <argument
             android:name="courseId"
             app:argType="integer" />
@@ -52,7 +52,7 @@
         android:id="@+id/categoriesFragment"
         android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" >
+        tools:layout="@layout/fragment_categories">
         <argument
             android:name="categoryId"
             app:argType="integer" />

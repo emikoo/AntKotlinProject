@@ -7,8 +7,6 @@ import android.view.WindowManager
 import android.widget.ImageView
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseActivity
-import com.example.antkotlinproject.base.CourseEvent
-import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.ActivityVideoPlayerBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity.Companion.VIDEO

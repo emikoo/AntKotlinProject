@@ -11,11 +11,11 @@
         android:id="@+id/splash_logo"
         android:layout_width="@dimen/dp_80"
         android:layout_height="@dimen/dp_80"
-        app:layout_constraintBottom_toTopOf="@id/splash_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="@dimen/dp_24"
-        android:background="@drawable/ic_ant_logo"/>
+        android:background="@drawable/ic_ant_logo"
+        app:layout_constraintBottom_toTopOf="@id/splash_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/splash_title"
