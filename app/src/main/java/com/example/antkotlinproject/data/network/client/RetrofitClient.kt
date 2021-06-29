@@ -22,12 +22,12 @@ fun provideRetrofit(okHttpClient: OkHttpClient) = Retrofit.Builder()
     .build()
 
 fun provideOkHttpClient(
-    httpLoggingInterceptor: HttpLoggingInterceptor,
+    headersInterceptor: HeadersInterceptor,
     tokenAuthenticator: TokenAuthenticator
 ): OkHttpClient {
     return OkHttpClient()
         .newBuilder()
-        .addInterceptor(httpLoggingInterceptor)
+        .addInterceptor(headersInterceptor)
         .authenticator(tokenAuthenticator)
         .build()
 }
@@ -43,6 +43,20 @@ fun provideCourseApi(retrofit: Retrofit) = retrofit.create(CourseApi::class.java
 fun provideProfileApi(retrofit: Retrofit) = retrofit.create(ProfileApi::class.java)
 
 fun provideTokenAuthenticator(preferences: PrefsHelper) = TokenAuthenticator(preferences)
+
+fun provideHeadersInterceptor(preferences: PrefsHelper)
+        = HeadersInterceptor(preferences)
+
+class HeadersInterceptor(private val preferences: PrefsHelper) : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val token = preferences.getToken()
+        val request = chain.request().newBuilder()
+        if (token.isNotEmpty())
+            request.addHeader("Authorization", "Token $token")
+
+        return chain.proceed(request.build())
+    }
+}
 
 fun provideAuthWithOutAuthenticatorApi(): AuthApi {
     return Retrofit.Builder()
@@ -74,7 +88,7 @@ class TokenAuthenticator(
 
         return response.request
             .newBuilder()
-            .addHeader("Authorization", "Bearer ${preferences.getToken()}")
+            .addHeader("Authorization", "Token ${preferences.getToken()}")
             .build()
     }
 

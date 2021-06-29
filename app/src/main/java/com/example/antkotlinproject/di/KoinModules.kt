@@ -47,6 +47,7 @@ val networkRepository = module {
     single { provideOkHttpClient(get(), get()) }
     single { provideHttpLoginingInterceptor() }
     single { provideTokenAuthenticator(get()) }
+    single { provideHeadersInterceptor(get()) }
     single { provideAuthApi(get()) }
     single { provideCourseApi(get()) }
     single { provideProfileApi(get()) }
