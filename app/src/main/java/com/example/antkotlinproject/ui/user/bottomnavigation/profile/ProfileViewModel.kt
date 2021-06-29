@@ -10,10 +10,15 @@ class ProfileViewModel(
     private val repository: ProfileRepository,
     private val prefsHelper: PrefsHelper
 ) : BaseViewModel<BaseEvent>() {
-    fun fetchUserProfile(id: Int) {
+
+    init {
+        fetchUserProfile()
+    }
+
+    fun fetchUserProfile() {
         loading.value = true
         disposable.add(
-            repository.fetchUserProfile(id)
+            repository.fetchUserProfile()
                 .doOnTerminate { loading.value = false }
                 .subscribe(
                     { event.value = ProfileEvent.UserProfileFetched(it) },
@@ -21,10 +26,10 @@ class ProfileViewModel(
         )
     }
 
-    fun fetchTeacherProfile(id: Int) {
+    fun fetchTeacherProfile() {
         loading.value = true
         disposable.add(
-            repository.fetchUserProfile(id)
+            repository.fetchUserProfile()
                 .doOnTerminate { loading.value = false }
                 .subscribe(
                     { event.value = ProfileEvent.TeacherProfileFetched(it) },

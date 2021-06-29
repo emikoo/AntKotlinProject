@@ -86,6 +86,7 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
                     }
                 }, 800)
                 return false
+                return true
             }
         })
     }

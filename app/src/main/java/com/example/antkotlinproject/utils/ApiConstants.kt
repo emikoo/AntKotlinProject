@@ -8,6 +8,6 @@ object ApiConstants {
     const val GET_CATEGORY = "/course/category/"
     const val GET_COURSES = "/course/course/"
     const val GET_COURSE = "/course/course/{id}"
-    const val GET_USER_PROFILE = "/user/user/{id}"
+    const val GET_USER_PROFILE = "/user/user/"
     const val GET_SUBCATEGORY = "/course/category_subcategory/{categoryId}"
 }

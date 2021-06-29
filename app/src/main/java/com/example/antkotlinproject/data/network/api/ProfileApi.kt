@@ -8,5 +8,5 @@ import retrofit2.http.Path
 
 interface ProfileApi {
     @GET(ApiConstants.GET_USER_PROFILE)
-    fun fetchUserProfile(@Path("id") id: Int): Observable<User>
+    fun fetchUserProfile(): Observable<User>
 }

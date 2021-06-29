@@ -36,7 +36,6 @@ class ProfileFragment :
 
     private fun setupViewModel() {
         viewModel = getViewModel(clazz = ProfileViewModel::class)
-        viewModel.fetchUserProfile(2)
     }
 
     private fun changeAvatar() {
@@ -69,7 +68,8 @@ class ProfileFragment :
                     Glide.with(binding.photo)
                         .load(it.item?.avatar)
                         .into(binding.photo)
-                    binding.phoneNumber.text = it.item?.phone.toString()
+                    if (it.item?.phone != null) binding.phoneNumber.text = it.item.phone.toString()
+                    else binding.phoneNumber.text = "Добавьте номер телефона"
                 }
             }
         })

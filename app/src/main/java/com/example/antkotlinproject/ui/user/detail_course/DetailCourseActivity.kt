@@ -52,8 +52,7 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
                     val video = it.coursePreviewVideo
                     showVideo(video)
 
-                    val ownerId = it.owner?.id
-                    openTeacherProfile(ownerId)
+                    openTeacherProfile()
                 }
             }
         })
@@ -67,16 +66,15 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
         }
     }
 
-    private fun openTeacherProfile(ownerId: Int?) {
+    private fun openTeacherProfile() {
         binding.btnTeacher.setOnClickListener {
-            val intent = Intent(this, TeacherProfileActivity::class.java)
-            intent.putExtra(OWNER, ownerId)
-            startActivity(intent)
+//            val intent = Intent(this, TeacherProfileActivity::class.java)
+//            intent.putExtra(OWNER, ownerId)
+//            startActivity(intent)
         }
     }
 
     companion object {
         const val VIDEO = "VIDEO"
-        const val OWNER = "OWNER"
     }
 }
