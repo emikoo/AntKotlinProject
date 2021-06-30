@@ -10,4 +10,5 @@ object ApiConstants {
     const val GET_COURSE = "/course/course/{id}"
     const val GET_USER_PROFILE = "/user/user/"
     const val GET_SUBCATEGORY = "/course/category_subcategory/{categoryId}"
+    const val GET_SUBCATEGORY_COURSES = "/course/subcategory_courses/{id}"
 }

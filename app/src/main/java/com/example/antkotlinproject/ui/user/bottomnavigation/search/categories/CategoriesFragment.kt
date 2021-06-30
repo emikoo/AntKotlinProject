@@ -40,9 +40,7 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel, FragmentCategoriesB
 
     private fun setupSubcategories() {
         subcategoryAdapter =
-            SubcategoryAdapter(
-                this
-            )
+            SubcategoryAdapter(this)
         binding.subcategoriesList.adapter = subcategoryAdapter
     }
 
@@ -57,5 +55,10 @@ class CategoriesFragment : BaseFragment<CategoriesViewModel, FragmentCategoriesB
         })
     }
 
-    override fun onSubcategoryClick(item: SubcategoryModel) {}
+    override fun onSubcategoryClick(item: SubcategoryModel) {
+        val id = item.id
+        val direction =
+            CategoriesFragmentDirections.actionCategoriesFragmentToSubcategoryFragment(id)
+        findNavController().navigate(direction)
+    }
 }

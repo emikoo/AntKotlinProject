@@ -25,7 +25,7 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
     }
 
     private fun fetchCourse() {
-        val arguments: DetailCourseActivityArgs by navArgs<DetailCourseActivityArgs>()
+        val arguments: DetailCourseActivityArgs by navArgs()
         viewModel.fetchCourse(arguments.courseId)
     }
 
@@ -52,7 +52,8 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
                     val video = it.coursePreviewVideo
                     showVideo(video)
 
-                    openTeacherProfile()
+                    val ownerId = it.owner?.id
+                    openTeacherProfile(ownerId)
                 }
             }
         })
@@ -66,15 +67,16 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
         }
     }
 
-    private fun openTeacherProfile() {
+    private fun openTeacherProfile(ownerId: Int?) {
         binding.btnTeacher.setOnClickListener {
-//            val intent = Intent(this, TeacherProfileActivity::class.java)
-//            intent.putExtra(OWNER, ownerId)
-//            startActivity(intent)
+            val intent = Intent(this, TeacherProfileActivity::class.java)
+            intent.putExtra(OWNER, ownerId)
+            startActivity(intent)
         }
     }
 
     companion object {
         const val VIDEO = "VIDEO"
+        const val OWNER = "OWNER"
     }
 }

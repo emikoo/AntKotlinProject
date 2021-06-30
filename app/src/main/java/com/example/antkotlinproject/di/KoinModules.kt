@@ -10,6 +10,7 @@ import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.C
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesViewModel
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragment
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchViewModel
+import com.example.antkotlinproject.ui.user.bottomnavigation.search.subcategory.SubcategoryViewModel
 import com.example.antkotlinproject.ui.user.detail_course.DetailCourseViewModel
 import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.android.ext.koin.androidContext
@@ -34,11 +35,12 @@ val viewModelModule = module {
     viewModel { DetailCourseViewModel(get()) }
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { CategoriesViewModel(get()) }
+    viewModel { SubcategoryViewModel(get()) }
 }
 
 val repositoryModule = module {
     factory<AuthorizationRepository> { AuthorizationRepositoryImpl(get(), get()) }
-    factory<SearchRepository> { SearchRepositoryImpl(get()) }
+    factory<CourseRepository> { CourseRepositoryImpl(get()) }
     factory<ProfileRepository> { ProfileRepositoryImpl(get()) }
 }
 

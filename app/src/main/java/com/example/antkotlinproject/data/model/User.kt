@@ -15,6 +15,6 @@ data class User(
     var email: String? = null,
     var password1: String? = null,
     var password2: String? = null,
-    @SerializedName("is_stuff")
-    var isStuff: Boolean
+    @SerializedName("is_staff")
+    var isStuff: Boolean? = null
 ) : Serializable

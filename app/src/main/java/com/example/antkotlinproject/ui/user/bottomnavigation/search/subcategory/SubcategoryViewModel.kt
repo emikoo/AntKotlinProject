@@ -1,19 +1,18 @@
-package com.example.antkotlinproject.ui.user.detail_course
+package com.example.antkotlinproject.ui.user.bottomnavigation.search.subcategory
 
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.repository.CourseRepository
 
-class DetailCourseViewModel(private val repository: CourseRepository) : BaseViewModel<BaseEvent>() {
-
-    fun fetchCourse(id: Int) {
+class SubcategoryViewModel(private val repository: CourseRepository): BaseViewModel<BaseEvent>(){
+    fun fetchSubcategoryCourses(id: Int) {
         loading.value = true
         disposable.add(
-            repository.fetchCourse(id)
+            repository.fetchSubcategoryCourses(id)
                 .doOnTerminate { loading.value = false }
                 .subscribe(
-                    { event.value = CourseEvent.CourseFetched(it) },
+                    { event.value = CourseEvent.SubcategoryCoursesFetched(it) },
                     { message.value = it.message })
         )
     }

@@ -3,9 +3,9 @@ package com.example.antkotlinproject.ui.user.bottomnavigation.search.categories
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
 import com.example.antkotlinproject.base.CategoryEvent
-import com.example.antkotlinproject.repository.SearchRepository
+import com.example.antkotlinproject.repository.CourseRepository
 
-class CategoriesViewModel(private val repository: SearchRepository) : BaseViewModel<BaseEvent>() {
+class CategoriesViewModel(private val repository: CourseRepository) : BaseViewModel<BaseEvent>() {
     fun fetchSubcategory(categoryId: Int) {
         loading.value = true
         disposable.add(
