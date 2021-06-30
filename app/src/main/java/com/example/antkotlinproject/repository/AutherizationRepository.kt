@@ -6,6 +6,9 @@ import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.data.network.api.AuthApi
 import com.example.antkotlinproject.data.network.client.ResponseResult
 import com.example.antkotlinproject.utils.PrefsHelper
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,6 +17,7 @@ interface AuthorizationRepository {
     fun regUser(user: User): MutableLiveData<ResponseResult<User>>
     fun login(username: String, password: String): MutableLiveData<ResponseResult<TokenModel>>
     fun refreshToken(): MutableLiveData<ResponseResult<String>>
+    fun fetchIsStuff(): Observable<User>
 }
 
 class AuthorizationRepositoryImpl(private val api: AuthApi, private val preferences: PrefsHelper) :
@@ -40,6 +44,12 @@ class AuthorizationRepositoryImpl(private val api: AuthApi, private val preferen
                 }
             })
         return result
+    }
+
+    override fun fetchIsStuff(): Observable<User> {
+        return api.fetchIsStuff()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
     }
 
 

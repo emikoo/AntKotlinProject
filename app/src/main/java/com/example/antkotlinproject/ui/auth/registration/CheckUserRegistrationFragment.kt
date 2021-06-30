@@ -17,7 +17,6 @@ class CheckUserRegistrationFragment :
 
     private var isPupilClicked: Boolean = false
     private var isTeacherClicked: Boolean = false
-    private var isStuff: Boolean = false
 
     override fun attachBinding(
         list: MutableList<FragmentCheckUserRegistrationBinding>,
@@ -52,7 +51,7 @@ class CheckUserRegistrationFragment :
         binding.btnNegative.setOnClickListener { findNavController().popBackStack() }
         binding.btnPositive.setOnClickListener {
             if (isTeacherClicked || isPupilClicked) {
-                isStuff = isTeacherClicked
+                var isStuff = isTeacherClicked
                 argAction(isStuff)
             } else {
                 showToast(requireContext(), "Выберите один вариант")

@@ -2,11 +2,15 @@ package com.example.antkotlinproject.data.network.api
 
 import com.example.antkotlinproject.data.model.TokenModel
 import com.example.antkotlinproject.data.model.User
+import com.example.antkotlinproject.utils.ApiConstants
+import com.example.antkotlinproject.utils.ApiConstants.GET_USER_PROFILE
 import com.example.antkotlinproject.utils.ApiConstants.LOGIN_TOKEN_URL
 import com.example.antkotlinproject.utils.ApiConstants.REFRESH_TOKEN_URL
 import com.example.antkotlinproject.utils.ApiConstants.REGISTER_URL
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AuthApi {
@@ -18,4 +22,7 @@ interface AuthApi {
 
     @POST(REFRESH_TOKEN_URL)
     fun refreshToken(@Body data: TokenModel): Call<TokenModel>
+
+    @GET(GET_USER_PROFILE)
+    fun fetchIsStuff(): Observable<User>
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
+import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.data.network.client.ResponseResultStatus
 import com.example.antkotlinproject.repository.AuthorizationRepository
@@ -49,6 +50,7 @@ class AuthViewModel(
                             preferences.saveAccessToken(it?.result?.accessToken)
                             preferences.saveRefreshToken(it?.result?.refreshToken)
                             actionLoginNewScreen.value = true
+                            fetchIsStuff()
                         }
                         ResponseResultStatus.ERROR -> {
                             it.message.let { error.value = it }
@@ -57,5 +59,16 @@ class AuthViewModel(
                     }
                 }
         }
+    }
+
+    fun fetchIsStuff() {
+        loading.value = true
+        disposable.add(
+            repository.fetchIsStuff()
+                .doOnTerminate { loading.value = false }
+                .subscribe(
+                    { event.value = ProfileEvent.UserIsStuffFetched(it) },
+                    { message.value = it.message })
+        )
     }
 }

@@ -9,6 +9,7 @@ import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.databinding.ActivityTeacherProfileBinding
 import com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileViewModel
+import com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity.Companion.OWNER
 import com.example.antkotlinproject.utils.showAlertDialog
 import com.example.antkotlinproject.utils.toAt
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -20,9 +21,10 @@ class TeacherProfileActivity : BaseActivity<ProfileViewModel, ActivityTeacherPro
 
     override fun setupViews() {
         viewModel = getViewModel(clazz = ProfileViewModel::class)
-        viewModel.fetchTeacherProfile()
+        val teacherId = intent.getIntExtra(OWNER, 0)
+        viewModel.fetchTeacherProfile(teacherId)
         setupListener()
-        setupSwipeRefresh()
+        setupSwipeRefresh(teacherId)
     }
 
     private fun setupListener() {
@@ -38,9 +40,9 @@ class TeacherProfileActivity : BaseActivity<ProfileViewModel, ActivityTeacherPro
         }
     }
 
-    private fun setupSwipeRefresh() {
+    private fun setupSwipeRefresh(teacherId: Int) {
         binding.swipeRefreshLayout.setOnRefreshListener {
-            viewModel.fetchTeacherProfile()
+            viewModel.fetchTeacherProfile(teacherId)
         }
         binding.swipeRefreshLayout.setColorSchemeResources(
             android.R.color.holo_green_light

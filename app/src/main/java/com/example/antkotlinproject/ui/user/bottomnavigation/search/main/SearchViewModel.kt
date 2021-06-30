@@ -5,9 +5,9 @@ import com.example.antkotlinproject.base.BaseViewModel
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CourseModel
-import com.example.antkotlinproject.repository.SearchRepository
+import com.example.antkotlinproject.repository.CourseRepository
 
-class SearchViewModel(private val repository: SearchRepository) : BaseViewModel<BaseEvent>() {
+class SearchViewModel(private val repository: CourseRepository) : BaseViewModel<BaseEvent>() {
 
     var course: MutableList<CourseModel>? = mutableListOf()
 

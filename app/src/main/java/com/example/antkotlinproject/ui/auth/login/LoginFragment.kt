@@ -7,14 +7,20 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.base.BaseFragment
+import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.databinding.FragmentLoginBinding
 import com.example.antkotlinproject.ui.auth.AuthViewModel
+import com.example.antkotlinproject.ui.teacher.MainTeacherActivity
 import com.example.antkotlinproject.ui.user.main.MainUserActivity
+import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
     AuthViewModel::class
 ) {
+
+    private lateinit var preferences: PrefsHelper
+
     override fun attachBinding(
         list: MutableList<FragmentLoginBinding>,
         layoutInflater: LayoutInflater,
@@ -25,9 +31,9 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
     }
 
     override fun setupViews() {
+        preferences = PrefsHelper(requireContext())
         viewModel = getViewModel(clazz = AuthViewModel::class)
         setupListener()
-        setupViewModel()
     }
 
     private fun setupListener() {
@@ -42,17 +48,24 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
         )
     }
 
-    private fun setupViewModel() {
-        viewModel.actionLoginNewScreen.observe(requireActivity(), Observer {
-            if (it == true) {
-                startActivity(Intent(requireContext(), MainUserActivity::class.java))
-                activity?.finish()
+    override fun subscribeToLiveData() {
+        viewModel.event.observe(this, Observer {
+            when (it) {
+                is ProfileEvent.UserIsStuffFetched -> {
+                    if( it.item.isStuff == true) {
+                        preferences.saveIsStuff(true)
+                        startActivity(Intent(requireContext(), MainTeacherActivity::class.java))
+                        activity?.finish()
+                    } else {
+                        preferences.saveIsStuff(false)
+                        startActivity(Intent(requireContext(), MainUserActivity::class.java))
+                        activity?.finish()
+                    }
+                }
             }
         })
         viewModel.error.observe(requireActivity(), Observer {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         })
     }
-
-    override fun subscribeToLiveData() {}
 }

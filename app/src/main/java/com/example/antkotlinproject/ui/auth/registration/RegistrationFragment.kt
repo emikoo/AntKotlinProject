@@ -44,10 +44,7 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
         val email = binding.etRegEmail.text.toString()
         val password1 = binding.etRegPassword.text.toString()
         val password2 = binding.etRegCheckPassword.text.toString()
-        val user = User(
-            username = username, firstName = firsName, lastName = lastName, email = email,
-            isStuff = isStaff, password1 = password1, password2 = password2
-        )
+        val user = User(username = username, firstName = firsName, lastName = lastName, email = email, isStuff = isStaff, password1 = password1, password2 = password2)
         viewModel.regUser(user)
     }
 

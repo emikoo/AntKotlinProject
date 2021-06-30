@@ -7,16 +7,14 @@ import android.view.animation.AnimationUtils
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.databinding.ActivitySplashBinding
-import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationActivity
+import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.ui.teacher.MainTeacherActivity
 import com.example.antkotlinproject.ui.user.main.MainUserActivity
 import com.example.antkotlinproject.utils.PrefsHelper
 
-class SplashActivity : BaseActivity<AuthViewModel, ActivitySplashBinding>
-    (AuthViewModel::class) {
-
-    private var isStuff: Boolean = false
+class SplashActivity : BaseActivity<DefaultViewModel, ActivitySplashBinding>
+    (DefaultViewModel::class) {
 
     override fun getViewBinding() = ActivitySplashBinding.inflate(layoutInflater)
     private lateinit var preferences: PrefsHelper
@@ -47,10 +45,10 @@ class SplashActivity : BaseActivity<AuthViewModel, ActivitySplashBinding>
     }
 
     private fun openMainActivity() {
-        if (isStuff) {
+        if (preferences.getIsStuff()) {
             val intent = Intent(this, MainTeacherActivity::class.java)
             startActivity(intent)
-        } else {
+        } else if (!preferences.getIsStuff()) {
             val intent = Intent(this, MainUserActivity::class.java)
             startActivity(intent)
         }

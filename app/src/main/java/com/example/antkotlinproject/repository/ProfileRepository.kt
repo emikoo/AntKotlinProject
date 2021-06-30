@@ -8,6 +8,7 @@ import io.reactivex.schedulers.Schedulers
 
 interface ProfileRepository {
     fun fetchUserProfile(): Observable<User>
+    fun fetchTeacherProfile(id: Int): Observable<User>
 }
 
 class ProfileRepositoryImpl(private val api: ProfileApi) : ProfileRepository {
@@ -16,4 +17,11 @@ class ProfileRepositoryImpl(private val api: ProfileApi) : ProfileRepository {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+    override fun fetchTeacherProfile(id: Int): Observable<User> {
+        return api.fetchTeacherProfile(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
 }
