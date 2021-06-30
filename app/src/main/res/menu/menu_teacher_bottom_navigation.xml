@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/teacherCoursesFragment"
+        android:title="@string/my_courses"
+        android:icon="@drawable/ic_my_courses"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/place_holder"
+        android:title=""
+        android:enabled="false"/>
+
+    <item android:id="@+id/teacherProfileFragment"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="ifRoom"/>
+</menu>

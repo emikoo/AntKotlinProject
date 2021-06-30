@@ -56,5 +56,17 @@
         <argument
             android:name="categoryId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_subcategoryFragment"
+            app:destination="@id/subcategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subcategoryFragment"
+        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.search.subcategory.SubcategoryFragment"
+        android:label="fragment_subcategory"
+        tools:layout="@layout/fragment_subcategory" >
+        <argument
+            android:name="subcategoryId"
+            app:argType="integer" />
     </fragment>
 </navigation>

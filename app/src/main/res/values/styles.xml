@@ -7,6 +7,14 @@
         <item name="colorAccent">@color/color_light_green</item>
     </style>
 
+    <style name="AppThemeMaterial" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/color_light_green</item>
+        <item name="colorPrimaryDark">@color/color_light_green</item>
+        <item name="colorAccent">@color/color_light_green</item>
+    </style>
+
+    <style name="DialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert"/>
+
     <style name="auth_title">
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/sp_32</item>

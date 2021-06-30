@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_teacher"
+    app:startDestination="@id/teacherCoursesFragment">
+
+    <fragment
+        android:id="@+id/teacherCoursesFragment"
+        android:name="com.example.antkotlinproject.ui.teacher.TeacherCoursesFragment"
+        android:label="fragment_teacher_courses"
+        tools:layout="@layout/fragment_teacher_courses" >
+        <action
+            android:id="@+id/action_teacherCoursesFragment_self"
+            app:destination="@id/teacherCoursesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teacherProfileFragment"
+        android:name="com.example.antkotlinproject.ui.teacher.TeacherProfileFragment"
+        android:label="fragment_teacher_profile"
+        tools:layout="@layout/fragment_teacher_profile" >
+        <action
+            android:id="@+id/action_teacherProfileFragment_self"
+            app:destination="@id/teacherProfileFragment" />
+    </fragment>
+</navigation>

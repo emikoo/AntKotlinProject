@@ -24,7 +24,6 @@ class MainUserActivity : BaseActivity<DefaultViewModel, ActivityMainUserBinding>
         val bottomNavigationView =
             findViewById<BottomNavigationView>(R.id.bottom_navigation)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
-        navController.saveState()
     }
 
     override fun subscribeToLiveData() {}
