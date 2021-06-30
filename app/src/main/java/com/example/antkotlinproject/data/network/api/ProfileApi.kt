@@ -17,4 +17,7 @@ interface ProfileApi {
 
     @GET(GET_TEACHER_PROFILE)
     fun fetchTeacherProfile(@Path("id") id: Int): Observable<User>
+
+    @POST(GET_USER_PROFILE)
+    fun editUserProfile(@Body data: User): Observable<User>
 }

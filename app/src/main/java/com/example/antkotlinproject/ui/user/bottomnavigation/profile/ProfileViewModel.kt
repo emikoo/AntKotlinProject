@@ -27,10 +27,18 @@ class ProfileViewModel(
         )
     }
 
-    fun fetchTeacherProfile() {
+    fun editUserProfile(name: String?, surname: String?, phone: Int?, email: String?) {
+        val data = User(firstName = name, lastName = surname, phone = phone, email = email)
         loading.value = true
         disposable.add(
-            repository.fetchUserProfile()
+            repository.editUserProfile(name, surname, phone, email)
+                .doOnComplete { loading.value = false }
+                .subscribe(
+                    { event.value = ProfileEvent.UserProfileEdited(data) },
+                    { message.value = it.message })
+        )
+    }
+
     fun fetchTeacherProfile(id: Int) {
         loading.value = true
         disposable.add(

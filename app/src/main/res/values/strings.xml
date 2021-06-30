@@ -40,4 +40,8 @@
     <string name="edit">Редактировать</string>
     <string name="phone_number">Номер телефона</string>
     <string name="email">Электронная почта</string>
+    <string name="profile_editing">Редактирование профиля</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="write_phone">Введите номер телефона</string>
 </resources>

@@ -65,16 +65,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/photo" />
 
-    <TextView
-        android:id="@+id/name"
-        style="@style/title_black"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/container_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="@dimen/dp_16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/photo"
-        tools:text="Your Name" />
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/photo">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/title_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/surname"
+            style="@style/title_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            tools:text="Surname" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/username"
@@ -83,11 +98,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/container_name"
         tools:text="username" />
 
     <LinearLayout
-        android:id="@+id/btn_edit"
+        android:id="@+id/container_edit"
         android:layout_width="@dimen/dp_131"
         android:layout_height="@dimen/dp_32"
         android:layout_marginTop="@dimen/dp_24"
@@ -113,6 +128,16 @@
             android:layout_marginStart="@dimen/dp_8"
             android:background="@drawable/ic_edit" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/container_edit"
+        app:layout_constraintEnd_toEndOf="@id/container_edit"
+        app:layout_constraintTop_toTopOf="@id/container_edit"
+        app:layout_constraintBottom_toBottomOf="@id/container_edit"
+        android:background="@android:color/transparent"/>
 
     <TextView
         android:id="@+id/tv_phone_number"
