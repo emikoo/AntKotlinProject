@@ -22,5 +22,13 @@
         <action
             android:id="@+id/action_teacherProfileFragment_self"
             app:destination="@id/teacherProfileFragment" />
+        <action
+            android:id="@+id/action_teacherProfileFragment_to_authorizationActivity2"
+            app:destination="@id/authorizationActivity2" />
     </fragment>
+    <activity
+        android:id="@+id/authorizationActivity2"
+        android:name="com.example.antkotlinproject.ui.auth.AuthorizationActivity"
+        android:label="activity_authorization"
+        tools:layout="@layout/activity_authorization" />
 </navigation>
