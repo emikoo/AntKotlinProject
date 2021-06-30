@@ -17,7 +17,6 @@ class AuthViewModel(
 ) :
     BaseViewModel<BaseEvent>() {
 
-    val actionLoginNewScreen = MutableLiveData<Boolean>()
     val actionRegistrationNewScreen = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
 
@@ -49,12 +48,10 @@ class AuthViewModel(
                         ResponseResultStatus.SUCCESS -> {
                             preferences.saveAccessToken(it?.result?.accessToken)
                             preferences.saveRefreshToken(it?.result?.refreshToken)
-                            actionLoginNewScreen.value = true
                             fetchIsStuff()
                         }
                         ResponseResultStatus.ERROR -> {
                             it.message.let { error.value = it }
-                            actionLoginNewScreen.value = false
                         }
                     }
                 }

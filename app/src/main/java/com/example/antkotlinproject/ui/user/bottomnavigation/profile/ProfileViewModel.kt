@@ -3,6 +3,7 @@ package com.example.antkotlinproject.ui.user.bottomnavigation.profile
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
 import com.example.antkotlinproject.base.ProfileEvent
+import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.repository.ProfileRepository
 import com.example.antkotlinproject.utils.PrefsHelper
 
@@ -30,6 +31,10 @@ class ProfileViewModel(
         loading.value = true
         disposable.add(
             repository.fetchUserProfile()
+    fun fetchTeacherProfile(id: Int) {
+        loading.value = true
+        disposable.add(
+            repository.fetchTeacherProfile(id)
                 .doOnTerminate { loading.value = false }
                 .subscribe(
                     { event.value = ProfileEvent.TeacherProfileFetched(it) },
