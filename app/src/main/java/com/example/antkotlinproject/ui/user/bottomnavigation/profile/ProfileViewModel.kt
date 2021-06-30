@@ -27,11 +27,10 @@ class ProfileViewModel(
         )
     }
 
-    fun editUserProfile(name: String?, surname: String?, phone: Int?, email: String?) {
-        val data = User(firstName = name, lastName = surname, phone = phone, email = email)
+    fun editUserProfile(data: User) {
         loading.value = true
         disposable.add(
-            repository.editUserProfile(name, surname, phone, email)
+            repository.editUserProfile(data)
                 .doOnComplete { loading.value = false }
                 .subscribe(
                     { event.value = ProfileEvent.UserProfileEdited(data) },

@@ -15,8 +15,6 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.databinding.FragmentProfileBinding
-import com.example.antkotlinproject.utils.PrefsHelper
-import com.example.antkotlinproject.utils.isEmptyInputData
 import com.example.antkotlinproject.utils.toAt
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -70,11 +68,22 @@ class ProfileFragment :
             dialog.dismiss()
         }
         positiveButton.setOnClickListener {
-            viewModel.editUserProfile(phone = phoneEditText.text.toString().toInt(),
-                name = nameEditText.text.toString(), surname = surnameEditText.text.toString(),
-                email = emailEditText.toString())
+            var data = if (phoneEditText.text.toString() != "") {
+                User(
+                    phone = phoneEditText.text.toString().toInt(),
+                    firstName = nameEditText.text.toString(),
+                    lastName = surnameEditText.text.toString(),
+                    email = emailEditText.text.toString()
+                )
+            } else {
+                User(
+                    firstName = nameEditText.text.toString(),
+                    lastName = surnameEditText.text.toString(),
+                    email = emailEditText.text.toString()
+                )
+            }
+            viewModel.editUserProfile(data)
             dialog.dismiss()
-            viewModel.fetchUserProfile()
         }
         dialog.show()
     }
@@ -112,6 +121,9 @@ class ProfileFragment :
                         .into(binding.photo)
                     if (it.item?.phone != null) binding.phoneNumber.text = it.item.phone.toString()
                     else binding.phoneNumber.text = ""
+                }
+                is ProfileEvent.UserProfileEdited -> it.let {
+                    viewModel.fetchUserProfile()
                 }
             }
         })
