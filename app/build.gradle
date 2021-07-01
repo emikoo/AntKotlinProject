@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'kotlin-kapt'
-//apply plugin: 'kotlin-parcelize'
 
 android {
     compileSdkVersion 30
@@ -85,4 +84,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    implementation 'org.permissionsdispatcher:permissionsdispatcher:4.3.0'
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.3.0"
 }
