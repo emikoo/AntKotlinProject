@@ -55,6 +55,10 @@ class AddCourseBottomSheetFragment() : BottomSheetDialogFragment() {
     }
 
     private fun setupViews() {
+        closeAction()
     }
 
+    private fun closeAction() {
+        binding.toolbar.setNavigationOnClickListener { this.onDestroyView() }
+    }
 }
