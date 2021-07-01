@@ -7,6 +7,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.antkotlinproject.R
 import com.google.android.material.snackbar.Snackbar
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 fun showActionSnackbar(
     view: View,
@@ -45,3 +49,12 @@ fun showAlertDialog(context: Context, action: () -> Unit) {
 fun String.toLesson() = "$this уроков"
 fun String.toAt() = "@$this"
 
+fun File.toImageRequestBody(name: String): MultipartBody.Part {
+    return asRequestBody("image/*".toMediaTypeOrNull()).let {
+        MultipartBody.Part.createFormData(
+            name,
+            this.name,
+            it
+        )
+    }
+}

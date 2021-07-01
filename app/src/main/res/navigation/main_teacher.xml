@@ -15,20 +15,12 @@
             app:destination="@id/teacherCoursesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/teacherProfileFragment"
-        android:name="com.example.antkotlinproject.ui.teacher.TeacherProfileFragment"
-        android:label="fragment_teacher_profile"
-        tools:layout="@layout/fragment_teacher_profile" >
+        android:id="@+id/profileFragment"
+        android:name="com.example.antkotlinproject.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_teacherProfileFragment_self"
-            app:destination="@id/teacherProfileFragment" />
-        <action
-            android:id="@+id/action_teacherProfileFragment_to_authorizationActivity2"
-            app:destination="@id/authorizationActivity2" />
+            android:id="@+id/action_profileFragment_self"
+            app:destination="@id/profileFragment" />
     </fragment>
-    <activity
-        android:id="@+id/authorizationActivity2"
-        android:name="com.example.antkotlinproject.ui.auth.AuthorizationActivity"
-        android:label="activity_authorization"
-        tools:layout="@layout/activity_authorization" />
 </navigation>

@@ -5,10 +5,9 @@ import com.example.antkotlinproject.repository.*
 import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
-import com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileViewModel
+import com.example.antkotlinproject.ui.profile.ProfileViewModel
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesFragment
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesViewModel
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.SubcategoryViewHolder
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragment
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchViewModel
 import com.example.antkotlinproject.ui.user.bottomnavigation.search.subcategory.SubcategoryViewModel
@@ -30,7 +29,12 @@ val viewModelModule = module {
     viewModel { AuthViewModel(get(), get()) }
     viewModel { SearchViewModel(get()) }
     viewModel { DetailCourseViewModel(get()) }
-    viewModel { ProfileViewModel(get(), get()) }
+    viewModel {
+        ProfileViewModel(
+            get(),
+            get()
+        )
+    }
     viewModel { CategoriesViewModel(get()) }
     viewModel { SubcategoryViewModel(get()) }
 }

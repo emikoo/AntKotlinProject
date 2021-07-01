@@ -6,10 +6,8 @@ import com.example.antkotlinproject.utils.ApiConstants.GET_TEACHER_PROFILE
 import com.example.antkotlinproject.utils.ApiConstants.GET_USER_PROFILE
 import io.reactivex.Maybe
 import io.reactivex.Observable
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface ProfileApi {
     @GET(GET_USER_PROFILE)
@@ -20,4 +18,8 @@ interface ProfileApi {
 
     @POST(GET_USER_PROFILE)
     fun editUserProfile(@Body data: User): Observable<User>
+
+    @Multipart
+    @POST(GET_USER_PROFILE)
+    fun changeImage(@Part avatar: MultipartBody.Part): Observable<User>
 }

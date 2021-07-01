@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.profile
+package com.example.antkotlinproject.ui.profile
 
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
@@ -6,6 +6,8 @@ import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.repository.ProfileRepository
 import com.example.antkotlinproject.utils.PrefsHelper
+import com.example.antkotlinproject.utils.toImageRequestBody
+import java.io.File
 
 class ProfileViewModel(
     private val repository: ProfileRepository,
@@ -51,5 +53,21 @@ class ProfileViewModel(
 
     fun clearUserData() {
         prefsHelper.clearUserData()
+    }
+
+    fun changeImage(file: File) {
+        loading.value = true
+        disposable.add(
+            repository.changeImage(file.toImageRequestBody(AVATAR))
+                .doOnTerminate { loading.value = false }
+                .subscribe(
+                    { event.value = ProfileEvent.UserAvatarChanged(it) },
+                    { message.value = it.message }
+                )
+        )
+    }
+
+    companion object {
+        const val AVATAR = "avatar"
     }
 }

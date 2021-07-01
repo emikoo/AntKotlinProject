@@ -5,11 +5,13 @@ import com.example.antkotlinproject.data.network.api.ProfileApi
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import okhttp3.MultipartBody
 
 interface ProfileRepository {
     fun fetchUserProfile(): Observable<User>
     fun fetchTeacherProfile(id: Int): Observable<User>
     fun editUserProfile(data: User): Observable<User>
+    fun changeImage(avatar: MultipartBody.Part): Observable<User>
 }
 
 class ProfileRepositoryImpl(private val api: ProfileApi) : ProfileRepository {
@@ -29,5 +31,11 @@ class ProfileRepositoryImpl(private val api: ProfileApi) : ProfileRepository {
         return api.editUserProfile(data)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-}
+    }
+
+    override fun changeImage(avatar: MultipartBody.Part): Observable<User> {
+        return api.changeImage(avatar)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
 }

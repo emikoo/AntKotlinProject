@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.databinding.ActivityTeacherProfileBinding
-import com.example.antkotlinproject.ui.user.bottomnavigation.profile.ProfileViewModel
+import com.example.antkotlinproject.ui.profile.ProfileViewModel
 import com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity.Companion.OWNER
 import com.example.antkotlinproject.utils.showAlertDialog
 import com.example.antkotlinproject.utils.toAt
