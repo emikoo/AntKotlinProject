@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.my_courses
+package com.example.antkotlinproject.ui.my_courses
 
 import android.view.LayoutInflater
 import android.view.View

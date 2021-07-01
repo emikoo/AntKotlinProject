@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/myCoursesFragment2"
-        android:name="com.example.antkotlinproject.ui.user.bottomnavigation.my_courses.MyCoursesFragment"
+        android:name="com.example.antkotlinproject.ui.my_courses.MyCoursesFragment"
         android:label="fragment_my_courses"
         tools:layout="@layout/fragment_my_courses" />
 

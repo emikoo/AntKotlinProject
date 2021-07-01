@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_teacher"
-    app:startDestination="@id/teacherCoursesFragment">
+    app:startDestination="@id/myCoursesFragment">
 
-    <fragment
-        android:id="@+id/teacherCoursesFragment"
-        android:name="com.example.antkotlinproject.ui.teacher.TeacherCoursesFragment"
-        android:label="fragment_teacher_courses"
-        tools:layout="@layout/fragment_teacher_courses" >
-        <action
-            android:id="@+id/action_teacherCoursesFragment_self"
-            app:destination="@id/teacherCoursesFragment" />
-    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.antkotlinproject.ui.profile.ProfileFragment"
@@ -22,5 +13,14 @@
         <action
             android:id="@+id/action_profileFragment_self"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCoursesFragment"
+        android:name="com.example.antkotlinproject.ui.my_courses.MyCoursesFragment"
+        android:label="fragment_my_courses"
+        tools:layout="@layout/fragment_my_courses" >
+        <action
+            android:id="@+id/action_myCoursesFragment_self"
+            app:destination="@id/myCoursesFragment" />
     </fragment>
 </navigation>
