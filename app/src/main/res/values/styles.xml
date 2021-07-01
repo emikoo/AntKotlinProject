@@ -94,6 +94,12 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="white_text_14sp">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
     <style name="subtitle_bej_8dp">
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">@dimen/sp_8</item>

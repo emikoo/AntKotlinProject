@@ -7,6 +7,7 @@ import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.databinding.ActivityMainTeacherBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MainTeacherActivity : BaseActivity<DefaultViewModel, ActivityMainTeacherBinding>(
     DefaultViewModel::class
@@ -15,6 +16,19 @@ class MainTeacherActivity : BaseActivity<DefaultViewModel, ActivityMainTeacherBi
 
     override fun setupViews() {
         setupBottomView()
+        setupFab()
+    }
+
+    private fun setupFab() {
+        binding.fab.setOnClickListener {
+            val bottomSheetDialogFragment: BottomSheetDialogFragment =
+                AddCourseBottomSheetFragment()
+            bottomSheetDialogFragment.isCancelable = true
+            bottomSheetDialogFragment.show(
+                supportFragmentManager,
+                bottomSheetDialogFragment.tag
+            )
+        }
     }
 
     private fun setupBottomView() {
@@ -26,7 +40,6 @@ class MainTeacherActivity : BaseActivity<DefaultViewModel, ActivityMainTeacherBi
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
 
-    override fun subscribeToLiveData() {
-    }
+    override fun subscribeToLiveData() {}
 
 }

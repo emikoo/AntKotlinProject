@@ -44,4 +44,18 @@
     <string name="cancel">Отмена</string>
     <string name="save">Сохранить</string>
     <string name="write_phone">Введите номер телефона</string>
+    <string name="create">Создать</string>
+    <string name="add_preview_course_image">Добавить заставку курса</string>
+    <string name="course_name">Название курса*</string>
+    <string name="course_description">Описание курса*</string>
+    <string name="course_price">Стоимость курса</string>
+    <string name="add_preview_course_video">Добавить вступительное видео</string>
+
+    <string-array name="categories">
+        <item>Выберите категорию</item>
+    </string-array>
+
+    <string-array name="subcategories">
+        <item>Выберите подкатегорию</item>
+    </string-array>
 </resources>

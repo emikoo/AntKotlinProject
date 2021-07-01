@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.bottomnavigation.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment">
 
     <TextView
         android:id="@+id/title"
@@ -181,5 +181,4 @@
         app:layout_constraintStart_toEndOf="@id/tv_email"
         app:layout_constraintTop_toTopOf="@id/tv_email"
         tools:text="@string/email" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

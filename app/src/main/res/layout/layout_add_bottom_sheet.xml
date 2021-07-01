@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_close_black"
+        app:title="Создать курс" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/preview_image"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_0"
+                app:layout_constraintTop_toTopOf="@id/btn_image"
+                app:layout_constraintBottom_toBottomOf="@id/btn_image"
+                app:layout_constraintStart_toStartOf="@id/btn_image"
+                app:layout_constraintEnd_toEndOf="@id/btn_image"
+                android:scaleType="centerCrop" />
+
+            <Button
+                android:id="@+id/btn_image"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_131"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/bg_add_image"
+                android:text="@string/add_preview_course_image"
+                android:textAllCaps="false"
+                style="@style/white_text_14sp"/>
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_42"
+                app:layout_constraintTop_toBottomOf="@id/btn_image"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_24"
+                android:background="@drawable/stroke_bej"
+                android:hint="@string/course_name"
+                style="@style/title_grey"
+                android:paddingStart="@dimen/dp_16"
+                android:maxLength="30"/>
+
+            <EditText
+                android:id="@+id/et_description"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_200"
+                app:layout_constraintTop_toBottomOf="@id/et_name"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/stroke_bej"
+                android:gravity="top"
+                android:hint="@string/course_description"
+                style="@style/subtitle_grey"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_8"/>
+
+            <EditText
+                android:id="@+id/et_price"
+                android:layout_width="@dimen/dp_170"
+                android:layout_height="@dimen/dp_42"
+                app:layout_constraintTop_toBottomOf="@id/et_description"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/stroke_bej"
+                android:hint="@string/course_price"
+                style="@style/subtitle_grey"
+                android:inputType="number"
+                android:paddingStart="@dimen/dp_16"
+                android:maxLength="30"/>
+            
+            <Spinner
+                android:id="@+id/sp_category"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_34"
+                app:layout_constraintTop_toBottomOf="@id/et_price"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginStart="@dimen/dp_16"/>
+
+            <Spinner
+                android:id="@+id/sp_subcategory"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_34"
+                app:layout_constraintTop_toBottomOf="@id/sp_category"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginStart="@dimen/dp_16"/>
+
+            <ImageView
+                android:id="@+id/iv_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sp_subcategory"
+                app:layout_constraintStart_toStartOf="@id/sp_subcategory"
+                android:layout_marginTop="@dimen/dp_24"
+                android:src="@drawable/ic_url"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/iv_url"
+                app:layout_constraintStart_toEndOf="@id/iv_url"
+                app:layout_constraintBottom_toBottomOf="@id/iv_url"
+                android:text="@string/add_preview_course_video"
+                android:textAllCaps="false"
+                android:background="@android:color/transparent"
+                style="@style/subtitle_green_12sp"
+                android:layout_marginStart="@dimen/dp_8"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/white_text_14sp"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_54"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:background="@drawable/bg_btn_auth_positive"
+        android:text="@string/create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
