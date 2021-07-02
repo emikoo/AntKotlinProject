@@ -1,22 +1,41 @@
 package com.example.antkotlinproject.ui.teacher
 
 import android.app.Dialog
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.example.antkotlinproject.R
+import androidx.lifecycle.Observer
+import com.example.antkotlinproject.base.BaseAddBottomSheetFragment
+import com.example.antkotlinproject.base.CategoryEvent
+import com.example.antkotlinproject.base.pickPhotoFromGalleryWithPermissionCheck
 import com.example.antkotlinproject.databinding.LayoutAddBottomSheetBinding
+import com.example.antkotlinproject.utils.showToast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 
 
-class AddCourseBottomSheetFragment() : BottomSheetDialogFragment() {
+class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
 
+    private val viewModel by viewModel<AddCourseViewModel>()
     lateinit var binding: LayoutAddBottomSheetBinding
+
+    private var categoryList = mutableListOf<String>("Выберите категорию")
+
+    private var categoryId: Int? = null
+    private var previewImage: File? = null
+
+    private val subcategoryList = mutableListOf<String>("Выберите подкатегорию")
+    private var filteredList = mutableListOf<String>()
+    private var oldList = mutableListOf<String>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,37 +47,96 @@ class AddCourseBottomSheetFragment() : BottomSheetDialogFragment() {
         return binding.root
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = BottomSheetDialog(requireContext(), theme)
-        dialog.setOnShowListener {
-            val bottomSheetDialog = it as BottomSheetDialog
-            val parentLayout =
-                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-            parentLayout?.let { it ->
-                val behaviour = BottomSheetBehavior.from(it)
-                setupFullHeight(it)
-                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+    override fun setupViews() {
+        setupCategorySpinner()
+        setupSubCategorySpinner()
+        setupListener()
+        setupViewModel()
+    }
+
+    private fun setupCategorySpinner() {
+        val adapter =
+            ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, categoryList)
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spCategory.adapter = adapter
+        getSubcategoriesOfCategory()
+    }
+
+    private fun getSubcategoriesOfCategory() {
+        binding.spCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                categoryId = parent?.getItemIdAtPosition(position).toString().toInt()
+                viewModel.fetchSubcategory(categoryId!!)
             }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
-        return dialog
     }
 
-    private fun setupFullHeight(bottomSheet: View) {
-        val layoutParams = bottomSheet.layoutParams
-        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
-        bottomSheet.layoutParams = layoutParams
+    private fun setupSubCategorySpinner() {
+        val adapter =
+            ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, subcategoryList)
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spSubcategory.adapter = adapter
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupViews()
-    }
-
-    private fun setupViews() {
-        closeAction()
-    }
-
-    private fun closeAction() {
+    private fun setupListener() {
+        binding.btnImage.setOnClickListener { pickPhotoFromGalleryWithPermissionCheck() }
+        createCourse()
         binding.toolbar.setNavigationOnClickListener { this.onDestroyView() }
     }
+
+    override fun showPhoto(file: File) {
+        val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+        binding.previewImage.setImageBitmap(bitmap)
+        binding.btnImage.text = "Изменить"
+        previewImage = file
+    }
+
+    private fun createCourse() {
+        binding.btnAdd.setOnClickListener {
+            val name = binding.etName.text.toString()
+            val lessonsCount = binding.etLessonsCount.text.toString()
+            val description = binding.etDescription.text.toString()
+            val price = binding.etPrice.text.toString()
+            if (name.isNotEmpty() && lessonsCount.isNotEmpty() && description.isNotEmpty() && price.isNotEmpty()
+                && categoryId != 0 && previewImage != null) {
+                viewModel.createCourse(name, description, categoryId!!.toInt(), lessonsCount.toInt(),
+                    price.toDouble(), previewImage!!)
+            } else showToast(requireActivity(), "Заполните все поля")
+        }
+    }
+
+    private fun setupViewModel() {
+        viewModel.event.observe(this, Observer {
+            when (it) {
+                is CategoryEvent.CategoriesFetched -> it.array?.let { it ->
+                    for (array in it) {
+                        val category = array.name
+                        categoryList.add(category)
+                    }
+                }
+                is CategoryEvent.SubCategoryFetched -> it.item?.let { it ->
+                    subcategoryList.removeAll(oldList)
+                    oldList.clear()
+                    for (array in it.subCategories) {
+                        val subcategory = array.name
+                        filteredList.add(subcategory)
+                        subcategoryList.addAll(filteredList)
+                        oldList.addAll(filteredList)
+                        filteredList.clear()
+                    }
+                }
+            }
+        })
+    }
+
+    override fun showPhoto1(file: Uri?) {}
 }

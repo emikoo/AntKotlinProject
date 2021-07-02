@@ -6,11 +6,12 @@ import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.ui.profile.ProfileViewModel
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesFragment
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.categories.CategoriesViewModel
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragment
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchViewModel
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.subcategory.SubcategoryViewModel
+import com.example.antkotlinproject.ui.teacher.AddCourseViewModel
+import com.example.antkotlinproject.ui.user.search.categories.CategoriesFragment
+import com.example.antkotlinproject.ui.user.search.categories.CategoriesViewModel
+import com.example.antkotlinproject.ui.user.search.main.SearchFragment
+import com.example.antkotlinproject.ui.user.search.main.SearchViewModel
+import com.example.antkotlinproject.ui.user.search.subcategory.SubcategoryViewModel
 import com.example.antkotlinproject.ui.user.detail_course.DetailCourseViewModel
 import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.android.ext.koin.androidContext
@@ -29,12 +30,8 @@ val viewModelModule = module {
     viewModel { AuthViewModel(get(), get()) }
     viewModel { SearchViewModel(get()) }
     viewModel { DetailCourseViewModel(get()) }
-    viewModel {
-        ProfileViewModel(
-            get(),
-            get()
-        )
-    }
+    viewModel { ProfileViewModel(get(), get()) }
+    viewModel { AddCourseViewModel(get()) }
     viewModel { CategoriesViewModel(get()) }
     viewModel { SubcategoryViewModel(get()) }
 }

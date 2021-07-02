@@ -5,16 +5,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions
 import java.io.File
@@ -22,7 +16,6 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.util.*
-import kotlin.reflect.KClass
 
 @RuntimePermissions
 abstract class BaseUserPhotoFragment : Fragment() {
@@ -167,7 +160,7 @@ abstract class BaseUserPhotoFragment : Fragment() {
         context: Context,
         filePath: String = Calendar.getInstance().timeInMillis.toString()
     ): File {
-        return File(context.externalCacheDir, "$filePath.jpg") // context needed
+        return File(context.externalCacheDir, "$filePath.jpg")
     }
 
     override fun onRequestPermissionsResult(

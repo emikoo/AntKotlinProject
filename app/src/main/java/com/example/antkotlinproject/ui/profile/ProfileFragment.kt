@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseUserPhotoFragment
 import com.example.antkotlinproject.base.ProfileEvent
-import com.example.antkotlinproject.base.pickPhotoFromGalleryWithPermissionCheck
 import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.databinding.FragmentProfileBinding
 import com.example.antkotlinproject.ui.auth.AuthorizationActivity
@@ -51,7 +50,7 @@ class ProfileFragment : BaseUserPhotoFragment() {
         }
 
         binding.btnPhoto.setOnClickListener {
-            pickPhotoFromGalleryWithPermissionCheck()
+            pickPhotoFromGallery()
         }
     }
 

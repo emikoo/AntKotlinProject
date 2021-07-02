@@ -36,6 +36,24 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <EditText
+        android:id="@+id/et_lessons_count"
+        style="@style/subtitle_green_12sp"
+        android:layout_width="@dimen/dp_131"
+        android:layout_height="@dimen/dp_34"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/stroke_bej"
+        android:hint="@string/lessons_count"
+        android:inputType="number"
+        android:maxLength="3"
+        android:maxLines="1"
+        android:paddingStart="@dimen/dp_16"
+        app:layout_constraintBottom_toBottomOf="@id/btn_image"
+        app:layout_constraintStart_toEndOf="@id/btn_image"/>
+
+
+    <EditText
         android:id="@+id/et_name"
         style="@style/title_grey"
         android:layout_width="match_parent"
@@ -46,6 +64,7 @@
         android:background="@drawable/stroke_bej"
         android:hint="@string/course_name"
         android:maxLength="30"
+        android:maxLines="1"
         android:paddingStart="@dimen/dp_16"
         app:layout_constraintTop_toBottomOf="@id/btn_image" />
 
@@ -76,10 +95,21 @@
         android:background="@drawable/stroke_bej"
         android:hint="@string/course_price"
         android:inputType="number"
-        android:maxLength="30"
+        android:maxLength="6"
+        android:maxLines="1"
         android:paddingStart="@dimen/dp_16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_description" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/et_price"
+        app:layout_constraintBottom_toBottomOf="@id/et_price"
+        app:layout_constraintStart_toEndOf="@id/et_price"
+        android:layout_marginStart="@dimen/dp_16"
+        style="@style/subtitle_grey"
+        android:text="@string/price_in_som"/>
 
     <Spinner
         android:id="@+id/sp_category"
@@ -103,12 +133,14 @@
         android:id="@+id/iv_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxWidth="@dimen/dp_50"
         android:layout_marginTop="@dimen/dp_24"
         android:src="@drawable/ic_url"
         app:layout_constraintStart_toStartOf="@id/sp_subcategory"
         app:layout_constraintTop_toBottomOf="@id/sp_subcategory" />
 
     <Button
+        android:id="@+id/btn_video"
         style="@style/subtitle_green_12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
