@@ -50,12 +50,6 @@
     <string name="course_description">Описание курса*</string>
     <string name="course_price">Стоимость курса</string>
     <string name="add_preview_course_video">Добавить вступительное видео</string>
-
-    <string-array name="categories">
-        <item>Выберите категорию</item>
-    </string-array>
-
-    <string-array name="subcategories">
-        <item>Выберите подкатегорию</item>
-    </string-array>
+    <string name="price_in_som">*Указывайте цену в сомах</string>
+    <string name="lessons_count">Кол-во уроков</string>
 </resources>

@@ -7,8 +7,8 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentMyCoursesBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.CourseAdapter
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.CourseClickListener
+import com.example.antkotlinproject.ui.user.search.main.CourseAdapter
+import com.example.antkotlinproject.ui.user.search.main.CourseClickListener
 
 class MyCoursesFragment : BaseFragment<DefaultViewModel, FragmentMyCoursesBinding>(
     DefaultViewModel::class
