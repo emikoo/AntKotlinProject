@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search.main
+package com.example.antkotlinproject.ui.user.search.main
 
 import android.os.Handler
 import android.view.LayoutInflater
@@ -37,6 +37,7 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         setupSearchView()
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.fetchCourses()
+            viewModel.fetchCategory()
         }
 
         binding.swipeRefreshLayout.setColorSchemeResources(
@@ -94,7 +95,7 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     override fun subscribeToLiveData() {
         viewModel.event.observe(this, Observer {
             when (it) {
-                is CategoryEvent.CategoryFetched -> it.array?.let { it ->
+                is CategoryEvent.CategoriesFetched -> it.array?.let { it ->
                     categoryAdapter.addItems(it)
                 }
                 is CourseEvent.CoursesFetched -> it.array?.let { it ->
@@ -112,11 +113,9 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         findNavController().navigate(directions)
     }
 
-    override fun onCategoryClick(item: CategoryModel) {
-        val categoryId = item.id
-        val directions =
+    override fun onCategoryClick(item: CategoryModel) { val directions =
             SearchFragmentDirections.actionSearchFragment2ToCategoriesFragment(
-                categoryId
+                item.id
             )
         findNavController().navigate(directions)
     }

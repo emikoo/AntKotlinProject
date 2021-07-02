@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search.main
+package com.example.antkotlinproject.ui.user.search.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

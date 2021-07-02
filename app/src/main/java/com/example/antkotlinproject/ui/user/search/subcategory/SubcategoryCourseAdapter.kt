@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search.subcategory
+package com.example.antkotlinproject.ui.user.search.subcategory
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import com.bumptech.glide.Glide
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseAdapter
 import com.example.antkotlinproject.base.BaseViewHolder
-import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.data.model.SubcategoryCourseModel
 import com.example.antkotlinproject.databinding.ItemCourseVerticalBinding
 import com.example.antkotlinproject.utils.toLesson

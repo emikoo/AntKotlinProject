@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.bottomnavigation.search.subcategory
+package com.example.antkotlinproject.ui.user.search.subcategory
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,8 +8,6 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.SubcategoryCourseModel
 import com.example.antkotlinproject.databinding.FragmentSubcategoryBinding
-import com.example.antkotlinproject.ui.user.bottomnavigation.search.main.SearchFragmentDirections
-import com.example.antkotlinproject.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcategoryBinding>(
@@ -51,5 +49,7 @@ class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcatego
         })
     }
 
-    override fun onCourseClick(item: SubcategoryCourseModel) {}
+    override fun onCourseClick(item: SubcategoryCourseModel) {
+
+    }
 }
