@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.antkotlinproject.R
+import com.example.antkotlinproject.data.model.CourseModel
 import com.google.android.material.snackbar.Snackbar
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -51,6 +52,16 @@ fun String.toAt() = "@$this"
 
 fun File.toImageRequestBody(name: String): MultipartBody.Part {
     return asRequestBody("image/*".toMediaTypeOrNull()).let {
+        MultipartBody.Part.createFormData(
+            name,
+            this.name,
+            it
+        )
+    }
+}
+
+fun File.toVideoRequestBody(name: String): MultipartBody.Part {
+    return asRequestBody("video/*".toMediaTypeOrNull()).let {
         MultipartBody.Part.createFormData(
             name,
             this.name,
