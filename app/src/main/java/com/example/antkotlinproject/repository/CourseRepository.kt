@@ -1,9 +1,6 @@
 package com.example.antkotlinproject.repository
 
-import com.example.antkotlinproject.data.model.CategoryModel
-import com.example.antkotlinproject.data.model.CourseModel
-import com.example.antkotlinproject.data.model.SubcategoryModel
-import com.example.antkotlinproject.data.model.User
+import com.example.antkotlinproject.data.model.*
 import com.example.antkotlinproject.data.network.api.CourseApi
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,7 +15,8 @@ interface CourseRepository {
     fun fetchSubcategory(categoryId: Int): Observable<CategoryModel>
     fun fetchSubcategoryCourses(subcategoryId: Int): Observable<SubcategoryModel>
     fun createCourse(name: String, description: String, categoryId: Int,
-                     lessonsCount: Int, price: Double, image: MultipartBody.Part): Observable<CourseModel>
+                     lessonsCount: Int, price: Double, subcategoryId: Int,
+                     image: MultipartBody.Part): Observable<CourseModel>
 }
 
 class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
@@ -54,10 +52,12 @@ class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
 
     override fun createCourse(
         name: String, description: String, categoryId: Int, lessonsCount: Int, price: Double,
+        subcategoryId: Int,
         image: MultipartBody.Part
     ): Observable<CourseModel> {
-        return api.createCourse(name, description, categoryId, lessonsCount,
-            price, image)
+        return api.createCourse(name = name, description = description, categoryId = categoryId,
+            lessonsCount = lessonsCount,
+            price = price, coursePreviewImage = image, subcategoryId = subcategoryId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

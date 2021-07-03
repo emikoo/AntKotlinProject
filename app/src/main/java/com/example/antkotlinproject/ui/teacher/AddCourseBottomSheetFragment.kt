@@ -1,13 +1,11 @@
 package com.example.antkotlinproject.ui.teacher
 
-import android.app.Dialog
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
@@ -16,8 +14,6 @@ import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.pickPhotoFromGalleryWithPermissionCheck
 import com.example.antkotlinproject.databinding.LayoutAddBottomSheetBinding
 import com.example.antkotlinproject.utils.showToast
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -30,6 +26,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     private var categoryList = mutableListOf<String>("Выберите категорию")
 
     private var categoryId: Int? = null
+    private var subcategoryId: Int? = null
     private var previewImage: File? = null
 
     private val subcategoryList = mutableListOf<String>("Выберите подкатегорию")
@@ -82,9 +79,15 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     private fun setupSubCategorySpinner() {
         val adapter =
             ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, subcategoryList)
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spSubcategory.adapter = adapter
+        binding.spSubcategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                subcategoryId = p0?.getItemIdAtPosition(p2).toString().toInt()
+            }
+
+        }
     }
 
     private fun setupListener() {
@@ -108,8 +111,11 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
             val price = binding.etPrice.text.toString()
             if (name.isNotEmpty() && lessonsCount.isNotEmpty() && description.isNotEmpty() && price.isNotEmpty()
                 && categoryId != 0 && previewImage != null) {
-                viewModel.createCourse(name, description, categoryId!!.toInt(), lessonsCount.toInt(),
-                    price.toDouble(), previewImage!!)
+                viewModel.createCourse(
+                    name = name, description = description, categoryId = categoryId!!.toInt(),
+                    lessonsCount = lessonsCount.toInt(), subcategoryId = subcategoryId!!,
+                    price = price.toDouble(), previewImage = previewImage!!
+                )
             } else showToast(requireActivity(), "Заполните все поля")
         }
     }

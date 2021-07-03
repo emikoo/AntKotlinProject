@@ -39,11 +39,12 @@ class AddCourseViewModel(private val repository: CourseRepository): BaseViewMode
     }
 
     fun createCourse(name: String, description: String, categoryId: Int,
-                     lessonsCount: Int, price: Double, previewImage: File) {
+                     lessonsCount: Int, price: Double, subcategoryId: Int, previewImage: File) {
         loading.value = true
         disposable.add(
-            repository.createCourse(name, description, categoryId, lessonsCount, price,
-                previewImage.toImageRequestBody(
+            repository.createCourse(name = name, description = description, categoryId = categoryId,
+                lessonsCount = lessonsCount, price = price, subcategoryId = subcategoryId,
+                image = previewImage.toImageRequestBody(
                 PREVIEW_IMAGE))
                 .doOnTerminate { loading.value = false }
                 .subscribe(
