@@ -2,10 +2,13 @@ package com.example.antkotlinproject.ui.user.search.main
 
 import android.os.Handler
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
@@ -22,6 +25,8 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var courseAdapter: CourseAdapter
 
+    private var categoryCode = CATEGORY
+
     override fun attachBinding(
         list: MutableList<FragmentSearchBinding>,
         layoutInflater: LayoutInflater,
@@ -35,14 +40,9 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         viewModel = getViewModel(clazz = SearchViewModel::class)
         setupRecyclerView()
         setupSearchView()
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            viewModel.fetchCourses()
-            viewModel.fetchCategory()
-        }
+        setupSwipeRefresh()
 
-        binding.swipeRefreshLayout.setColorSchemeResources(
-            android.R.color.holo_green_light
-        )
+        binding.btnCategoryBack.setOnClickListener { viewModel.fetchCategory() }
     }
 
     private fun setupRecyclerView() {
@@ -92,16 +92,38 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         })
     }
 
+    private fun setupSwipeRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.fetchCourses()
+            viewModel.fetchCategory()
+        }
+
+        binding.swipeRefreshLayout.setColorSchemeResources(
+            android.R.color.holo_green_light
+        )
+    }
+
     override fun subscribeToLiveData() {
         viewModel.event.observe(this, Observer {
             when (it) {
                 is CategoryEvent.CategoriesFetched -> it.array?.let { it ->
+                    categoryCode = CATEGORY
                     categoryAdapter.addItems(it)
+                    binding.tvCategories.setText(R.string.search_by_categories)
+                    binding.btnCategoryBack.visibility = View.GONE
+                    binding.categoriesList.layoutManager = GridLayoutManager(requireContext(), 2)
                 }
                 is CourseEvent.CoursesFetched -> it.array?.let { it ->
                     courseAdapter.addItems(it)
                     viewModel.course = it
                     binding.swipeRefreshLayout.isRefreshing = false
+                }
+                is CategoryEvent.SubCategoryFetched -> it.item?.let { it ->
+                    categoryCode = SUBCATEGORY
+                    categoryAdapter.addItems(it.subCategories)
+                    binding.tvCategories.text = it.name
+                    binding.btnCategoryBack.visibility = View.VISIBLE
+                    binding.categoriesList.layoutManager = GridLayoutManager(requireContext(), 1)
                 }
             }
         })
@@ -113,11 +135,19 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         findNavController().navigate(directions)
     }
 
-    override fun onCategoryClick(item: CategoryModel) { val directions =
-            SearchFragmentDirections.actionSearchFragment2ToCategoriesFragment(
-                item.id
-            )
-        findNavController().navigate(directions)
+    override fun onCategoryClick(item: CategoryModel) {
+        if (categoryCode == SUBCATEGORY) {
+//            val directions =
+//                SearchFragmentDirections.actionSearchFragment2ToCategoriesFragment(
+//                    item.id
+//                )
+//            findNavController().navigate(directions)
+        } else viewModel.fetchSubcategory(item.id)
+    }
+
+    companion object {
+        private const val CATEGORY = 1
+        private const val SUBCATEGORY = 2
     }
 }
 

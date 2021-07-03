@@ -40,4 +40,15 @@ class SearchViewModel(private val repository: CourseRepository) : BaseViewModel<
                     { message.value = it.message })
         )
     }
+
+    fun fetchSubcategory(categoryId: Int) {
+        loading.value = true
+        disposable.add(
+            repository.fetchSubcategory(categoryId)
+                .doOnTerminate { loading.value = false }
+                .subscribe(
+                    { event.value = CategoryEvent.SubCategoryFetched(it) },
+                    { message.value = it.message })
+        )
+    }
 }

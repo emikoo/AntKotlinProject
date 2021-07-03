@@ -37,15 +37,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/btn_category_back"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:background="@drawable/ic_left_grey"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@id/tv_categories"
+                app:layout_constraintBottom_toBottomOf="@id/tv_categories"
+                android:layout_marginStart="@dimen/dp_8"
+                app:layout_constraintStart_toStartOf="parent"/>
+
             <TextView
                 android:id="@+id/tv_categories"
                 style="@style/title_categories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginStart="@dimen/dp_8"
                 android:layout_marginTop="@dimen/dp_24"
                 android:text="@string/search_by_categories"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_category_back"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
