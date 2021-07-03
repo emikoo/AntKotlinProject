@@ -7,8 +7,6 @@ import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.ui.profile.ProfileViewModel
 import com.example.antkotlinproject.ui.teacher.AddCourseViewModel
-import com.example.antkotlinproject.ui.user.search.categories.CategoriesFragment
-import com.example.antkotlinproject.ui.user.search.categories.CategoriesViewModel
 import com.example.antkotlinproject.ui.user.search.main.SearchFragment
 import com.example.antkotlinproject.ui.user.search.main.SearchViewModel
 import com.example.antkotlinproject.ui.user.search.subcategory.SubcategoryViewModel
@@ -22,7 +20,6 @@ import org.koin.dsl.module
 val fragmentModule = module {
     fragment { AuthorizationFragment() }
     fragment { SearchFragment() }
-    fragment { CategoriesFragment() }
 }
 
 val viewModelModule = module {
@@ -32,7 +29,6 @@ val viewModelModule = module {
     viewModel { DetailCourseViewModel(get()) }
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { AddCourseViewModel(get()) }
-    viewModel { CategoriesViewModel(get()) }
     viewModel { SubcategoryViewModel(get()) }
 }
 
