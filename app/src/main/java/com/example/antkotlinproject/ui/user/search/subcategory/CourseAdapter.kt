@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.search.main
+package com.example.antkotlinproject.ui.user.search.subcategory
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -20,8 +20,12 @@ class CourseAdapter(private val listenerCourse: CourseClickListener) : BaseAdapt
             ItemCourseVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val bindingEmpty =
             ItemEmptyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return if (viewType == VIEW_TYPE_DATA) CourseViewHolder(binding)
-        else EmptyViewHolder (bindingEmpty)
+        return if (viewType == VIEW_TYPE_DATA) CourseViewHolder(
+            binding
+        )
+        else EmptyViewHolder(
+            bindingEmpty
+        )
     }
 
     override fun getItemCount(): Int {

@@ -15,6 +15,8 @@ import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CategoryModel
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentSearchBinding
+import com.example.antkotlinproject.ui.user.search.subcategory.CourseAdapter
+import com.example.antkotlinproject.ui.user.search.subcategory.CourseClickListener
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(

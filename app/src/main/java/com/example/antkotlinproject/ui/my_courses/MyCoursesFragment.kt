@@ -7,8 +7,8 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentMyCoursesBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
-import com.example.antkotlinproject.ui.user.search.main.CourseAdapter
-import com.example.antkotlinproject.ui.user.search.main.CourseClickListener
+import com.example.antkotlinproject.ui.user.search.subcategory.CourseAdapter
+import com.example.antkotlinproject.ui.user.search.subcategory.CourseClickListener
 
 class MyCoursesFragment : BaseFragment<DefaultViewModel, FragmentMyCoursesBinding>(
     DefaultViewModel::class
@@ -31,7 +31,10 @@ class MyCoursesFragment : BaseFragment<DefaultViewModel, FragmentMyCoursesBindin
     }
 
     private fun setupRecyclerView() {
-        adapter = CourseAdapter(this)
+        adapter =
+            CourseAdapter(
+                this
+            )
         binding.coursesList.adapter = adapter
     }
 

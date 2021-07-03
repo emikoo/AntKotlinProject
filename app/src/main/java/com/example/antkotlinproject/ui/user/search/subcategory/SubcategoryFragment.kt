@@ -8,8 +8,6 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentSubcategoryBinding
-import com.example.antkotlinproject.ui.user.search.main.CourseAdapter
-import com.example.antkotlinproject.ui.user.search.main.CourseClickListener
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcategoryBinding>(
@@ -36,7 +34,10 @@ class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcatego
     }
 
     private fun setupRecyclerView() {
-        adapter = CourseAdapter(this)
+        adapter =
+            CourseAdapter(
+                this
+            )
         binding.coursesList.adapter = adapter
     }
 
