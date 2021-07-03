@@ -1,5 +1,6 @@
 package com.example.antkotlinproject.ui.user.search.main
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
@@ -58,6 +59,7 @@ class CourseAdapter(private val listenerCourse: CourseClickListener) : BaseAdapt
 }
 
 class CourseViewHolder(var binding: ItemCourseVerticalBinding) : BaseViewHolder(binding.root) {
+    @SuppressLint("SetTextI18n")
     fun bind(item: CourseModel) {
         Glide.with(binding.image.context)
             .load(item.coursePreviewImage)
@@ -65,7 +67,7 @@ class CourseViewHolder(var binding: ItemCourseVerticalBinding) : BaseViewHolder(
             .into(binding.image)
         binding.name.text = item.name
         binding.lessons.text = item.lessonsCount.toString().toLesson()
-        binding.teacher.text = item.owner?.username
+        binding.teacher.text = "${item.owner?.firstName} ${item.owner?.lastName}"
     }
 }
 

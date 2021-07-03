@@ -6,15 +6,17 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CourseEvent
-import com.example.antkotlinproject.data.model.SubcategoryCourseModel
+import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentSubcategoryBinding
+import com.example.antkotlinproject.ui.user.search.main.CourseAdapter
+import com.example.antkotlinproject.ui.user.search.main.CourseClickListener
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcategoryBinding>(
     SubcategoryViewModel::class
 ), CourseClickListener {
 
-    lateinit var adapter: SubcategoryCourseAdapter
+    lateinit var adapter: CourseAdapter
 
     override fun attachBinding(
         list: MutableList<FragmentSubcategoryBinding>,
@@ -34,7 +36,7 @@ class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcatego
     }
 
     private fun setupRecyclerView() {
-        adapter = SubcategoryCourseAdapter(this)
+        adapter = CourseAdapter(this)
         binding.coursesList.adapter = adapter
     }
 

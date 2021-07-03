@@ -1,9 +1,6 @@
 package com.example.antkotlinproject.base
 
-import com.example.antkotlinproject.data.model.CategoryModel
-import com.example.antkotlinproject.data.model.CourseModel
-import com.example.antkotlinproject.data.model.SubcategoryModel
-import com.example.antkotlinproject.data.model.User
+import com.example.antkotlinproject.data.model.*
 
 sealed class BaseEvent
 
