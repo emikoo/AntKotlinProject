@@ -137,11 +137,9 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
 
     override fun onCategoryClick(item: CategoryModel) {
         if (categoryCode == SUBCATEGORY) {
-//            val directions =
-//                SearchFragmentDirections.actionSearchFragment2ToCategoriesFragment(
-//                    item.id
-//                )
-//            findNavController().navigate(directions)
+            val directions =
+                SearchFragmentDirections.actionSearchFragment2ToSubcategoryFragment( item.id )
+            findNavController().navigate(directions)
         } else viewModel.fetchSubcategory(item.id)
     }
 
