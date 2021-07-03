@@ -9,6 +9,7 @@ class PrefsHelper(private val context: Context) {
     private val TOKEN = "TOKEN"
     private val REFRESH_TOKEN = "REFRESH_TOKEN"
     private var IS_STUFF = "IS_STUFF"
+    private var FRAGMENT_CODE = "FRAGMENT_CODE"
     private var prefs: SharedPreferences =
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
@@ -42,6 +43,14 @@ class PrefsHelper(private val context: Context) {
 
     fun getIsStuff(): Boolean {
         return prefs.getBoolean(IS_STUFF, false)
+    }
+
+    fun saveFragmentCode(code: Int) {
+        prefs.edit().putInt(FRAGMENT_CODE, code).apply()
+    }
+
+    fun getFragmentCode(): Int {
+        return prefs.getInt(FRAGMENT_CODE, 0)
     }
 
     companion object {

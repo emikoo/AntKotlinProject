@@ -10,6 +10,7 @@ import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.databinding.ActivityDetailCourseBinding
 import com.example.antkotlinproject.ui.user.exo_player.VideoPlayerActivity
 import com.example.antkotlinproject.ui.user.teacher_s_profile.TeacherProfileActivity
+import com.example.antkotlinproject.utils.PrefsHelper
 import com.example.antkotlinproject.utils.toLesson
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -18,6 +19,8 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
 ) {
     override fun getViewBinding() = ActivityDetailCourseBinding.inflate(layoutInflater)
 
+    lateinit var prefsHelper: PrefsHelper
+
     override fun setupViews() {
         viewModel = getViewModel(clazz = DetailCourseViewModel::class)
         fetchCourse()
@@ -25,8 +28,15 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
     }
 
     private fun fetchCourse() {
+        prefsHelper = PrefsHelper(this)
+
         val arguments: DetailCourseActivityArgs by navArgs()
-        viewModel.fetchCourse(arguments.courseId)
+
+        val searchArgs = arguments.searchCourseId
+        val subcategoryArgs = arguments.subcategoryCourseId
+
+        if (searchArgs == 0) viewModel.fetchCourse(subcategoryArgs)
+        else viewModel.fetchCourse(searchArgs)
     }
 
     private fun setupListener() {

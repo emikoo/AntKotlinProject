@@ -109,7 +109,7 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
 
     override fun onCourseClick(item: CourseModel) {
         val directions =
-            SearchFragmentDirections.actionSearchFragment2ToDetailCourseActivity(item.id!!)
+            SearchFragmentDirections.actionSearchFragment2ToDetailCourseActivity(item.id!!, 0)
         findNavController().navigate(directions)
     }
 

@@ -51,7 +51,9 @@ class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcatego
         })
     }
 
-    override fun onCourseClick(item: SubcategoryCourseModel) {
-
+    override fun onCourseClick(item: CourseModel) {
+        val directions =
+            SubcategoryFragmentDirections.actionSubcategoryFragmentToDetailCourseActivity(0, item.id!!)
+        findNavController().navigate(directions)
     }
 }
