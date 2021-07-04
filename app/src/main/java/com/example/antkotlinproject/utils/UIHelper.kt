@@ -31,7 +31,7 @@ fun showAlertDialog(context: Context, action: () -> Unit) {
             dialog.dismiss()
         }
         .setNegativeButton("Нет", null)
-        .setIcon(android.R.drawable.ic_dialog_alert)
+        .setIcon(R.drawable.ic_phone)
         .show()
 }
 
