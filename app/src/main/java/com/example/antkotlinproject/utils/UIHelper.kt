@@ -13,18 +13,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-fun showActionSnackbar(
-    view: View,
-    message: String,
-    actionTitle: String,
-    action: () -> Unit,
-    context: Context
-) {
-    Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction(actionTitle) {
-        action()
-    }.setActionTextColor(ContextCompat.getColor(context, R.color.color_dark_green)).show()
-}
-
 var toast: Toast? = null
 fun showToast(context: Context, message: String) {
     if (toast != null) toast?.cancel()
