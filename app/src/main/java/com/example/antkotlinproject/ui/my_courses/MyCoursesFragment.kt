@@ -77,6 +77,14 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
         })
     }
 
+    private fun setupSwipeRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.fetchUserCourses()
+        }
+
+        binding.swipeRefreshLayout.setColorSchemeResources(
+            android.R.color.holo_green_light
+        )
     }
 
     override fun subscribeToLiveData() {

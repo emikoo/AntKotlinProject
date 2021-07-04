@@ -31,13 +31,21 @@
         android:background="@color/color_green"
         app:layout_constraintTop_toBottomOf="@id/search_view" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/courses_list"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_0"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp_16"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line_top" />
+        app:layout_constraintTop_toBottomOf="@id/line_top">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/courses_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
