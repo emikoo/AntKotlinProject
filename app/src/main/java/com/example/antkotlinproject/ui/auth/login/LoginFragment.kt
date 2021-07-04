@@ -44,7 +44,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
     private fun login() {
         viewModel.login(
             username = binding.etLogin.text.toString(),
-            password = binding.etPassword.text.toString()
+            password = binding.password.text.toString()
         )
     }
 
