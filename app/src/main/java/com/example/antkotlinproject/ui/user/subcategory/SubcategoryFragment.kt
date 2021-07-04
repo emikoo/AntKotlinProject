@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.search.subcategory
+package com.example.antkotlinproject.ui.user.subcategory
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -45,7 +45,7 @@ class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcatego
         viewModel.event.observe(this, Observer {
             when (it) {
                 is CourseEvent.SubcategoryCoursesFetched -> it.item?.let { it ->
-                    adapter.addItems(it.courses)
+                    adapter.addItems(it.courses!!)
                     binding.name.text = it.name
                 }
             }
@@ -54,7 +54,7 @@ class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcatego
 
     override fun onCourseClick(item: CourseModel) {
         val directions =
-            SubcategoryFragmentDirections.actionSubcategoryFragmentToDetailCourseActivity(0, item.id!!)
+            SubcategoryFragmentDirections.actionSubcategoryFragmentToDetailCourseActivity(0, item.id!!, 0)
         findNavController().navigate(directions)
     }
 }

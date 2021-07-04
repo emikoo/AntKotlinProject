@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.search.subcategory
+package com.example.antkotlinproject.ui.user.subcategory
 
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel

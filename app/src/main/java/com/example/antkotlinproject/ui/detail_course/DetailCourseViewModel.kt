@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.detail_course
+package com.example.antkotlinproject.ui.detail_course
 
 import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel

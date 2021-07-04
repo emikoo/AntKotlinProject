@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.search.main
+package com.example.antkotlinproject.ui.user.search
 
 import android.os.Handler
 import android.view.LayoutInflater
@@ -15,19 +15,18 @@ import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CategoryModel
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentSearchBinding
-import com.example.antkotlinproject.ui.user.search.subcategory.CourseAdapter
-import com.example.antkotlinproject.ui.user.search.subcategory.CourseClickListener
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
     SearchViewModel::class
 ),
-    CourseClickListener,
+    SearchCourseClickListener,
     CategoryClickListener {
     private lateinit var categoryAdapter: CategoryAdapter
-    private lateinit var courseAdapter: CourseAdapter
+    private lateinit var courseAdapter: SearchCourseAdapter
 
-    private var categoryCode = CATEGORY
+    private var categoryCode =
+        CATEGORY
 
     override fun attachBinding(
         list: MutableList<FragmentSearchBinding>,
@@ -54,17 +53,13 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
 
     private fun setupCategories() {
         categoryAdapter =
-            CategoryAdapter(
-                this
-            )
+            CategoryAdapter(this)
         binding.categoriesList.adapter = categoryAdapter
     }
 
     private fun setupCourses() {
         courseAdapter =
-            CourseAdapter(
-                this
-            )
+            SearchCourseAdapter(this)
         binding.coursesList.adapter = courseAdapter
     }
 
@@ -109,19 +104,22 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
         viewModel.event.observe(this, Observer {
             when (it) {
                 is CategoryEvent.CategoriesFetched -> it.array?.let { it ->
-                    categoryCode = CATEGORY
+                    categoryCode =
+                        CATEGORY
                     categoryAdapter.addItems(it)
                     binding.tvCategories.setText(R.string.search_by_categories)
-                    binding.btnCategoryBack.visibility = View.GONE
+                    binding.btnCategoryBack.visibility = View.INVISIBLE
                     binding.categoriesList.layoutManager = GridLayoutManager(requireContext(), 2)
+                    binding.swipeRefreshLayout.isRefreshing = false
                 }
                 is CourseEvent.CoursesFetched -> it.array?.let { it ->
                     courseAdapter.addItems(it)
                     viewModel.course = it
                     binding.swipeRefreshLayout.isRefreshing = false
                 }
-                is CategoryEvent.SubCategoryFetched -> it.item?.let { it ->
-                    categoryCode = SUBCATEGORY
+                is CategoryEvent.SubcategoryFetched -> it.item?.let { it ->
+                    categoryCode =
+                        SUBCATEGORY
                     categoryAdapter.addItems(it.subCategories)
                     binding.tvCategories.text = it.name
                     binding.btnCategoryBack.visibility = View.VISIBLE
@@ -133,14 +131,18 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
 
     override fun onCourseClick(item: CourseModel) {
         val directions =
-            SearchFragmentDirections.actionSearchFragment2ToDetailCourseActivity(item.id!!, 0)
+            SearchFragmentDirections.actionSearchFragment2ToDetailCourseActivity(
+                item.id!!,
+                0, 0)
         findNavController().navigate(directions)
     }
 
     override fun onCategoryClick(item: CategoryModel) {
         if (categoryCode == SUBCATEGORY) {
             val directions =
-                SearchFragmentDirections.actionSearchFragment2ToSubcategoryFragment( item.id )
+                SearchFragmentDirections.actionSearchFragment2ToSubcategoryFragment(
+                    item.id
+                )
             findNavController().navigate(directions)
         } else viewModel.fetchSubcategory(item.id)
     }

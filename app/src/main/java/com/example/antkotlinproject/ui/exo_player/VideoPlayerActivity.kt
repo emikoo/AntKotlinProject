@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.exo_player
+package com.example.antkotlinproject.ui.exo_player
 
 import android.content.pm.ActivityInfo
 import android.net.Uri
@@ -9,7 +9,7 @@ import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.databinding.ActivityVideoPlayerBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
-import com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity.Companion.VIDEO
+import com.example.antkotlinproject.ui.detail_course.DetailCourseActivity.Companion.VIDEO
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource

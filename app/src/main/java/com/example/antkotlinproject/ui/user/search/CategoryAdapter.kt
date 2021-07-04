@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.search.main
+package com.example.antkotlinproject.ui.user.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

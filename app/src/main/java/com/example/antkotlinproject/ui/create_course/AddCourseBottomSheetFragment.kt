@@ -1,17 +1,20 @@
-package com.example.antkotlinproject.ui.teacher
+package com.example.antkotlinproject.ui.create_course
 
+import android.app.AlertDialog
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
+import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseAddBottomSheetFragment
 import com.example.antkotlinproject.base.CategoryEvent
-import com.example.antkotlinproject.base.pickPhotoFromGalleryWithPermissionCheck
+import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.databinding.LayoutAddBottomSheetBinding
 import com.example.antkotlinproject.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,6 +31,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     private var categoryId: Int? = null
     private var subcategoryId: Int? = null
     private var previewImage: File? = null
+    private var previewVideo: File? = null
 
     private val subcategoryList = mutableListOf<String>("Выберите подкатегорию")
     private var filteredList = mutableListOf<String>()
@@ -46,7 +50,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
 
     override fun setupViews() {
         setupCategorySpinner()
-        setupSubCategorySpinner()
+        setupSubcategorySpinner()
         setupListener()
         setupViewModel()
     }
@@ -76,7 +80,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
         }
     }
 
-    private fun setupSubCategorySpinner() {
+    private fun setupSubcategorySpinner() {
         val adapter =
             ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, subcategoryList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -91,7 +95,8 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     }
 
     private fun setupListener() {
-        binding.btnImage.setOnClickListener { pickPhotoFromGalleryWithPermissionCheck() }
+        binding.btnImage.setOnClickListener { pickPhotoFromGallery() }
+        binding.btnVideo.setOnClickListener { pickVideoFromGallery() }
         createCourse()
         binding.toolbar.setNavigationOnClickListener { this.onDestroyView() }
     }
@@ -103,6 +108,11 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
         previewImage = file
     }
 
+    override fun showVideo(file: File?) {
+        binding.btnVideo.text = "Сменить видео"
+        previewVideo = file
+    }
+
     private fun createCourse() {
         binding.btnAdd.setOnClickListener {
             val name = binding.etName.text.toString()
@@ -110,12 +120,11 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
             val description = binding.etDescription.text.toString()
             val price = binding.etPrice.text.toString()
             if (name.isNotEmpty() && lessonsCount.isNotEmpty() && description.isNotEmpty() && price.isNotEmpty()
-                && categoryId != 0 && previewImage != null) {
+                && categoryId != 0 && previewImage != null && previewVideo != null) {
                 viewModel.createCourse(
                     name = name, description = description, categoryId = categoryId!!.toInt(),
                     lessonsCount = lessonsCount.toInt(), subcategoryId = subcategoryId!!,
-                    price = price.toDouble(), previewImage = previewImage!!
-                )
+                    price = price.toDouble(), previewImage = previewImage!!, video = previewVideo!!)
             } else showToast(requireActivity(), "Заполните все поля")
         }
     }
@@ -129,7 +138,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
                         categoryList.add(category)
                     }
                 }
-                is CategoryEvent.SubCategoryFetched -> it.item?.let { it ->
+                is CategoryEvent.SubcategoryFetched -> it.item?.let { it ->
                     subcategoryList.removeAll(oldList)
                     oldList.clear()
                     for (array in it.subCategories) {
@@ -140,8 +149,26 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
                         filteredList.clear()
                     }
                 }
+                is CourseEvent.CourseCreated -> {
+                    this.dismiss()
+                    showCongratsDialog()
+                }
             }
         })
+    }
+
+    private fun showCongratsDialog() {
+        val alert = AlertDialog.Builder(requireContext(), R.style.DialogStyle)
+        val inflater = layoutInflater.inflate(R.layout.alert_congrats, null)
+        alert.setView(inflater)
+        val dialog = alert.create()
+        dialog.show()
+        Handler().postDelayed(Runnable {
+            if (dialog.isShowing) {
+                dialog.dismiss()
+            }
+        }, 3000)
+
     }
 
     override fun showPhoto1(file: Uri?) {}

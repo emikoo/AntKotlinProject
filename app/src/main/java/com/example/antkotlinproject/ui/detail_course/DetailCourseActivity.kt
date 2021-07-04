@@ -1,4 +1,4 @@
-package com.example.antkotlinproject.ui.user.detail_course
+package com.example.antkotlinproject.ui.detail_course
 
 import android.content.Intent
 import androidx.lifecycle.Observer
@@ -8,7 +8,7 @@ import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.databinding.ActivityDetailCourseBinding
-import com.example.antkotlinproject.ui.user.exo_player.VideoPlayerActivity
+import com.example.antkotlinproject.ui.exo_player.VideoPlayerActivity
 import com.example.antkotlinproject.ui.user.teacher_s_profile.TeacherProfileActivity
 import com.example.antkotlinproject.utils.PrefsHelper
 import com.example.antkotlinproject.utils.toLesson
@@ -34,9 +34,11 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
 
         val searchArgs = arguments.searchCourseId
         val subcategoryArgs = arguments.subcategoryCourseId
+        val myUserCourseArgs = arguments.myUserCourseId
 
-        if (searchArgs == 0) viewModel.fetchCourse(subcategoryArgs)
-        else viewModel.fetchCourse(searchArgs)
+        if (subcategoryArgs != 0) viewModel.fetchCourse(subcategoryArgs)
+        else if (searchArgs != 0) viewModel.fetchCourse(searchArgs)
+        else if (myUserCourseArgs != 0) viewModel.fetchCourse(myUserCourseArgs)
     }
 
     private fun setupListener() {

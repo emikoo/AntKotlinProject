@@ -6,6 +6,7 @@ import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.databinding.ActivityMainTeacherBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
+import com.example.antkotlinproject.ui.create_course.AddCourseBottomSheetFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
