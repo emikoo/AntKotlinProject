@@ -18,7 +18,7 @@ interface CourseApi {
     fun fetchCategory(): Observable<MutableList<CategoryModel>>
 
     @GET(GET_SUBCATEGORY_COURSES)
-    fun fetchSubcategoryCourses(@Path("id") id: Int): Observable<SubcategoryModel>
+    fun fetchSubcategoryCourses(@Path("id") id: Int): Observable<CategoryModel>
 
     @GET(GET_COURSES)
     fun fetchCourses(): Observable<MutableList<CourseModel>>

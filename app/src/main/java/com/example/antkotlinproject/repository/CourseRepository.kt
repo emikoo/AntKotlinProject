@@ -14,7 +14,7 @@ interface CourseRepository {
     fun fetchCourse(id: Int): Observable<CourseModel>
     fun fetchUserCourses(): Observable<MutableList<CourseModel>>
     fun fetchSubcategory(categoryId: Int): Observable<CategoryModel>
-    fun fetchSubcategoryCourses(subcategoryId: Int): Observable<SubcategoryModel>
+    fun fetchSubcategoryCourses(subcategoryId: Int): Observable<CategoryModel>
     fun createCourse(name: String, description: String, categoryId: Int,
                      lessonsCount: Int, price: Double, subcategoryId: Int,
                      image: MultipartBody.Part): Observable<CourseModel>
@@ -51,7 +51,7 @@ class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun fetchSubcategoryCourses(subcategoryId: Int): Observable<SubcategoryModel> {
+    override fun fetchSubcategoryCourses(subcategoryId: Int): Observable<CategoryModel> {
         return api.fetchSubcategoryCourses((subcategoryId))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
