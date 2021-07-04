@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/searchFragment2"
-        android:name="com.example.antkotlinproject.ui.user.search.main.SearchFragment"
+        android:name="com.example.antkotlinproject.ui.user.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search">
         <action
@@ -22,7 +22,11 @@
         android:id="@+id/myCoursesFragment2"
         android:name="com.example.antkotlinproject.ui.my_courses.MyCoursesFragment"
         android:label="fragment_my_courses"
-        tools:layout="@layout/fragment_my_courses" />
+        tools:layout="@layout/fragment_my_courses" >
+        <action
+            android:id="@+id/action_myCoursesFragment2_to_detailCourseActivity"
+            app:destination="@id/detailCourseActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment2"
@@ -32,7 +36,7 @@
 
     <activity
         android:id="@+id/detailCourseActivity"
-        android:name="com.example.antkotlinproject.ui.user.detail_course.DetailCourseActivity"
+        android:name="com.example.antkotlinproject.ui.detail_course.DetailCourseActivity"
         android:label="activity_detail_course"
         tools:layout="@layout/activity_detail_course">
         <argument
@@ -41,10 +45,12 @@
         <argument
             android:name="subcategoryCourseId"
             app:argType="integer" />
+        <argument android:name="myUserCourseId"
+            app:argType="integer" />
     </activity>
     <fragment
         android:id="@+id/subcategoryFragment"
-        android:name="com.example.antkotlinproject.ui.user.search.subcategory.SubcategoryFragment"
+        android:name="com.example.antkotlinproject.ui.user.subcategory.SubcategoryFragment"
         android:label="fragment_subcategory"
         tools:layout="@layout/fragment_subcategory" >
         <argument

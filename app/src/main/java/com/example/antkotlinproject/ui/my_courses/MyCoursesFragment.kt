@@ -100,5 +100,9 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
     }
 
     override fun onCourseClick(item: CourseModel) {
+        val directions =
+            MyCoursesFragmentDirections.actionMyCoursesFragment2ToDetailCourseActivity(
+                0, 0, item.id!!)
+        findNavController().navigate(directions)
     }
 }
