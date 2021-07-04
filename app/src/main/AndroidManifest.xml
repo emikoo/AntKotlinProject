@@ -17,9 +17,9 @@
         <activity android:name=".ui.teacher.MainTeacherActivity" />
         <activity android:name=".ui.user.teacher_s_profile.TeacherProfileActivity" />
         <activity
-            android:name=".ui.user.exo_player.VideoPlayerActivity"
+            android:name="com.example.antkotlinproject.ui.exo_player.VideoPlayerActivity"
             android:configChanges="orientation|screenSize|layoutDirection" />
-        <activity android:name=".ui.user.detail_course.DetailCourseActivity" />
+        <activity android:name="com.example.antkotlinproject.ui.detail_course.DetailCourseActivity" />
         <activity android:name=".ui.auth.AuthorizationActivity" />
         <activity android:name=".ui.user.main.MainUserActivity" />
         <activity android:name=".ui.splash.SplashActivity">

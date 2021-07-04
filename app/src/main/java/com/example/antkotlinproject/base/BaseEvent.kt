@@ -11,6 +11,7 @@ sealed class CategoryEvent : BaseEvent() {
 
 sealed class CourseEvent : BaseEvent() {
     class CoursesFetched(val array: MutableList<CourseModel>?) : CourseEvent()
+    class UserCoursesFetched(val array: MutableList<CourseModel>?) : CourseEvent()
     class CourseFetched(val item: CourseModel?) : CourseEvent()
     class SubcategoryCoursesFetched(val item: SubcategoryModel?) : CourseEvent()
     class CourseCreated(val item: CourseModel) : CourseEvent()

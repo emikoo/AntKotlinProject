@@ -6,11 +6,12 @@ import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.auth.AuthorizationFragment
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.ui.profile.ProfileViewModel
-import com.example.antkotlinproject.ui.teacher.AddCourseViewModel
-import com.example.antkotlinproject.ui.user.search.main.SearchFragment
-import com.example.antkotlinproject.ui.user.search.main.SearchViewModel
-import com.example.antkotlinproject.ui.user.search.subcategory.SubcategoryViewModel
-import com.example.antkotlinproject.ui.user.detail_course.DetailCourseViewModel
+import com.example.antkotlinproject.ui.create_course.AddCourseViewModel
+import com.example.antkotlinproject.ui.user.search.SearchFragment
+import com.example.antkotlinproject.ui.user.search.SearchViewModel
+import com.example.antkotlinproject.ui.user.subcategory.SubcategoryViewModel
+import com.example.antkotlinproject.ui.detail_course.DetailCourseViewModel
+import com.example.antkotlinproject.ui.my_courses.MyCoursesViewModel
 import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.fragment.dsl.fragment
@@ -30,6 +31,7 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get(), get()) }
     viewModel { AddCourseViewModel(get()) }
     viewModel { SubcategoryViewModel(get()) }
+    viewModel { MyCoursesViewModel(get()) }
 }
 
 val repositoryModule = module {
