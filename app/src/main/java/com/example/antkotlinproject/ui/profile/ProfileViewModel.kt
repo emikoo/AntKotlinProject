@@ -35,7 +35,7 @@ class ProfileViewModel(
             repository.editUserProfile(data)
                 .doOnComplete { loading.value = false }
                 .subscribe(
-                    { event.value = ProfileEvent.UserProfileEdited(data) },
+                    { event.value = ProfileEvent.UserProfileEdited(it) },
                     { message.value = it.message })
         )
     }

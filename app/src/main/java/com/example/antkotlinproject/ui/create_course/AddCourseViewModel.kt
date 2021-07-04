@@ -2,6 +2,7 @@ package com.example.antkotlinproject.ui.create_course
 
 import com.example.antkotlinproject.base.*
 import com.example.antkotlinproject.repository.CourseRepository
+import com.example.antkotlinproject.ui.profile.ProfileViewModel.Companion.AVATAR
 import com.example.antkotlinproject.utils.toImageRequestBody
 import com.example.antkotlinproject.utils.toVideoRequestBody
 import java.io.File
@@ -51,7 +52,7 @@ class AddCourseViewModel(private val repository: CourseRepository): BaseViewMode
     }
 
     companion object {
-        const val PREVIEW_IMAGE = "image"
-        const val PREVIEW_VIDEO = "preview_video"
+        const val PREVIEW_IMAGE = "course_preview_image"
+        const val PREVIEW_VIDEO = "course_preview_video"
     }
 }

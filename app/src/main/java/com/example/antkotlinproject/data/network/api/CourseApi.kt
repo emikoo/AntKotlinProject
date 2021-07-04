@@ -34,12 +34,12 @@ interface CourseApi {
 
     @Multipart
     @POST(CREATE_COURSE)
-    fun createCourse(@Part course_preview_image: MultipartBody.Part,
-                     @Part course_preview_video: MultipartBody.Part,
-                     @Part("name") name: String,
+    fun createCourse(@Part("name") name: String,
                      @Part("lessons_count") lessonsCount: Int,
                      @Part("description") description: String,
                      @Part("price") price: Double,
+                     @Part course_preview_image: MultipartBody.Part,
+                     @Part course_preview_video: MultipartBody.Part,
                      @Part("category") categoryId: Int,
                      @Part("subcategory") subcategoryId: Int): Observable<CourseModel>
 }
