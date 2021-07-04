@@ -37,6 +37,7 @@ fun showAlertDialog(context: Context, action: () -> Unit) {
 
 fun String.toLesson() = "$this уроков"
 fun String.toAt() = "@$this"
+fun String.toSom() = "$this сом"
 
 fun File.toImageRequestBody(name: String): MultipartBody.Part {
     return asRequestBody("image/*".toMediaTypeOrNull()).let {
