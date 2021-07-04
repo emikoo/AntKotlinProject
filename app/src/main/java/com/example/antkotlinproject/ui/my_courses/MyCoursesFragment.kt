@@ -1,8 +1,10 @@
 package com.example.antkotlinproject.ui.my_courses
 
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.base.BaseFragment
@@ -14,8 +16,6 @@ import com.example.antkotlinproject.ui.user.subcategory.CourseClickListener
 import com.example.antkotlinproject.ui.user.subcategory.SubcategoryFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class MyCoursesFragment : BaseFragment<DefaultViewModel, FragmentMyCoursesBinding>(
-    DefaultViewModel::class
 class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBinding>(
     MyCoursesViewModel::class
 ), CourseClickListener {
@@ -52,6 +52,31 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
             binding.title.visibility = View.VISIBLE
             false
         }
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Handler().postDelayed(Runnable {
+                    if (newText == "") {
+                        viewModel.fetchUserCourses()
+                    } else {
+                        val searchText = newText?.toLowerCase()
+                        val filteredName = mutableListOf<CourseModel>()
+                        viewModel.course?.forEach {
+                            if (searchText?.let { it1 -> it.name?.toLowerCase()?.contains(it1) }!!)
+                                filteredName.add(it)
+                        }
+                        adapter.addItems(filteredName)
+                    }
+                }, 800)
+                return false
+                return true
+            }
+        })
+    }
+
     }
 
     override fun subscribeToLiveData() {
