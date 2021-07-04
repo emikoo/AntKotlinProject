@@ -57,6 +57,8 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
     abstract fun showPhoto(file: File)
     abstract fun showPhoto1(file: Uri?)
 
+    abstract fun showVideo(file: File?)
+
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
     fun pickPhotoFromGallery() {
         val intent = Intent(
@@ -66,6 +68,17 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
 
         intent.type = "image/*"
         startActivityForResult(intent, RESULT_GALLERY)
+    }
+
+    @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+    fun pickVideoFromGallery() {
+        val intent = Intent(
+            Intent.ACTION_PICK,
+            MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+        )
+
+        intent.type = "video/*"
+        startActivityForResult(intent, RESULT_VIDEO)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -87,6 +100,13 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
                         val fileName = getImagePathFromInputStreamUri(requireActivity(), data.data!!)
                         val file = File(fileName)
                         showPhoto(file)
+                    }
+                }
+                RESULT_VIDEO -> {
+                    if (data != null && data.data != null) {
+                        val fileName = getVideoPathFromInputStreamUri(requireActivity(), data.data!!)
+                        val file = File(fileName)
+                        showVideo(file)
                     }
                 }
             }
@@ -161,6 +181,26 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
         return filePath
     }
 
+    fun getVideoPathFromInputStreamUri(context: Context, uri: Uri): String? {
+        var inputStream: InputStream? = null
+        var filePath: String? = null
+
+        if (uri.authority != null) {
+            try {
+                inputStream = context.contentResolver.openInputStream(uri)
+                val videoFile = createTemporalFileVideoFrom(context, inputStream)
+                filePath = videoFile!!.path
+            } finally {
+                try {
+                    inputStream!!.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        return filePath
+    }
+
     @Throws(IOException::class)
     private fun createTemporalFileFrom(context: Context, inputStream: InputStream?): File? {
         var targetFile: File? = null
@@ -190,11 +230,47 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
         return targetFile
     }
 
+    @Throws(IOException::class)
+    private fun createTemporalFileVideoFrom(context: Context, inputStream: InputStream?): File? {
+        var targetFile: File? = null
+
+        if (inputStream != null) {
+            var read: Int
+            val buffer = ByteArray(8 * 1024)
+
+            targetFile = createTemporalFileVideo(context)
+            val outputStream = FileOutputStream(targetFile)
+
+            while (true) {
+                read = inputStream.read(buffer)
+                if (read == -1)
+                    break
+                outputStream.write(buffer, 0, read)
+            }
+            outputStream.flush()
+
+            try {
+                outputStream.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+
+        return targetFile
+    }
+
     private fun createTemporalFile(
         context: Context,
         filePath: String = Calendar.getInstance().timeInMillis.toString()
     ): File {
         return File(context.externalCacheDir, "$filePath.jpg")
+    }
+
+    private fun createTemporalFileVideo(
+        context: Context,
+        filePath: String = Calendar.getInstance().timeInMillis.toString()
+    ): File {
+        return File(context.externalCacheDir, "$filePath.mp4")
     }
 
     override fun onRequestPermissionsResult(
@@ -209,6 +285,7 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
     companion object {
         private const val RESULT_CAMERA = 101
         private const val RESULT_GALLERY = 102
+        private const val RESULT_VIDEO = 103
         private var filename: String? = null
     }
 }

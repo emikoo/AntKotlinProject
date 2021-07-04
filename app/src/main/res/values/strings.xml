@@ -52,4 +52,6 @@
     <string name="add_preview_course_video">Добавить вступительное видео</string>
     <string name="price_in_som">*Указывайте цену в сомах</string>
     <string name="lessons_count">Кол-во уроков</string>
+    <string name="congrats">Поздравляем</string>
+    <string name="course_created">Курс успешно создан!</string>
 </resources>

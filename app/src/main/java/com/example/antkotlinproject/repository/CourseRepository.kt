@@ -17,7 +17,7 @@ interface CourseRepository {
     fun fetchSubcategoryCourses(subcategoryId: Int): Observable<CategoryModel>
     fun createCourse(name: String, description: String, categoryId: Int,
                      lessonsCount: Int, price: Double, subcategoryId: Int,
-                     image: MultipartBody.Part): Observable<CourseModel>
+                     image: MultipartBody.Part, video: MultipartBody.Part): Observable<CourseModel>
 }
 
 class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
@@ -60,11 +60,12 @@ class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
     override fun createCourse(
         name: String, description: String, categoryId: Int, lessonsCount: Int, price: Double,
         subcategoryId: Int,
-        image: MultipartBody.Part
+        image: MultipartBody.Part, video: MultipartBody.Part
+
     ): Observable<CourseModel> {
         return api.createCourse(name = name, description = description, categoryId = categoryId,
-            lessonsCount = lessonsCount,
-            price = price, coursePreviewImage = image, subcategoryId = subcategoryId)
+            lessonsCount = lessonsCount, price = price, course_preview_image = image,
+            subcategoryId = subcategoryId, course_preview_video = video)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
