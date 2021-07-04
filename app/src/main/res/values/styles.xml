@@ -52,9 +52,9 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="title_black_12sp">
+    <style name="title_black_16sp">
         <item name="fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
@@ -100,15 +100,15 @@
         <item name="android:textColor">@color/color_white</item>
     </style>
 
-    <style name="subtitle_bej_8dp">
+    <style name="subtitle_bej_10sp">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">@dimen/sp_8</item>
+        <item name="android:textSize">@dimen/sp_10</item>
         <item name="android:textColor">@color/color_dark_bej</item>
     </style>
 
-    <style name="subtitle_grey_8sp">
+    <style name="subtitle_grey_12sp">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textSize">@dimen/sp_12</item>
         <item name="android:textColor">@color/color_dark_grey</item>
     </style>
 
