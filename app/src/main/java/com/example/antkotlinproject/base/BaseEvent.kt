@@ -6,14 +6,14 @@ sealed class BaseEvent
 
 sealed class CategoryEvent : BaseEvent() {
     class CategoriesFetched(val array: MutableList<CategoryModel>?) : CategoryEvent()
-    class SubCategoryFetched(val item: CategoryModel?) : CategoryEvent()
+    class SubcategoryFetched(val item: CategoryModel?) : CategoryEvent()
 }
 
 sealed class CourseEvent : BaseEvent() {
     class CoursesFetched(val array: MutableList<CourseModel>?) : CourseEvent()
     class UserCoursesFetched(val array: MutableList<CourseModel>?) : CourseEvent()
     class CourseFetched(val item: CourseModel?) : CourseEvent()
-    class SubcategoryCoursesFetched(val item: SubcategoryModel?) : CourseEvent()
+    class SubcategoryCoursesFetched(val item: CategoryModel?) : CourseEvent()
     class CourseCreated(val item: CourseModel) : CourseEvent()
 }
 
