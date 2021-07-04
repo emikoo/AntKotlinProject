@@ -18,5 +18,6 @@ data class CourseModel(
     @SerializedName("course_preview_video")
     val coursePreviewVideo: String? = null,
     val category: Int? = null,
+    val subcategoryId: Int? = null,
     val id: Int? = null
 ) : Serializable
