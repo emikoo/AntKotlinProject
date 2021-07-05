@@ -17,6 +17,7 @@ import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.databinding.FragmentProfileBinding
 import com.example.antkotlinproject.ui.auth.AuthorizationActivity
+import com.example.antkotlinproject.utils.PrefsHelper
 import com.example.antkotlinproject.utils.toAt
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
@@ -83,13 +84,15 @@ class ProfileFragment : BaseUserPhotoFragment() {
                     phone = phoneEditText.text.toString().toInt(),
                     firstName = nameEditText.text.toString(),
                     lastName = surnameEditText.text.toString(),
-                    email = emailEditText.text.toString()
+                    email = emailEditText.text.toString(),
+                    isStuff = true
                 )
             } else {
                 User(
                     firstName = nameEditText.text.toString(),
                     lastName = surnameEditText.text.toString(),
-                    email = emailEditText.text.toString()
+                    email = emailEditText.text.toString(),
+                    isStuff = true
                 )
             }
             viewModel.editUserProfile(data)

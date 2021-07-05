@@ -123,7 +123,8 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
                     categoryAdapter.addItems(it.subCategories)
                     binding.tvCategories.text = it.name
                     binding.btnCategoryBack.visibility = View.VISIBLE
-                    binding.categoriesList.layoutManager = GridLayoutManager(requireContext(), 1)
+                    binding.categoriesList.layoutManager = GridLayoutManager(requireContext(), 1,
+                        GridLayoutManager.HORIZONTAL, false)
                 }
             }
         })
