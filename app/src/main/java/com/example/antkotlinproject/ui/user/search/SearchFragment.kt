@@ -127,6 +127,10 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
                 }
             }
         })
+        viewModel.loading.observe(requireActivity(), Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
+        })
     }
 
     override fun onCourseClick(item: CourseModel) {

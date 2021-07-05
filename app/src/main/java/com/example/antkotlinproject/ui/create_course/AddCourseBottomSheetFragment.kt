@@ -130,6 +130,10 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     }
 
     private fun setupViewModel() {
+        viewModel.loading.observe(this, Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
+        })
         viewModel.event.observe(this, Observer {
             when (it) {
                 is CategoryEvent.CategoriesFetched -> it.array?.let { it ->

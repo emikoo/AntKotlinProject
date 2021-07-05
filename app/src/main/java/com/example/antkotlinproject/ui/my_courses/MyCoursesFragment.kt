@@ -88,6 +88,10 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
     }
 
     override fun subscribeToLiveData() {
+        viewModel.loading.observe(requireActivity(), Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
+        })
         viewModel.event.observe(this, Observer {
             when(it) {
                 is CourseEvent.UserCoursesFetched -> it.array?.let {

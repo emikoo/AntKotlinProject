@@ -107,6 +107,10 @@ class ProfileFragment : BaseUserPhotoFragment() {
     }
 
     private fun setupViewModel() {
+        viewModel.loading.observe(requireActivity(), Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
+        })
         viewModel.event.observe(requireActivity(), Observer {
             when (it) {
                 is ProfileEvent.UserProfileFetched -> it.let {

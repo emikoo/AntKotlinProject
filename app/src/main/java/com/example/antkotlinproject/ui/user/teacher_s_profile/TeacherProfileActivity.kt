@@ -3,6 +3,7 @@ package com.example.antkotlinproject.ui.user.teacher_s_profile
 import android.content.Intent
 import android.net.Uri
 import android.text.TextUtils
+import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.antkotlinproject.base.BaseActivity
@@ -65,6 +66,10 @@ class TeacherProfileActivity : BaseActivity<ProfileViewModel, ActivityTeacherPro
                     binding.swipeRefreshLayout.isRefreshing = false
                 }
             }
+        })
+        viewModel.loading.observe(this, Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
         })
     }
 }

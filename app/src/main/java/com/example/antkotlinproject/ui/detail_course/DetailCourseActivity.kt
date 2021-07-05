@@ -1,6 +1,7 @@
 package com.example.antkotlinproject.ui.detail_course
 
 import android.content.Intent
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
@@ -46,6 +47,10 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
     }
 
     override fun subscribeToLiveData() {
+        viewModel.loading.observe(this, Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
+        })
         viewModel.event.observe(this, Observer {
             when (it) {
                 is CourseEvent.CourseFetched -> it.item?.let { it ->

@@ -1,6 +1,7 @@
 package com.example.antkotlinproject.ui.user.subcategory
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -49,6 +50,10 @@ class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcatego
                     binding.name.text = it.name
                 }
             }
+        })
+        viewModel.loading.observe(requireActivity(), Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
         })
     }
 

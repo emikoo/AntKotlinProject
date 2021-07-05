@@ -1,6 +1,7 @@
 package com.example.antkotlinproject.ui.auth.registration
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -63,6 +64,10 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
         })
         viewModel.error.observe(requireActivity(), Observer {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        })
+        viewModel.loading.observe(requireActivity(), Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
         })
     }
 

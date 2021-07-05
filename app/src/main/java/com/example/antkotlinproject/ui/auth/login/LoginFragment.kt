@@ -2,6 +2,7 @@ package com.example.antkotlinproject.ui.auth.login
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -67,6 +68,10 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
         })
         viewModel.error.observe(requireActivity(), Observer {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        })
+        viewModel.loading.observe(requireActivity(), Observer {
+            if (it) binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.GONE
         })
     }
 }
