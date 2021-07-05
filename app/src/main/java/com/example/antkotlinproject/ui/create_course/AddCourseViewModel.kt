@@ -1,8 +1,10 @@
 package com.example.antkotlinproject.ui.create_course
 
-import com.example.antkotlinproject.base.*
+import com.example.antkotlinproject.base.BaseEvent
+import com.example.antkotlinproject.base.BaseViewModel
+import com.example.antkotlinproject.base.CategoryEvent
+import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.repository.CourseRepository
-import com.example.antkotlinproject.ui.profile.ProfileViewModel.Companion.AVATAR
 import com.example.antkotlinproject.utils.toImageRequestBody
 import com.example.antkotlinproject.utils.toVideoRequestBody
 import java.io.File
