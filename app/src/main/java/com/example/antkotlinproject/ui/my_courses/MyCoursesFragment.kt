@@ -35,6 +35,7 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
 
     override fun setupViews() {
         viewModel = getViewModel(clazz = MyCoursesViewModel::class)
+        viewModel.fetchUserCourses()
         setupRecyclerView()
         setupSearchView()
         setupSwipeRefresh()

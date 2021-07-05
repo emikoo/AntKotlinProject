@@ -26,14 +26,14 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     private val viewModel by viewModel<AddCourseViewModel>()
     lateinit var binding: LayoutAddBottomSheetBinding
 
-    private var categoryList = mutableListOf<String>("Выберите категорию", "Кулинария")
+    private var categoryList = mutableListOf<String>("Выберите категорию")
 
     private var categoryId: Int? = null
     private var subcategoryId: Int? = null
     private var previewImage: File? = null
     private var previewVideo: File? = null
 
-    private val subcategoryList = mutableListOf<String>("Выберите подкатегорию", "Яблочный пирог")
+    private val subcategoryList = mutableListOf<String>("Выберите подкатегорию")
 
     override fun onCreateView(
         inflater: LayoutInflater,
