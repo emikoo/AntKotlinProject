@@ -22,6 +22,8 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
 
     lateinit var prefsHelper: PrefsHelper
 
+    var ownerId: Int? = null
+
     override fun setupViews() {
         viewModel = getViewModel(clazz = DetailCourseViewModel::class)
         fetchCourse()
@@ -44,6 +46,7 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
 
     private fun setupListener() {
         binding.toolbar.setNavigationOnClickListener { this.onBackPressed() }
+        openTeacherProfile()
     }
 
     override fun subscribeToLiveData() {
@@ -56,12 +59,12 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
                 is CourseEvent.CourseFetched -> it.item?.let { it ->
                     binding.toolbar.title = it.name
                     Glide.with(binding.previewImage)
-                        .load(it.coursePreviewImage)
+                        .load(it.coursePreviewVideo)
                         .placeholder(R.color.color_grey_transparent)
                         .into(binding.previewImage)
                     binding.lessons.text = it.lessonsCount.toString().toLesson()
                     binding.tvDescription.text = it.description
-                    binding.teacherName.text = it.owner?.username
+                    binding.teacherName.text = "${it.owner?.firstName} ${it.owner?.lastName}"
                     Glide.with(binding.teacherPhoto)
                         .load(it.owner?.avatar)
                         .placeholder(R.color.color_grey_transparent)
@@ -69,8 +72,7 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
                     val video = it.coursePreviewVideo
                     showVideo(video)
 
-                    val ownerId = it.owner?.id
-                    openTeacherProfile(ownerId)
+                    ownerId = it.owner?.id
                 }
             }
         })
@@ -84,7 +86,7 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
         }
     }
 
-    private fun openTeacherProfile(ownerId: Int?) {
+    private fun openTeacherProfile() {
         binding.btnTeacher.setOnClickListener {
             val intent = Intent(this, TeacherProfileActivity::class.java)
             intent.putExtra(OWNER, ownerId)

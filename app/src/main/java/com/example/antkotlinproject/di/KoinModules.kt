@@ -12,6 +12,7 @@ import com.example.antkotlinproject.ui.user.search.SearchViewModel
 import com.example.antkotlinproject.ui.user.subcategory.SubcategoryViewModel
 import com.example.antkotlinproject.ui.detail_course.DetailCourseViewModel
 import com.example.antkotlinproject.ui.my_courses.MyCoursesViewModel
+import com.example.antkotlinproject.ui.user.teacher_s_profile.TeacherProfileViewModel
 import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.fragment.dsl.fragment
@@ -32,6 +33,7 @@ val viewModelModule = module {
     viewModel { AddCourseViewModel(get()) }
     viewModel { SubcategoryViewModel(get()) }
     viewModel { MyCoursesViewModel(get()) }
+    viewModel { TeacherProfileViewModel(get()) }
 }
 
 val repositoryModule = module {

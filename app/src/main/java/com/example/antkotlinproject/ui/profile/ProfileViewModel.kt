@@ -40,17 +40,6 @@ class ProfileViewModel(
         )
     }
 
-    fun fetchTeacherProfile(id: Int) {
-        loading.value = true
-        disposable.add(
-            repository.fetchTeacherProfile(id)
-                .doOnTerminate { loading.value = false }
-                .subscribe(
-                    { event.value = ProfileEvent.TeacherProfileFetched(it) },
-                    { message.value = it.message })
-        )
-    }
-
     fun clearUserData() {
         prefsHelper.clearUserData()
     }
