@@ -4,6 +4,7 @@ import com.example.antkotlinproject.base.BaseEvent
 import com.example.antkotlinproject.base.BaseViewModel
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
+import com.example.antkotlinproject.data.model.CourseAccessModel
 import com.example.antkotlinproject.repository.CourseRepository
 import com.example.antkotlinproject.utils.toImageRequestBody
 import com.example.antkotlinproject.utils.toVideoRequestBody
@@ -26,13 +27,13 @@ class AddCourseViewModel(private val repository: CourseRepository): BaseViewMode
         )
     }
 
-    fun fetchSubcategory(categoryId: Int) {
+    fun fetchSubcategories() {
         loading.value = true
         disposable.add(
-            repository.fetchSubcategory(categoryId)
+            repository.fetchSubcategory()
                 .doOnTerminate { loading.value = false }
                 .subscribe(
-                    { event.value = CategoryEvent.SubcategoryFetched(it) },
+                    { event.value = CategoryEvent.SubcategoriesFetched(it) },
                     { message.value = it.message })
         )
     }

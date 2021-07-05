@@ -8,6 +8,7 @@ import com.example.antkotlinproject.utils.ApiConstants.CREATE_COURSE_ACCESS
 import com.example.antkotlinproject.utils.ApiConstants.GET_CATEGORIES
 import com.example.antkotlinproject.utils.ApiConstants.GET_COURSE
 import com.example.antkotlinproject.utils.ApiConstants.GET_COURSES
+import com.example.antkotlinproject.utils.ApiConstants.GET_SUBCATEGORIES
 import com.example.antkotlinproject.utils.ApiConstants.GET_SUBCATEGORY
 import com.example.antkotlinproject.utils.ApiConstants.GET_SUBCATEGORY_COURSES
 import com.example.antkotlinproject.utils.ApiConstants.GET_USER_COURSES
@@ -18,6 +19,9 @@ import retrofit2.http.*
 interface CourseApi {
     @GET(GET_CATEGORIES)
     fun fetchCategory(): Observable<MutableList<CategoryModel>>
+
+    @GET(GET_SUBCATEGORIES)
+    fun fetchSubcategory(): Observable<MutableList<CategoryModel>>
 
     @GET(GET_SUBCATEGORY_COURSES)
     fun fetchSubcategoryCourses(@Path("id") id: Int): Observable<CategoryModel>

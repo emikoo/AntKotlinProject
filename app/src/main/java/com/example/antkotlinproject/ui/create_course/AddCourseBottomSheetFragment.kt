@@ -26,16 +26,14 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     private val viewModel by viewModel<AddCourseViewModel>()
     lateinit var binding: LayoutAddBottomSheetBinding
 
-    private var categoryList = mutableListOf<String>("Выберите категорию")
+    private var categoryList = mutableListOf<String>("Выберите категорию", "Кулинария")
 
     private var categoryId: Int? = null
     private var subcategoryId: Int? = null
     private var previewImage: File? = null
     private var previewVideo: File? = null
 
-    private val subcategoryList = mutableListOf<String>("Выберите подкатегорию")
-    private var filteredList = mutableListOf<String>()
-    private var oldList = mutableListOf<String>()
+    private val subcategoryList = mutableListOf<String>("Выберите подкатегорию", "Яблочный пирог")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +47,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     }
 
     override fun setupViews() {
+        viewModel.fetchSubcategories()
         setupCategorySpinner()
         setupSubcategorySpinner()
         setupListener()
@@ -61,22 +60,11 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spCategory.adapter = adapter
-        getSubcategoriesOfCategory()
-    }
-
-    private fun getSubcategoriesOfCategory() {
         binding.spCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                categoryId = parent?.getItemIdAtPosition(position).toString().toInt()
-                viewModel.fetchSubcategory(categoryId!!)
-            }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {}
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                categoryId = p0?.getItemIdAtPosition(p2).toString().toInt()
+            }
         }
     }
 
@@ -90,7 +78,6 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 subcategoryId = p0?.getItemIdAtPosition(p2).toString().toInt()
             }
-
         }
     }
 
@@ -120,11 +107,13 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
             val description = binding.etDescription.text.toString()
             val price = binding.etPrice.text.toString()
             if (name.isNotEmpty() && lessonsCount.isNotEmpty() && description.isNotEmpty() && price.isNotEmpty()
-                && categoryId != 0 && previewImage != null && previewVideo != null) {
+                && categoryId != 0 && previewImage != null && previewVideo != null && subcategoryId != null
+            ) {
                 viewModel.createCourse(
                     name = name, description = description, categoryId = categoryId!!.toInt(),
                     lessonsCount = lessonsCount.toInt(), subcategoryId = subcategoryId!!,
-                    price = price.toDouble(), previewImage = previewImage!!, video = previewVideo!!)
+                    price = price.toDouble(), previewImage = previewImage!!, video = previewVideo!!
+                )
             } else showToast(requireActivity(), "Заполните все поля")
         }
     }
@@ -142,16 +131,8 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
                         categoryList.add(category)
                     }
                 }
-                is CategoryEvent.SubcategoryFetched -> it.item?.let { it ->
-                    subcategoryList.removeAll(oldList)
-                    oldList.clear()
-                    for (array in it.subCategories) {
-                        val subcategory = array.name
-                        filteredList.add(subcategory)
-                        subcategoryList.addAll(filteredList)
-                        oldList.addAll(filteredList)
-                        filteredList.clear()
-                    }
+                is CategoryEvent.SubcategoriesFetched -> it.array?.let { it ->
+                    for (array in it) subcategoryList.add(array.name)
                 }
                 is CourseEvent.CourseCreated -> {
                     viewModel.createAccessCourse(it.item.owner!!.id!!, it.item.id!!)
@@ -173,7 +154,6 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
                 dialog.dismiss()
             }
         }, 3000)
-
     }
 
     override fun showPhoto1(file: Uri?) {}

@@ -10,6 +10,7 @@ import okhttp3.RequestBody
 
 interface CourseRepository {
     fun fetchCategory(): Observable<MutableList<CategoryModel>>
+    fun fetchSubcategory(): Observable<MutableList<CategoryModel>>
     fun fetchCourses(): Observable<MutableList<CourseModel>>
     fun fetchCourse(id: Int): Observable<CourseModel>
     fun fetchUserCourses(): Observable<MutableList<CourseModel>>
@@ -24,6 +25,12 @@ interface CourseRepository {
 class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
     override fun fetchCategory(): Observable<MutableList<CategoryModel>> {
         return api.fetchCategory()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun fetchSubcategory(): Observable<MutableList<CategoryModel>> {
+        return api.fetchSubcategory()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
