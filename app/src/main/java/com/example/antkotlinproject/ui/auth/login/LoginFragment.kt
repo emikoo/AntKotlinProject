@@ -33,6 +33,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
     override fun setupViews() {
         preferences = PrefsHelper(requireContext())
         viewModel = getViewModel(clazz = AuthViewModel::class)
+        binding.etPassword.isHintEnabled = false
         setupListener()
     }
 

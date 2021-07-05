@@ -26,8 +26,15 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
 
     override fun setupViews() {
         viewModel = getViewModel(clazz = AuthViewModel::class)
+        setupPasswordStrengthIndicator()
         setupListener()
         setupViewModel()
+    }
+
+    private fun setupPasswordStrengthIndicator() {
+        binding.passwordSV.attachEditText(binding.etRegPassword)
+        binding.passwordContainer.isHintEnabled = false
+        binding.checkPasswordContainer.isHintEnabled = false
     }
 
     private fun setupListener() {
@@ -45,9 +52,7 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
         val password1 = binding.etRegPassword.text.toString()
         val password2 = binding.etRegCheckPassword.text.toString()
         val user = User(username = username, firstName = firsName, lastName = lastName, email = email, isStuff = isStaff, password1 = password1, password2 = password2)
-        if (password1 == password2) {
-            viewModel.regUser(user)
-        }
+        if (password1 == password2) viewModel.regUser(user)
     }
 
     private fun setupViewModel() {

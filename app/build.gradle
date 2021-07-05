@@ -86,5 +86,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     implementation 'org.permissionsdispatcher:permissionsdispatcher:4.3.0'
+
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.3.0"
+    implementation 'com.github.RHSaliya:PasswordStrengthView:1.0'
 }
