@@ -93,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_42"
                 android:inputType="textPassword"
+                android:maxLength="20"
                 style="@style/login_edit_text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,6 +112,7 @@
                 android:layout_height="@dimen/dp_42"
                 android:layout_marginTop="@dimen/dp_8"
                 android:inputType="textPassword"
+                android:maxLength="20"
                 style="@style/login_edit_text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
