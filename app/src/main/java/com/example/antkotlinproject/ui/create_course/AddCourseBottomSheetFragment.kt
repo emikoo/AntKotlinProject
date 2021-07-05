@@ -154,6 +154,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
                     }
                 }
                 is CourseEvent.CourseCreated -> {
+                    viewModel.createAccessCourse(it.item.owner!!.id!!, it.item.id!!)
                     this.dismiss()
                     showCongratsDialog()
                 }

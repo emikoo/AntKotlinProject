@@ -15,6 +15,7 @@ sealed class CourseEvent : BaseEvent() {
     class CourseFetched(val item: CourseModel?) : CourseEvent()
     class SubcategoryCoursesFetched(val item: CategoryModel?) : CourseEvent()
     class CourseCreated(val item: CourseModel) : CourseEvent()
+    class CourseAccessCreated(val item: CourseAccessModel) : CourseEvent()
 }
 
 sealed class ProfileEvent : BaseEvent() {

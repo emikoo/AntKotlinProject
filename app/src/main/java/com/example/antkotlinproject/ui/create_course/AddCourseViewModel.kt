@@ -53,6 +53,19 @@ class AddCourseViewModel(private val repository: CourseRepository): BaseViewMode
         )
     }
 
+    fun createAccessCourse(ownerId: Int, courseId: Int) {
+        val data = CourseAccessModel(owner = ownerId, course = courseId)
+        loading.value = true
+        disposable.add(
+            repository.createAccessCourse(data)
+                .doOnTerminate { loading.value = false }
+                .subscribe(
+                    { event.value = CourseEvent.CourseAccessCreated(it) },
+                    { message.value = it.message }
+                )
+        )
+    }
+
     companion object {
         const val PREVIEW_IMAGE = "course_preview_image"
         const val PREVIEW_VIDEO = "course_preview_video"

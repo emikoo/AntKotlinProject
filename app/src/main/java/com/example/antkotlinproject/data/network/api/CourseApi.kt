@@ -1,8 +1,10 @@
 package com.example.antkotlinproject.data.network.api
 
 import com.example.antkotlinproject.data.model.CategoryModel
+import com.example.antkotlinproject.data.model.CourseAccessModel
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.utils.ApiConstants.CREATE_COURSE
+import com.example.antkotlinproject.utils.ApiConstants.CREATE_COURSE_ACCESS
 import com.example.antkotlinproject.utils.ApiConstants.GET_CATEGORIES
 import com.example.antkotlinproject.utils.ApiConstants.GET_COURSE
 import com.example.antkotlinproject.utils.ApiConstants.GET_COURSES
@@ -31,6 +33,9 @@ interface CourseApi {
 
     @GET(GET_SUBCATEGORY)
     fun fetchSubcategory(@Path("categoryId") categoryId: Int): Observable<CategoryModel>
+
+    @POST(CREATE_COURSE_ACCESS)
+    fun createAccessCourse(@Body data: CourseAccessModel): Observable<CourseAccessModel>
 
     @Multipart
     @POST(CREATE_COURSE)

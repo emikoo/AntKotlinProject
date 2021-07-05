@@ -18,6 +18,7 @@ interface CourseRepository {
     fun createCourse(name: String, description: String, categoryId: Int,
                      lessonsCount: Int, price: Double, subcategoryId: Int,
                      image: MultipartBody.Part, video: MultipartBody.Part): Observable<CourseModel>
+    fun createAccessCourse(data: CourseAccessModel): Observable<CourseAccessModel>
 }
 
 class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
@@ -66,6 +67,12 @@ class CourseRepositoryImpl(private val api: CourseApi) : CourseRepository {
         return api.createCourse(name = name, description = description, categoryId = categoryId,
             lessonsCount = lessonsCount, price = price, course_preview_image = image,
             subcategoryId = subcategoryId, course_preview_video = video)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun createAccessCourse(data: CourseAccessModel): Observable<CourseAccessModel> {
+        return api.createAccessCourse(data)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

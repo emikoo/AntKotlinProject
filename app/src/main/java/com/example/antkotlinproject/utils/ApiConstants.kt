@@ -14,4 +14,5 @@ object ApiConstants {
     const val GET_SUBCATEGORY = "/course/category_subcategory/{categoryId}"
     const val GET_SUBCATEGORY_COURSES = "/course/subcategory_courses/{id}"
     const val CREATE_COURSE = "/course/course/create"
+    const val CREATE_COURSE_ACCESS = "/course/courseaccess/create"
 }

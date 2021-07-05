@@ -14,6 +14,7 @@ import com.example.antkotlinproject.databinding.FragmentMyCoursesBinding
 import com.example.antkotlinproject.ui.user.subcategory.CourseAdapter
 import com.example.antkotlinproject.ui.user.subcategory.CourseClickListener
 import com.example.antkotlinproject.ui.user.subcategory.SubcategoryFragmentDirections
+import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBinding>(
@@ -21,6 +22,7 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
 ), CourseClickListener {
 
     private lateinit var adapter: CourseAdapter
+    private lateinit var prefsHelper: PrefsHelper
 
     override fun attachBinding(
         list: MutableList<FragmentMyCoursesBinding>,
@@ -39,10 +41,7 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
     }
 
     private fun setupRecyclerView() {
-        adapter =
-            CourseAdapter(
-                this
-            )
+        adapter = CourseAdapter(this)
         binding.coursesList.adapter = adapter
     }
 
@@ -104,9 +103,12 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
     }
 
     override fun onCourseClick(item: CourseModel) {
-        val directions =
-            MyCoursesFragmentDirections.actionMyCoursesFragment2ToDetailCourseActivity(
-                0, 0, item.id!!)
-        findNavController().navigate(directions)
+        prefsHelper = PrefsHelper(requireContext())
+        if (!prefsHelper.getIsStuff()) {
+            val directions =
+                MyCoursesFragmentDirections.actionMyCoursesFragment2ToDetailCourseActivity(
+                    0, 0, item.id!!)
+            findNavController().navigate(directions)
+        }
     }
 }
