@@ -58,24 +58,26 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/photo"
-                android:layout_width="@dimen/dp_100"
-                android:layout_height="@dimen/dp_100"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="@dimen/dp_200"
                 android:layout_marginStart="@dimen/dp_16"
                 android:layout_marginTop="@dimen/dp_16"
                 android:scaleType="centerCrop"
                 android:src="@color/color_grey"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/name"
-                style="@style/subtitle_black"
+                style="@style/title_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_24"
-                android:layout_marginTop="@dimen/dp_16"
-                app:layout_constraintStart_toEndOf="@id/photo"
-                app:layout_constraintTop_toTopOf="@id/photo"
+                android:layout_marginTop="@dimen/dp_32"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/photo"
                 tools:text="Адеми Абдыкеримова" />
 
             <Button
@@ -93,10 +95,9 @@
                 style="@style/subtitle_green_12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_24"
-                android:layout_marginTop="@dimen/dp_16"
-                app:layout_constraintStart_toEndOf="@id/photo"
-                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintEnd_toStartOf="@id/iv_phone"
+                app:layout_constraintStart_toStartOf="@id/email"
+                app:layout_constraintTop_toTopOf="@id/tv_phone_number"
                 tools:text="0701988815" />
 
             <ImageView
@@ -114,32 +115,31 @@
                 style="@style/subtitle_green_12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_24"
-                android:layout_marginTop="@dimen/dp_8"
-                app:layout_constraintStart_toEndOf="@id/photo"
-                app:layout_constraintTop_toBottomOf="@id/phone"
+                android:layout_marginStart="@dimen/dp_32"
+                app:layout_constraintStart_toEndOf="@id/tv_email"
+                app:layout_constraintTop_toTopOf="@id/tv_email"
                 tools:text="ademi@mail.ru" />
 
             <TextView
-                android:id="@+id/courses"
-                style="@style/subtitle_black"
+                android:id="@+id/tv_phone_number"
+                style="@style/text_btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_42"
+                android:layout_marginStart="@dimen/dp_32"
+                android:layout_marginTop="@dimen/dp_54"
+                android:text="@string/phone_number"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/photo"
-                tools:text="Eще курсы от" />
+                app:layout_constraintTop_toBottomOf="@id/name" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/courses_list"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="@dimen/dp_16"
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/text_btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_16"
-                android:layout_marginEnd="@dimen/dp_16"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/courses" />
+                android:text="@string/email"
+                app:layout_constraintStart_toStartOf="@id/tv_phone_number"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_number" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
