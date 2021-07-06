@@ -2,7 +2,10 @@ package com.example.antkotlinproject.utils
 
 import android.app.AlertDialog
 import android.content.Context
+import android.os.Handler
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.antkotlinproject.R
@@ -57,4 +60,19 @@ fun File.toVideoRequestBody(name: String): MultipartBody.Part {
             it
         )
     }
+}
+
+fun showCongratsDialog(context: Context, layoutInflater: LayoutInflater, text: Int) {
+    val alert = AlertDialog.Builder(context, R.style.DialogStyle)
+    val inflater = layoutInflater.inflate(R.layout.alert_congrats, null)
+    alert.setView(inflater)
+    val message: TextView = inflater.findViewById(R.id.message)
+    message.setText(text)
+    val dialog = alert.create()
+    dialog.show()
+    Handler().postDelayed(Runnable {
+        if (dialog.isShowing) {
+            dialog.dismiss()
+        }
+    }, 3000)
 }

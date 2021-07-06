@@ -16,6 +16,7 @@ import com.example.antkotlinproject.base.BaseAddBottomSheetFragment
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.databinding.LayoutAddBottomSheetBinding
+import com.example.antkotlinproject.utils.showCongratsDialog
 import com.example.antkotlinproject.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
@@ -137,24 +138,13 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
                 is CourseEvent.CourseCreated -> {
                     viewModel.createAccessCourse(it.item.owner!!.id!!, it.item.id!!)
                     this.dismiss()
-                    showCongratsDialog()
+                    showCongratsDialog(requireContext(), layoutInflater, R.string.course_created)
                 }
             }
         })
     }
 
-    private fun showCongratsDialog() {
-        val alert = AlertDialog.Builder(requireContext(), R.style.DialogStyle)
-        val inflater = layoutInflater.inflate(R.layout.alert_congrats, null)
-        alert.setView(inflater)
-        val dialog = alert.create()
-        dialog.show()
-        Handler().postDelayed(Runnable {
-            if (dialog.isShowing) {
-                dialog.dismiss()
-            }
-        }, 3000)
-    }
+
 
     override fun showPhoto1(file: Uri?) {}
 }

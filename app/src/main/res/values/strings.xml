@@ -54,4 +54,6 @@
     <string name="lessons_count">Кол-во уроков</string>
     <string name="congrats">Поздравляем</string>
     <string name="course_created">Курс успешно создан!</string>
+    <string name="welcome">Вы успешно зарегистрировались!</string>
+    <string name="buy">Купить</string>
 </resources>
