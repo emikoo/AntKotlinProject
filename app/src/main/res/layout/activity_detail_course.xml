@@ -171,29 +171,6 @@
                 app:layout_constraintStart_toStartOf="@id/teacher_photo"
                 app:layout_constraintTop_toTopOf="@id/teacher_photo" />
 
-            <TextView
-                android:id="@+id/feedback"
-                style="@style/subtitle_black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_24"
-                android:text="@string/feedback"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/teacher_photo" />
-
-            <Button
-                android:id="@+id/btn_show_feedbacks"
-                style="@style/subtitle_green_12sp"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_12"
-                android:layout_marginBottom="@dimen/dp_16"
-                android:background="@android:color/transparent"
-                android:text="@string/show_all"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toTopOf="@id/feedback_list"
-                app:layout_constraintEnd_toEndOf="parent" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/feedback_list"
                 android:layout_width="match_parent"
@@ -202,21 +179,33 @@
                 android:layout_marginTop="@dimen/dp_16"
                 android:layout_marginEnd="@dimen/dp_16"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/feedback" />
+                app:layout_constraintTop_toBottomOf="@id/btn_teacher" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
+    <TextView
+        android:id="@+id/tv_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/buy"
+        style="@style/title_black_24sp"
+        android:layout_marginBottom="@dimen/dp_8"
+        app:layout_constraintEnd_toStartOf="@id/btn_start"/>
+
     <Button
         android:id="@+id/btn_start"
         style="@style/auth_white_title"
-        android:layout_width="match_parent"
+        android:textSize="@dimen/sp_24"
+        android:layout_width="@dimen/dp_100"
         android:layout_height="@dimen/dp_54"
-        android:layout_marginStart="@dimen/dp_8"
-        android:layout_marginEnd="@dimen/dp_8"
-        android:layout_marginBottom="@dimen/dp_2"
-        android:background="@color/color_green"
-        android:text="@string/add_course"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:background="@drawable/bg_btn_auth_positive"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/tv_buy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

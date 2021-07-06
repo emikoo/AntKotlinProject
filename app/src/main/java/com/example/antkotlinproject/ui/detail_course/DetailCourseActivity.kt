@@ -71,7 +71,7 @@ class DetailCourseActivity : BaseActivity<DetailCourseViewModel, ActivityDetailC
                         .into(binding.teacherPhoto)
                     val video = it.coursePreviewVideo
                     showVideo(video)
-
+                    binding.btnStart.text = it.price?.toInt().toString()
                     ownerId = it.owner?.id
                 }
             }
