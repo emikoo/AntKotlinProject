@@ -26,6 +26,8 @@ class ProfileFragment : BaseUserPhotoFragment() {
     private val viewModel by viewModel<ProfileViewModel>()
     lateinit var binding: FragmentProfileBinding
 
+    lateinit var prefsHelper: PrefsHelper
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,6 +42,7 @@ class ProfileFragment : BaseUserPhotoFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        prefsHelper = PrefsHelper(requireContext())
         editProfile()
         exitAction()
         setupViewModel()
@@ -85,14 +88,14 @@ class ProfileFragment : BaseUserPhotoFragment() {
                     firstName = nameEditText.text.toString(),
                     lastName = surnameEditText.text.toString(),
                     email = emailEditText.text.toString(),
-                    isStuff = true
+                    isStuff = prefsHelper.getIsStuff()
                 )
             } else {
                 User(
                     firstName = nameEditText.text.toString(),
                     lastName = surnameEditText.text.toString(),
                     email = emailEditText.text.toString(),
-                    isStuff = true
+                    isStuff = prefsHelper.getIsStuff()
                 )
             }
             viewModel.editUserProfile(data)

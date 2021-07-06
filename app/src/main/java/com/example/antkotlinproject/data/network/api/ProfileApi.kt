@@ -21,5 +21,5 @@ interface ProfileApi {
 
     @Multipart
     @POST(GET_USER_PROFILE)
-    fun changeImage(@Part avatar: MultipartBody.Part): Observable<User>
+    fun changeImage(@Part avatar: MultipartBody.Part, @Part("is_staff") isStuff: Boolean): Observable<User>
 }

@@ -39,7 +39,7 @@ val viewModelModule = module {
 val repositoryModule = module {
     factory<AuthorizationRepository> { AuthorizationRepositoryImpl(get(), get()) }
     factory<CourseRepository> { CourseRepositoryImpl(get()) }
-    factory<ProfileRepository> { ProfileRepositoryImpl(get()) }
+    factory<ProfileRepository> { ProfileRepositoryImpl(get(), get()) }
 }
 
 val networkRepository = module {
