@@ -2,18 +2,14 @@ package com.example.antkotlinproject.base
 
 import android.Manifest
 import android.app.Activity
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
+import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import androidx.core.content.FileProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions
@@ -26,38 +22,30 @@ import java.util.*
 @RuntimePermissions
 abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = BottomSheetDialog(requireActivity(), theme)
-        dialog.setOnShowListener {
-            val bottomSheetDialog = it as BottomSheetDialog
-            val parentLayout =
-                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-            parentLayout?.let { it ->
-                val behaviour = BottomSheetBehavior.from(it)
-                setupFullHeight(it)
-                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
-            }
-        }
-        return dialog
-    }
-
-    private fun setupFullHeight(bottomSheet: View) {
-        val layoutParams = bottomSheet.layoutParams
-        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
-        bottomSheet.layoutParams = layoutParams
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupViews()
-    }
-
-    abstract fun setupViews()
-
     abstract fun showPhoto(file: File)
     abstract fun showPhoto1(file: Uri?)
 
     abstract fun showVideo(file: File?)
+
+    @NeedsPermission(Manifest.permission.CAMERA)
+    fun shootPhoto() {
+        filename = System.nanoTime().toString()
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        val uri = getCaptureImageOutputUri(requireActivity(), filename!!)
+
+        if (uri != null) {
+            val file = File(uri.path)
+            if (Build.VERSION.SDK_INT >= 24) {
+                intent.putExtra(
+                    MediaStore.EXTRA_OUTPUT,
+                    FileProvider.getUriForFile(requireActivity(), "com.limxtop.research.fileprovider", file)
+                )
+                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            } else intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+            startActivityForResult(intent, RESULT_CAMERA)
+        }
+    }
 
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
     fun pickPhotoFromGallery() {
@@ -279,7 +267,7 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        onRequestPermissionsResult(requestCode, permissions, grantResults)
+        onRequestPermissionsResult(requestCode, grantResults)
     }
 
     companion object {

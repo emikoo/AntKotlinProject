@@ -56,4 +56,6 @@
     <string name="course_created">Курс успешно создан!</string>
     <string name="welcome">Вы успешно зарегистрировались!</string>
     <string name="buy">Купить</string>
+    <string name="choose_photo">Выбрать фото</string>
+    <string name="camera">Сфотографировать</string>
 </resources>

@@ -4,13 +4,9 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Handler
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.example.antkotlinproject.R
-import com.example.antkotlinproject.data.model.CourseModel
-import com.google.android.material.snackbar.Snackbar
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody

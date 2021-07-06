@@ -1,13 +1,13 @@
 package com.example.antkotlinproject.ui.create_course
 
-import android.app.AlertDialog
+import android.app.Dialog
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
@@ -18,6 +18,8 @@ import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.databinding.LayoutAddBottomSheetBinding
 import com.example.antkotlinproject.utils.showCongratsDialog
 import com.example.antkotlinproject.utils.showToast
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -47,7 +49,33 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
         return binding.root
     }
 
-    override fun setupViews() {
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = BottomSheetDialog(requireActivity(), theme)
+        dialog.setOnShowListener {
+            val bottomSheetDialog = it as BottomSheetDialog
+            val parentLayout =
+                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+            parentLayout?.let { it ->
+                val behaviour = BottomSheetBehavior.from(it)
+                setupFullHeight(it)
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
+        return dialog
+    }
+
+    private fun setupFullHeight(bottomSheet: View) {
+        val layoutParams = bottomSheet.layoutParams
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
+        bottomSheet.layoutParams = layoutParams
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+    }
+
+    private fun setupViews() {
         viewModel.fetchSubcategories()
         setupCategorySpinner()
         setupSubcategorySpinner()
@@ -87,6 +115,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
         binding.btnVideo.setOnClickListener { pickVideoFromGallery() }
         createCourse()
         binding.toolbar.setNavigationOnClickListener { this.onDestroyView() }
+//        openBottomSheet()
     }
 
     override fun showPhoto(file: File) {
@@ -100,6 +129,36 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
         binding.btnVideo.text = "Сменить видео"
         previewVideo = file
     }
+
+    override fun showPhoto1(file: Uri?) {}
+
+//    private fun openBottomSheet() {
+//        binding.btnImage.setOnClickListener {
+//            val bottomSheetDialogFragment: BottomSheetDialogFragment =
+//                CameraOrGalleryBottomSheet()
+//            bottomSheetDialogFragment.isCancelable = true
+//            bottomSheetDialogFragment.setTargetFragment(this, PHOTO)
+//            bottomSheetDialogFragment.show(
+//                requireActivity().supportFragmentManager,
+//                bottomSheetDialogFragment.tag
+//            )
+//        }
+//    }
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        if (requestCode == 1) {
+//            if (resultCode == Activity.RESULT_OK) {
+//
+//                val file = data?.getSerializableExtra(FILE) as File
+//                previewImage = file
+//                val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+//                binding.previewImage.setImageBitmap(bitmap)
+//                binding.btnImage.text = "Изменить"
+//            } else if (resultCode == Activity.RESULT_CANCELED) {
+//                //Do Something in case not recieved the data
+//            }
+//        }
+//    }
 
     private fun createCourse() {
         binding.btnAdd.setOnClickListener {
@@ -144,7 +203,7 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
         })
     }
 
-
-
-    override fun showPhoto1(file: Uri?) {}
+//    companion object {
+//        const val PHOTO = 1
+//    }
 }
