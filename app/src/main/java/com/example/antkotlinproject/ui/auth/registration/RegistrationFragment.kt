@@ -1,5 +1,6 @@
 package com.example.antkotlinproject.ui.auth.registration
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +9,22 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseFragment
+import com.example.antkotlinproject.base.ProfileEvent
 import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.databinding.FragmentRegistrationBinding
 import com.example.antkotlinproject.ui.auth.AuthViewModel
+import com.example.antkotlinproject.ui.teacher.MainTeacherActivity
+import com.example.antkotlinproject.ui.user.main.MainUserActivity
+import com.example.antkotlinproject.utils.PrefsHelper
+import com.example.antkotlinproject.utils.showCongratsDialog
+import com.example.antkotlinproject.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBinding>(
     AuthViewModel::class
 ) {
+    private lateinit var preferences: PrefsHelper
+
     override fun attachBinding(
         list: MutableList<FragmentRegistrationBinding>,
         layoutInflater: LayoutInflater,
@@ -26,6 +35,7 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
     }
 
     override fun setupViews() {
+        preferences = PrefsHelper(requireContext())
         viewModel = getViewModel(clazz = AuthViewModel::class)
         setupPasswordStrengthIndicator()
         setupListener()
@@ -53,13 +63,26 @@ class RegistrationFragment : BaseFragment<AuthViewModel, FragmentRegistrationBin
         val password1 = binding.etRegPassword.text.toString()
         val password2 = binding.etRegCheckPassword.text.toString()
         val user = User(username = username, firstName = firsName, lastName = lastName, email = email, isStuff = isStaff, password1 = password1, password2 = password2)
-        if (password1 == password2) viewModel.regUser(user)
+        if (password1 == password2) {
+            viewModel.regUser(user)
+        } else {
+            showToast(requireContext(), "Пароли не совпадают")
+        }
     }
 
     private fun setupViewModel() {
-        viewModel.actionRegistrationNewScreen.observe(requireActivity(), Observer {
-            if (it == true) {
-                findNavController().navigate(R.id.action_registrationFragment_to_authorizationFragment)
+        viewModel.event.observe(this, Observer {
+            when (it) {
+                is ProfileEvent.UserIsStuffFetched -> {
+                    if( it.item.isStuff == true) {
+                        preferences.saveIsStuff(true)
+                        startActivity(Intent(requireContext(), MainTeacherActivity::class.java))
+                    } else {
+                        preferences.saveIsStuff(false)
+                        startActivity(Intent(requireContext(), MainUserActivity::class.java))
+                    }
+                    activity?.finish()
+                }
             }
         })
         viewModel.error.observe(requireActivity(), Observer {

@@ -9,6 +9,7 @@ import com.example.antkotlinproject.data.model.User
 import com.example.antkotlinproject.data.network.client.ResponseResultStatus
 import com.example.antkotlinproject.repository.AuthorizationRepository
 import com.example.antkotlinproject.utils.PrefsHelper
+import com.example.antkotlinproject.utils.showToast
 import kotlinx.coroutines.launch
 
 class AuthViewModel(
@@ -17,7 +18,6 @@ class AuthViewModel(
 ) :
     BaseViewModel<BaseEvent>() {
 
-    val actionRegistrationNewScreen = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
 
     init {
@@ -30,10 +30,10 @@ class AuthViewModel(
                 .observeForever {
                     when (it.status) {
                         ResponseResultStatus.SUCCESS -> {
-                            actionRegistrationNewScreen.value = true
+                            login(user.username.toString(), user.password1.toString())
                         }
                         ResponseResultStatus.ERROR -> {
-                            actionRegistrationNewScreen.value = false
+                            message.value = it.message
                         }
                     }
                 }
