@@ -33,7 +33,7 @@ class TeacherProfileActivity : BaseActivity<TeacherProfileViewModel, ActivityTea
 
     private fun setupListener() {
         binding.btnClose.setOnClickListener { this.onBackPressed() }
-        if (binding.phone.text == "Нет номера") binding.btnPhoneCall.setOnClickListener {
+        if (binding.phone.text != "Нет номера") binding.btnPhoneCall.setOnClickListener {
             showAlertDialog(this, this::makeCall)
         }
         else {
