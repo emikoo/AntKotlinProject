@@ -23,7 +23,6 @@ import java.util.*
 abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
 
     abstract fun showPhoto(file: File)
-    abstract fun showPhoto1(file: Uri?)
 
     abstract fun showVideo(file: File?)
 
@@ -38,12 +37,32 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
             if (Build.VERSION.SDK_INT >= 24) {
                 intent.putExtra(
                     MediaStore.EXTRA_OUTPUT,
-                    FileProvider.getUriForFile(requireActivity(), "com.limxtop.research.fileprovider", file)
+                    FileProvider.getUriForFile(requireActivity(), "${requireActivity().packageName}.provider", file)
                 )
                 intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             } else intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
-            startActivityForResult(intent, RESULT_CAMERA)
+            startActivityForResult(intent, RESULT_CAMERA_PHOTO)
+        }
+    }
+
+    @NeedsPermission(Manifest.permission.CAMERA)
+    fun shootVideo() {
+        filename = System.nanoTime().toString()
+        val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
+        val uri = getCaptureVideoOutputUri(requireActivity(), filename!!)
+
+        if (uri != null) {
+            val file = File(uri.path)
+            if (Build.VERSION.SDK_INT >= 24) {
+                intent.putExtra(
+                    MediaStore.EXTRA_OUTPUT,
+                    FileProvider.getUriForFile(requireActivity(), "${requireActivity().packageName}.provider", file)
+                )
+                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            } else intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+            startActivityForResult(intent, RESULT_CAMERA_VIDEO)
         }
     }
 
@@ -73,15 +92,17 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                RESULT_CAMERA -> {
+                RESULT_CAMERA_PHOTO -> {
                     val uri = getImageFromCameraUri(data, filename!!)
                     val uriFile = getNormalizedUri(uri = uri)
-                    showPhoto1(uriFile)
                     val file = File(uriFile?.path)
                     file?.let { showPhoto(it) }
-
-                    Log.d("Adasdasdasd", "adsadasdasdasd")
-
+                }
+                RESULT_CAMERA_VIDEO -> {
+                    val uri = getVideoFromCameraUri(data, filename!!)
+                    val uriFile = getNormalizedUri(uri = uri)
+                    val file = File(uriFile?.path)
+                    file?.let { showVideo(it) }
                 }
                 RESULT_GALLERY -> {
                     if (data != null && data.data != null) {
@@ -119,6 +140,28 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
         val getImage = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         if (getImage != null) {
             outputFileUri = Uri.fromFile(File(getImage.path, "$fileName.jpeg"))
+        }
+        return outputFileUri
+    }
+
+    private fun getVideoFromCameraUri(data: Intent?, filename: String): Uri? {
+        var isCamera = true
+        if (data != null && data.data != null) {
+            val action = data.action
+            isCamera = action != null && action == MediaStore.ACTION_VIDEO_CAPTURE
+        }
+
+        return if (isCamera || data!!.data == null)
+            activity?.let { it -> getCaptureVideoOutputUri(it.applicationContext, filename) }
+        else
+            data.data
+    }
+
+    private fun getCaptureVideoOutputUri(context: Context, fileName: String): Uri? {
+        var outputFileUri: Uri? = null
+        val getVideo = context.getExternalFilesDir(Environment.DIRECTORY_MOVIES)
+        if (getVideo != null) {
+            outputFileUri = Uri.fromFile(File(getVideo.path, "$fileName.mp4"))
         }
         return outputFileUri
     }
@@ -271,9 +314,10 @@ abstract class BaseAddBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     companion object {
-        private const val RESULT_CAMERA = 101
+        private const val RESULT_CAMERA_PHOTO = 101
         private const val RESULT_GALLERY = 102
         private const val RESULT_VIDEO = 103
+        private const val RESULT_CAMERA_VIDEO = 104
         private var filename: String? = null
     }
 }

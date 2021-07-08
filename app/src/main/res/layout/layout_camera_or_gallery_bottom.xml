@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <Button
         android:id="@+id/btn_gallery"
@@ -12,11 +13,12 @@
         android:background="@android:color/transparent"
         android:gravity="start|center"
         android:paddingStart="@dimen/dp_54"
-        android:text="@string/choose_photo"
+        tools:text="@string/choose_photo"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:id="@+id/iv_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_gallery"
@@ -33,11 +35,12 @@
         android:background="@android:color/transparent"
         android:gravity="start|center"
         android:paddingStart="@dimen/dp_54"
-        android:text="@string/camera"
+        tools:text="@string/camera"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:id="@+id/iv_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_camera_black"

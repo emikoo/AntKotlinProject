@@ -57,5 +57,8 @@
     <string name="welcome">Вы успешно зарегистрировались!</string>
     <string name="buy">Купить</string>
     <string name="choose_photo">Выбрать фото</string>
+    <string name="choose_video">Выбрать видео</string>
     <string name="camera">Сфотографировать</string>
+    <string name="video">Снять видео</string>
+    <string name="my_api_key">apikey</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.example.antkotlinproject.ui.create_course
 
+import android.app.Activity
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -16,15 +18,17 @@ import com.example.antkotlinproject.base.BaseAddBottomSheetFragment
 import com.example.antkotlinproject.base.CategoryEvent
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.databinding.LayoutAddBottomSheetBinding
+import com.example.antkotlinproject.ui.create_course.CameraOrGalleryBottomSheet.Companion.FILE
 import com.example.antkotlinproject.utils.showCongratsDialog
 import com.example.antkotlinproject.utils.showToast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 
-class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
+class AddCourseBottomSheetFragment() : BottomSheetDialogFragment() {
 
     private val viewModel by viewModel<AddCourseViewModel>()
     lateinit var binding: LayoutAddBottomSheetBinding
@@ -111,54 +115,41 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
     }
 
     private fun setupListener() {
-        binding.btnImage.setOnClickListener { pickPhotoFromGallery() }
-        binding.btnVideo.setOnClickListener { pickVideoFromGallery() }
         createCourse()
         binding.toolbar.setNavigationOnClickListener { this.onDestroyView() }
-//        openBottomSheet()
+        binding.btnImage.setOnClickListener { openBottomSheetDialog(PHOTO) }
+        binding.btnVideo.setOnClickListener { openBottomSheetDialog(VIDEO) }
     }
 
-    override fun showPhoto(file: File) {
-        val bitmap = BitmapFactory.decodeFile(file.absolutePath)
-        binding.previewImage.setImageBitmap(bitmap)
-        binding.btnImage.text = "Изменить"
-        previewImage = file
+    private fun openBottomSheetDialog(type: Int) {
+        val bottomSheetDialogFragment: BottomSheetDialogFragment =
+            CameraOrGalleryBottomSheet()
+        bottomSheetDialogFragment.isCancelable = true
+        bottomSheetDialogFragment.setTargetFragment(this, type)
+        bottomSheetDialogFragment.show(
+            requireActivity().supportFragmentManager,
+            bottomSheetDialogFragment.tag
+        )
     }
 
-    override fun showVideo(file: File?) {
-        binding.btnVideo.text = "Сменить видео"
-        previewVideo = file
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                val file = data?.getSerializableExtra(FILE) as File
+                previewImage = file
+                val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+                binding.previewImage.setImageBitmap(bitmap)
+                binding.btnImage.text = "Изменить"
+            } else if (resultCode == Activity.RESULT_CANCELED) { }
+
+        } else if (requestCode == 2) {
+            if (resultCode == Activity.RESULT_OK) {
+                val file = data?.getSerializableExtra(FILE) as File
+                previewVideo = file
+                binding.btnVideo.text = "Сменить видео"
+            } else if (resultCode == Activity.RESULT_CANCELED) { }
+        }
     }
-
-    override fun showPhoto1(file: Uri?) {}
-
-//    private fun openBottomSheet() {
-//        binding.btnImage.setOnClickListener {
-//            val bottomSheetDialogFragment: BottomSheetDialogFragment =
-//                CameraOrGalleryBottomSheet()
-//            bottomSheetDialogFragment.isCancelable = true
-//            bottomSheetDialogFragment.setTargetFragment(this, PHOTO)
-//            bottomSheetDialogFragment.show(
-//                requireActivity().supportFragmentManager,
-//                bottomSheetDialogFragment.tag
-//            )
-//        }
-//    }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        if (requestCode == 1) {
-//            if (resultCode == Activity.RESULT_OK) {
-//
-//                val file = data?.getSerializableExtra(FILE) as File
-//                previewImage = file
-//                val bitmap = BitmapFactory.decodeFile(file.absolutePath)
-//                binding.previewImage.setImageBitmap(bitmap)
-//                binding.btnImage.text = "Изменить"
-//            } else if (resultCode == Activity.RESULT_CANCELED) {
-//                //Do Something in case not recieved the data
-//            }
-//        }
-//    }
 
     private fun createCourse() {
         binding.btnAdd.setOnClickListener {
@@ -203,7 +194,8 @@ class AddCourseBottomSheetFragment() : BaseAddBottomSheetFragment() {
         })
     }
 
-//    companion object {
-//        const val PHOTO = 1
-//    }
+    companion object {
+        const val PHOTO = 1
+        const val VIDEO = 2
+    }
 }

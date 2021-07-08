@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.antkotlinproject.base.BaseAddBottomSheetFragment
-import com.example.antkotlinproject.base.shootPhotoWithPermissionCheck
+import com.example.antkotlinproject.R
+import com.example.antkotlinproject.base.*
 import com.example.antkotlinproject.databinding.LayoutCameraOrGalleryBottomBinding
+import com.example.antkotlinproject.ui.create_course.AddCourseBottomSheetFragment.Companion.PHOTO
+import com.example.antkotlinproject.ui.create_course.AddCourseBottomSheetFragment.Companion.VIDEO
 import java.io.File
 import java.io.Serializable
 
@@ -31,37 +33,55 @@ class CameraOrGalleryBottomSheet: BaseAddBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupViews()
+    }
+
+    private fun setupViews() {
+        checkPhotoOfVideo(this::setupViewsForPhoto, this::setupViewsForVideo)
+        setupListener()
+    }
+
+    private fun checkPhotoOfVideo(actionPhoto: () -> Unit, actionVideo: () -> Unit) {
+        if (this.targetRequestCode == VIDEO) { actionVideo() }
+        else if (this.targetRequestCode == PHOTO) { actionPhoto() }
+    }
+
+    private fun setupViewsForPhoto() {
+        binding.btnGallery.setText(R.string.choose_photo)
+        binding.btnCamera.setText(R.string.camera)
+    }
+
+    private fun setupViewsForVideo() {
+        binding.btnGallery.setText(R.string.choose_video)
+        binding.btnCamera.setText(R.string.video)
+    }
+
+    private fun setupListener() {
         binding.btnGallery.setOnClickListener {
-            pickPhotoFromGallery()
+            checkPhotoOfVideo(this::pickPhotoFromGalleryWithPermissionCheck, this::pickVideoFromGalleryWithPermissionCheck)
         }
 
         binding.btnCamera.setOnClickListener {
-            shootPhotoWithPermissionCheck()
+            checkPhotoOfVideo(this::shootPhotoWithPermissionCheck, this::shootVideoWithPermissionCheck)
         }
     }
 
     override fun showPhoto(file: File) {
-        val intent = Intent()
-        intent.putExtra(FILE, file as Serializable)
-        intent.putExtra(TYPE, 2)
-        targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
-        this.dismiss()
-    }
-
-    override fun showPhoto1(file: Uri?) {
-        val intent = Intent()
-        intent.putExtra(FILE, file as Serializable)
-        intent.putExtra(TYPE, 3)
-        targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
-        this.dismiss()
+        backToTargetFragment(file)
     }
 
     override fun showVideo(file: File?) {
-        TODO("Not yet implemented")
+        backToTargetFragment(file)
+    }
+
+    private fun backToTargetFragment(file: File?) {
+        val intent = Intent()
+        intent.putExtra(FILE, file as Serializable)
+        targetFragment?.onActivityResult(targetRequestCode, Activity.RESULT_OK, intent)
+        this.dismiss()
     }
 
     companion object {
         const val FILE = "file"
-        const val TYPE = "type"
     }
 }
