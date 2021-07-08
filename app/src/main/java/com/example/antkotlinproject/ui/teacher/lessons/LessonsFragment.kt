@@ -1,19 +1,28 @@
 package com.example.antkotlinproject.ui.teacher.lessons
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.example.antkotlinproject.R
+import com.example.antkotlinproject.base.BaseFragment
+import com.example.antkotlinproject.databinding.FragmentLessonsBinding
+import com.example.antkotlinproject.ui.auth.DefaultViewModel
+import com.example.antkotlinproject.ui.my_courses.MyCoursesViewModel
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class LessonsFragment : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lessons, container, false)
+class LessonsFragment : BaseFragment<DefaultViewModel, FragmentLessonsBinding>(
+    DefaultViewModel::class
+) {
+    override fun attachBinding(
+        list: MutableList<FragmentLessonsBinding>,
+        layoutInflater: LayoutInflater,
+        container: ViewGroup?,
+        attachToRoot: Boolean
+    ) {
+        list.add(FragmentLessonsBinding.inflate(layoutInflater, container, attachToRoot))
     }
+
+    override fun setupViews() {
+        viewModel = getViewModel(clazz = DefaultViewModel::class)
+    }
+
+    override fun subscribeToLiveData() {}
 }

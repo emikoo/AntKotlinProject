@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.teacher.lessons.LessonsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/btn_add"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="LESSONS" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_stroke_grey"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_16"
+        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        android:textAllCaps="false"
+        android:text="@string/add_lesson"
+        android:textColor="@color/color_dark_white"
+        android:textAlignment="textStart"
+        android:paddingStart="@dimen/dp_54"/>
 
-</FrameLayout>
+    <ImageView
+        android:layout_width="@dimen/dp_33"
+        android:layout_height="@dimen/dp_33"
+        android:background="@drawable/ic_add_rectangle_grey"
+        app:layout_constraintTop_toTopOf="@id/btn_add"
+        app:layout_constraintBottom_toBottomOf="@id/btn_add"
+        app:layout_constraintStart_toStartOf="@id/btn_add"
+        android:layout_marginStart="@dimen/dp_12"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_lesson"
+        app:layout_constraintTop_toBottomOf="@id/btn_add"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
