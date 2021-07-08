@@ -18,6 +18,7 @@ class StudyCourseActivity : BaseActivity<DefaultViewModel, ActivityStudyCourseBi
     override fun setupViews() {
         setupViewPager()
         setupTabLayout()
+        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
     private fun setupViewPager() {
