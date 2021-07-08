@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:layout_marginStart="@dimen/dp_8"
+    android:layout_marginEnd="@dimen/dp_8"
+    android:background="@drawable/bg_stroke_black">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/dp_33"
+        android:layout_height="@dimen/dp_33"
+        android:background="@drawable/ic_book_greenback"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginStart="@dimen/dp_16"/>
+
+    <TextView
+        android:id="@+id/teacher_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/image"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        tools:text="Учитель Учитель"
+        android:layout_marginStart="@dimen/dp_8"
+        style="@style/text_btn_edit"/>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/dp_24"
+        tools:text="14 мая"
+        style="@style/subtitle_bej_10sp"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:layout_constraintStart_toStartOf="@id/image"
+        android:layout_marginTop="@dimen/dp_12"
+        tools:text="Тема урока"
+        style="@style/title_black_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/dp_24"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

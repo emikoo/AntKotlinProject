@@ -33,6 +33,12 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="title_black_medium">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="title_black_24sp">
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/sp_24</item>
