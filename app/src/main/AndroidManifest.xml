@@ -15,6 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.teacher.StudyCourseActivity"></activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -24,12 +26,13 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_provider" />
         </provider>
+
         <activity android:name=".ui.teacher.MainTeacherActivity" />
         <activity android:name=".ui.user.teacher_s_profile.TeacherProfileActivity" />
         <activity
-            android:name="com.example.antkotlinproject.ui.exo_player.VideoPlayerActivity"
+            android:name=".ui.exo_player.VideoPlayerActivity"
             android:configChanges="orientation|screenSize|layoutDirection" />
-        <activity android:name="com.example.antkotlinproject.ui.detail_course.DetailCourseActivity" />
+        <activity android:name=".ui.detail_course.DetailCourseActivity" />
         <activity android:name=".ui.auth.AuthorizationActivity" />
         <activity android:name=".ui.user.main.MainUserActivity" />
         <activity android:name=".ui.splash.SplashActivity">
