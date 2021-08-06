@@ -1,11 +1,10 @@
-package com.example.antkotlinproject.ui.teacher.lessons
+package com.example.antkotlinproject.ui.lessons
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.databinding.FragmentLessonsBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
-import com.example.antkotlinproject.ui.my_courses.MyCoursesViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class LessonsFragment : BaseFragment<DefaultViewModel, FragmentLessonsBinding>(

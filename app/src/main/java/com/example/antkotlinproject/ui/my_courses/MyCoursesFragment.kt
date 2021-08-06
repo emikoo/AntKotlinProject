@@ -12,9 +12,6 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentMyCoursesBinding
-import com.example.antkotlinproject.ui.user.subcategory.CourseAdapter
-import com.example.antkotlinproject.ui.user.subcategory.CourseClickListener
-import com.example.antkotlinproject.ui.user.subcategory.SubcategoryFragmentDirections
 import com.example.antkotlinproject.utils.PrefsHelper
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

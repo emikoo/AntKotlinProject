@@ -4,7 +4,7 @@ import com.example.antkotlinproject.base.BaseActivity
 import com.example.antkotlinproject.databinding.ActivityStudyCourseBinding
 import com.example.antkotlinproject.ui.auth.DefaultViewModel
 import com.example.antkotlinproject.ui.teacher.homeworks.HomeworksFragment
-import com.example.antkotlinproject.ui.teacher.lessons.LessonsFragment
+import com.example.antkotlinproject.ui.lessons.LessonsFragment
 import com.google.android.material.tabs.TabLayout
 
 class StudyCourseActivity : BaseActivity<DefaultViewModel, ActivityStudyCourseBinding>(

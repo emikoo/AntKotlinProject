@@ -9,6 +9,8 @@ import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CourseModel
 import com.example.antkotlinproject.databinding.FragmentSubcategoryBinding
+import com.example.antkotlinproject.ui.my_courses.CourseAdapter
+import com.example.antkotlinproject.ui.my_courses.CourseClickListener
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SubcategoryFragment : BaseFragment<SubcategoryViewModel, FragmentSubcategoryBinding>(
