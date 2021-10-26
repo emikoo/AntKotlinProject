@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.antkotlinproject"
-        minSdkVersion 25
+        minSdkVersion 27
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -35,6 +35,10 @@ android {
 
     viewBinding {
         enabled = true
+    }
+
+    buildFeatures {
+        dataBinding true
     }
 }
 
@@ -89,4 +93,6 @@ dependencies {
 
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.3.0"
     implementation 'com.github.RHSaliya:PasswordStrengthView:1.0'
+
+    implementation("io.github.vicmikhailau:MaskedEditText:4.0.7")
 }

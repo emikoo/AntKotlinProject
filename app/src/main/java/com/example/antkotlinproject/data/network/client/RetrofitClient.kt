@@ -52,7 +52,7 @@ class HeadersInterceptor(private val preferences: PrefsHelper) : Interceptor {
         val token = preferences.getToken()
         val request = chain.request().newBuilder()
         if (token.isNotEmpty())
-            request.addHeader("Authorization", "Token $token")
+            request.addHeader("token", "$token")
 
         return chain.proceed(request.build())
     }

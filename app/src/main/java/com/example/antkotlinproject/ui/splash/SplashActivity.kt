@@ -32,9 +32,7 @@ class SplashActivity : BaseActivity<DefaultViewModel, ActivitySplashBinding>
     }
 
     private fun setupDelay() {
-        if (preferences.getToken()
-                .isEmpty()
-        ) Handler(Looper.getMainLooper()).postDelayed({ openAuthorization() }, 1500)
+        if (preferences.getToken().isEmpty()) Handler(Looper.getMainLooper()).postDelayed({ openAuthorization() }, 1500)
         else Handler(Looper.getMainLooper()).postDelayed({ openMainActivity() }, 1500)
     }
 

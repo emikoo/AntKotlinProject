@@ -15,6 +15,4 @@ open class BaseViewModel<EVENT : BaseEvent>() : ViewModel() {
     val disposable: CompositeDisposable by lazy {
         return@lazy CompositeDisposable()
     }
-
-
 }

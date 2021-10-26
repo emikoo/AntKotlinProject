@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <com.vicmikhailau.maskededittext.MaskedEditText
             android:id="@+id/et_login"
             style="@style/login_edit_text"
             android:layout_width="match_parent"
@@ -52,6 +52,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/et_login"
             android:hint="@string/write_password"
+            app:hintEnabled="true"
+            app:errorEnabled="true"
+
             android:layout_marginTop="@dimen/dp_8"
             app:passwordToggleEnabled="true">
 
@@ -88,6 +91,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/et_login"
             app:layout_constraintTop_toBottomOf="@id/et_password" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

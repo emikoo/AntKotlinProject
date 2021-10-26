@@ -14,6 +14,8 @@ import com.example.antkotlinproject.ui.auth.AuthViewModel
 import com.example.antkotlinproject.ui.teacher.MainTeacherActivity
 import com.example.antkotlinproject.ui.user.main.MainUserActivity
 import com.example.antkotlinproject.utils.PrefsHelper
+import com.vicmikhailau.maskededittext.MaskedFormatter
+import com.vicmikhailau.maskededittext.MaskedWatcher
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
@@ -34,8 +36,9 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
     override fun setupViews() {
         preferences = PrefsHelper(requireContext())
         viewModel = getViewModel(clazz = AuthViewModel::class)
-        binding.etPassword.isHintEnabled = false
         setupListener()
+        val formatter = MaskedFormatter("your_mask")
+        binding.etLogin.addTextChangedListener(MaskedWatcher(formatter, binding.etLogin))
     }
 
     private fun setupListener() {
