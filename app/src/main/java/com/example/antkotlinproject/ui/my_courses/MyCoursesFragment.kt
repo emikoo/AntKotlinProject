@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import com.example.antkotlinproject.R
 import com.example.antkotlinproject.base.BaseFragment
 import com.example.antkotlinproject.base.CourseEvent
 import com.example.antkotlinproject.data.model.CourseModel
@@ -102,14 +100,6 @@ class MyCoursesFragment : BaseFragment<MyCoursesViewModel, FragmentMyCoursesBind
     }
 
     override fun onCourseClick(item: CourseModel) {
-        prefsHelper = PrefsHelper(requireContext())
-        if (!prefsHelper.getIsStuff()) {
-            val directions =
-                MyCoursesFragmentDirections.actionMyCoursesFragment2ToDetailCourseActivity(
-                    0, 0, item.id!!)
-            findNavController().navigate(directions)
-        } else {
-            findNavController().navigate(R.id.action_myCoursesFragment_to_studyCourseActivity)
-        }
+//
     }
 }

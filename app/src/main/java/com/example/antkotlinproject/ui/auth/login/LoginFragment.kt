@@ -37,8 +37,6 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding>(
         preferences = PrefsHelper(requireContext())
         viewModel = getViewModel(clazz = AuthViewModel::class)
         setupListener()
-        val formatter = MaskedFormatter("your_mask")
-        binding.etLogin.addTextChangedListener(MaskedWatcher(formatter, binding.etLogin))
     }
 
     private fun setupListener() {

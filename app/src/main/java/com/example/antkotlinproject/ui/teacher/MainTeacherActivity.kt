@@ -10,6 +10,7 @@ import com.example.antkotlinproject.ui.create_course.AddCourseBottomSheetFragmen
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+
 class MainTeacherActivity : BaseActivity<DefaultViewModel, ActivityMainTeacherBinding>(
     DefaultViewModel::class
 ) {
@@ -22,6 +23,9 @@ class MainTeacherActivity : BaseActivity<DefaultViewModel, ActivityMainTeacherBi
 
     private fun setupFab() {
         binding.fab.setOnClickListener {
+//            val navController = Navigation.findNavController(this, R.id.main_teacher_nav_view)
+//            navController.navigateUp()
+//            navController.navigate(R.id.loginFragment2)
             val bottomSheetDialogFragment: BottomSheetDialogFragment =
                 AddCourseBottomSheetFragment()
             bottomSheetDialogFragment.isCancelable = true

@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.vicmikhailau.maskededittext.MaskedEditText
+        <EditText
             android:id="@+id/et_login"
             style="@style/login_edit_text"
             android:layout_width="match_parent"

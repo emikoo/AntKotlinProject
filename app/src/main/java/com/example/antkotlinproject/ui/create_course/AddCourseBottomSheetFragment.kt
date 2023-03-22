@@ -33,14 +33,8 @@ class AddCourseBottomSheetFragment() : BottomSheetDialogFragment() {
     private val viewModel by viewModel<AddCourseViewModel>()
     lateinit var binding: LayoutAddBottomSheetBinding
 
-    private var categoryList = mutableListOf<String>("Выберите категорию")
-
-    private var categoryId: Int? = null
-    private var subcategoryId: Int? = null
     private var previewImage: File? = null
     private var previewVideo: File? = null
-
-    private val subcategoryList = mutableListOf<String>("Выберите подкатегорию")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,6 +80,11 @@ class AddCourseBottomSheetFragment() : BottomSheetDialogFragment() {
         setupListener()
         setupViewModel()
     }
+
+    private var categoryList = mutableListOf<String>("Выберите категорию")
+    private val subcategoryList = mutableListOf<String>("Выберите подкатегорию")
+    private var categoryId: Int? = null
+    private var subcategoryId: Int? = null
 
     private fun setupCategorySpinner() {
         val adapter =
@@ -153,6 +152,7 @@ class AddCourseBottomSheetFragment() : BottomSheetDialogFragment() {
 
     private fun createCourse() {
         binding.btnAdd.setOnClickListener {
+            showCongratsDialog(requireContext(), layoutInflater, R.string.course_created)
             val name = binding.etName.text.toString()
             val lessonsCount = binding.etLessonsCount.text.toString()
             val description = binding.etDescription.text.toString()
